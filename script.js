@@ -67,25 +67,41 @@
   function context(){
     const el=$('#audit-context');const p=profileMap[activeAudit];if(!p){el.classList.add('hidden');return;}
     el.classList.remove('hidden');
-    // CDM: tampilkan teks acuan sesuai permintaan, tanpa label/boks peringatan lama.
-    // Cadangan ini juga bekerja bila browser masih memakai profil audit-data.js versi lama.
-    const cdmOverview = {
-      referenceHeading: 'Acuan Pelaksanaan',
-      reference: 'Pedoman Tata Kerja SKK Migas Nomor: PTK-018/SKKMA0000/2018/S0 Revisi 2 tentang Pengelolaan Sumber Daya Manusia Kontraktor Kontrak Kerja Sama.',
-      chapter: 'BAB III.10: Evaluasi Kinerja Pengelolaan SDM KKKS.',
-      summaryHeading: 'Summary Evaluasi Kinerja Pengelolaan SDM KKKS',
-      scope: 'Pengelolaan SDM ini mencakup: Organization, Development, Compensation & Benefit, Industrial Relations, dan Medical.',
-      summary: 'Evaluasi Kinerja Pengelolaan SDM KKKS adalah evaluasi tahunan yang dilakukan oleh Fungsi Pengelola SDM (FPSDM) SKK Migas terhadap kinerja pengelolaan SDM di KKKS Produksi dengan menerapkan prinsip yang objektif dan transparan.',
-      introPillars: 'Evaluasi kinerja ini dikelompokkan ke dalam pilar utama, yaitu:',
-      pillars: [
-        { name: 'Career Development Monitoring (CDM)', description: 'Meliputi aktivitas perencanaan tenaga kerja, pengelolaan kinerja, pengelolaan kompetensi, pengelolaan posisi kunci, serta pengelolaan kompensasi dan benefit.' },
-        { name: 'Human Resource Compliance (HRC)', description: 'Meliputi aktivitas Rencana Penggunaan Tenaga Kerja (RPTK), pengelolaan Tenaga Kerja Asing (TKA), dan hubungan industrial.' },
-        { name: 'Occupational Health (Kesehatan Kerja)', description: 'Meliputi pemantauan dan pengelolaan program kesehatan kerja pekerja.' }
-      ]
-    };
-    // Tampilkan ringkasan rinci untuk CDM; jenis lain tetap menggunakan data profil.
-    if (p.id === 'cdm' || p.detailedOverview) {
-      const d = p.id === 'cdm' ? cdmOverview : p.detailedOverview;
+    // Keterangan khusus CDM SKK Migas - pembaruan v1.4.
+    // Teks ini dipakai sebagai ringkasan publik, bukan pengganti naskah PTK resmi.
+    if (p.id === 'cdm') {
+      const overview = {
+        title: 'CDM SKK Migas',
+        reference: 'Pedoman Tata Kerja SKK Migas Nomor: PTK-018/SKKMA0000/2018/S0 Revisi 2 tentang Pengelolaan Sumber Daya Manusia Kontraktor Kontrak Kerja Sama.',
+        chapter: 'BAB III.10: Evaluasi Kinerja Pengelolaan SDM KKKS.',
+        scope: 'Pengelolaan SDM ini mencakup: Organization, Development, Compensation & Benefit, Industrial Relations, dan Medical.',
+        summary: 'Evaluasi Kinerja Pengelolaan SDM KKKS adalah evaluasi tahunan yang dilakukan oleh Fungsi Pengelola SDM (FPSDM) SKK Migas terhadap kinerja pengelolaan SDM di KKKS Produksi dengan menerapkan prinsip yang objektif dan transparan.',
+        introduction: 'Evaluasi kinerja ini dikelompokkan ke dalam pilar utama, yaitu:',
+        pillars: [
+          ['Career Development Monitoring (CDM)', 'Meliputi aktivitas perencanaan tenaga kerja, pengelolaan kinerja, pengelolaan kompetensi, pengelolaan posisi kunci, serta pengelolaan kompensasi dan benefit.'],
+          ['Human Resource Compliance (HRC)', 'Meliputi aktivitas Rencana Penggunaan Tenaga Kerja (RPTK), pengelolaan Tenaga Kerja Asing (TKA), dan hubungan industrial.'],
+          ['Occupational Health (Kesehatan Kerja)', 'Meliputi pemantauan dan pengelolaan program kesehatan kerja pekerja.']
+        ]
+      };
+      el.innerHTML = `
+        <div class="context-head"><h3>${esc(overview.title)}</h3></div>
+        <div class="overview-section">
+          <h4>Acuan Pelaksanaan</h4>
+          <p>${esc(overview.reference)} ${esc(overview.chapter)}</p>
+        </div>
+        <div class="overview-section">
+          <h4>Summary</h4>
+          <p>${esc(overview.scope)}</p>
+          <p>${esc(overview.summary)}</p>
+          <p>${esc(overview.introduction)}</p>
+          <ol class="overview-pillars">
+            ${overview.pillars.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
+          </ol>
+        </div>`;
+      return;
+    }
+    if (p.detailedOverview) {
+      const d = p.detailedOverview;
       const pillars = (d.pillars || []).map(x =>
         `<li><strong>${esc(x.name)}:</strong> ${esc(x.description)}</li>`
       ).join('');
