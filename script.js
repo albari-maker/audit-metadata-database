@@ -67,6 +67,27 @@
   function context(){
     const el=$('#audit-context');const p=profileMap[activeAudit];if(!p){el.classList.add('hidden');return;}
     el.classList.remove('hidden');
+    // Tampilkan ringkasan rinci ketika profil memiliki struktur khusus.
+    if (p.detailedOverview) {
+      const d = p.detailedOverview;
+      const pillars = (d.pillars || []).map(x =>
+        `<li><strong>${esc(x.name)}:</strong> ${esc(x.description)}</li>`
+      ).join('');
+      el.innerHTML = `<div class="context-head"><h3>${esc(p.name)}</h3></div>
+        <div class="overview-section">
+          <h4>${esc(d.referenceHeading)}</h4>
+          <p>${esc(d.reference)}</p>
+          <p><strong>${esc(d.chapter)}</strong></p>
+        </div>
+        <div class="overview-section">
+          <h4>${esc(d.summaryHeading)}</h4>
+          <p>${esc(d.scope)}</p>
+          <p>${esc(d.summary)}</p>
+          <p>${esc(d.introPillars)}</p>
+          <ol class="overview-pillars">${pillars}</ol>
+        </div>`;
+      return;
+    }
     el.innerHTML=`<div class="context-head"><h3>${esc(p.name)}</h3><span class="context-tag">${esc(p.confidence)}</span></div><p><strong>Apa ini?</strong> ${esc(p.short)}<br><strong>Tujuan:</strong> ${esc(p.purpose)}</p><div class="context-meta"><span class="tiny-badge">${esc(p.version)}</span><span class="tiny-badge">PIC umum: ${esc(p.audience)}</span></div><p class="small-warning">⚠ ${esc(p.warning)}</p>`;
   }
   function applyFilters(){

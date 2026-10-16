@@ -1,14 +1,14 @@
 {
   "title": "Audit Metadata Database",
   "subtitle": "Panduan publik audit dari kelompok besar hingga topik dan contoh bukti",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "date": "2026-10-16",
   "notice": "Konten ini bersifat edukatif, bukan checklist normatif resmi. 32 kelompok peta audit berasal dari tabel ringkasan pengguna. Referensi PTK, OSHA/CCPS, kode ISO, dan pengelompokan SUPREME dalam tabel tersebut belum diverifikasi terhadap naskah resmi atau protokol perusahaan. Contoh bukti bukan dokumen aktual; jangan masukkan data rahasia atau data pribadi ke website publik.",
   "references": [
     {
       "title": "CDM SKK Migas",
       "url": "https://industri.kontan.co.id/news/skk-migas-ingatkan-kontraktor-kks-tingkatkan-sdm",
-      "note": "Protokol CDM perlu dikonfirmasi"
+      "note": "Rangkuman PTK-018/SKKMA0000/2018/S0 Revisi 2; verifikasi naskah resmi untuk penerapan audit"
     },
     {
       "title": "ISO 9001",
@@ -66,20 +66,43 @@
       "id": "cdm",
       "name": "CDM SKK Migas",
       "label": "Pengelolaan SDM",
-      "short": "Panduan awal aspek perencanaan, pengembangan, dan tata kelola pekerja di kegiatan hulu migas.",
-      "purpose": "Membantu mengumpulkan dokumen terkait kebutuhan tenaga kerja, kompetensi, dan administrasi SDM.",
+      "short": "Evaluasi tahunan pengelolaan SDM KKKS Produksi oleh FPSDM SKK Migas secara objektif dan transparan.",
+      "purpose": "Memberikan gambaran acuan pelaksanaan, ruang lingkup pengelolaan SDM, dan tiga pilar evaluasi kinerja pengelolaan SDM KKKS.",
       "audience": "HC, Legal, dan fungsi terkait",
-      "version": "Protokol CDM perlu dikonfirmasi",
-      "confidence": "Perlu validasi",
+      "version": "PTK-018/SKKMA0000/2018/S0 Revisi 2",
+      "confidence": "Acuan PTK-018",
       "icon": "users",
       "color": "#3B82F6",
       "source": "https://industri.kontan.co.id/news/skk-migas-ingatkan-kontraktor-kks-tingkatkan-sdm",
       "steps": [
-        "Pastikan nama lengkap CDM dan ruang lingkup audit pada surat penugasan.",
-        "Mintalah checklist resmi dari pengendali audit.",
-        "Petakan pemilik dokumen dan siapkan bukti terkontrol."
+        "Pelajari acuan pelaksanaan pada PTK-018/SKKMA0000/2018/S0 Revisi 2 BAB III.10.",
+        "Pahami cakupan Organization, Development, Compensation & Benefit, Industrial Relations, dan Medical.",
+        "Tentukan apakah kebutuhan informasi terkait CDM, HRC, atau Occupational Health dan hubungi PIC yang berwenang."
       ],
-      "warning": "Nama, dasar hukum, dan urutan elemen CDM dalam database ini bersifat contoh awal, bukan daftar pemeriksaan resmi."
+      "warning": "Rangkuman acuan CDM mengikuti materi yang diberikan pengguna. Pemetaan topik dan contoh eviden tetap perlu dicocokkan dengan naskah PTK resmi yang digunakan dalam audit.",
+      "detailedOverview": {
+        "referenceHeading": "Acuan Pelaksanaan",
+        "reference": "Pedoman Tata Kerja SKK Migas Nomor: PTK-018/SKKMA0000/2018/S0 Revisi 2 tentang Pengelolaan Sumber Daya Manusia Kontraktor Kontrak Kerja Sama.",
+        "chapter": "BAB III.10: Evaluasi Kinerja Pengelolaan SDM KKKS.",
+        "summaryHeading": "Summary Evaluasi Kinerja Pengelolaan SDM KKKS",
+        "scope": "Pengelolaan SDM ini mencakup: Organization, Development, Compensation & Benefit, Industrial Relations, dan Medical.",
+        "summary": "Evaluasi Kinerja Pengelolaan SDM KKKS adalah evaluasi tahunan yang dilakukan oleh Fungsi Pengelola SDM (FPSDM) SKK Migas terhadap kinerja pengelolaan SDM di KKKS Produksi dengan menerapkan prinsip yang objektif dan transparan.",
+        "introPillars": "Evaluasi kinerja ini dikelompokkan ke dalam pilar utama, yaitu:",
+        "pillars": [
+          {
+            "name": "Career Development Monitoring (CDM)",
+            "description": "Meliputi aktivitas perencanaan tenaga kerja, pengelolaan kinerja, pengelolaan kompetensi, pengelolaan posisi kunci, serta pengelolaan kompensasi dan benefit."
+          },
+          {
+            "name": "Human Resource Compliance (HRC)",
+            "description": "Meliputi aktivitas Rencana Penggunaan Tenaga Kerja (RPTK), pengelolaan Tenaga Kerja Asing (TKA), dan hubungan industrial."
+          },
+          {
+            "name": "Occupational Health (Kesehatan Kerja)",
+            "description": "Meliputi pemantauan dan pengelolaan program kesehatan kerja pekerja."
+          }
+        ]
+      }
     },
     {
       "id": "iso9001",
