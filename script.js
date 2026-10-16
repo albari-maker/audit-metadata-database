@@ -67,9 +67,25 @@
   function context(){
     const el=$('#audit-context');const p=profileMap[activeAudit];if(!p){el.classList.add('hidden');return;}
     el.classList.remove('hidden');
-    // Tampilkan ringkasan rinci ketika profil memiliki struktur khusus.
-    if (p.detailedOverview) {
-      const d = p.detailedOverview;
+    // CDM: tampilkan teks acuan sesuai permintaan, tanpa label/boks peringatan lama.
+    // Cadangan ini juga bekerja bila browser masih memakai profil audit-data.js versi lama.
+    const cdmOverview = {
+      referenceHeading: 'Acuan Pelaksanaan',
+      reference: 'Pedoman Tata Kerja SKK Migas Nomor: PTK-018/SKKMA0000/2018/S0 Revisi 2 tentang Pengelolaan Sumber Daya Manusia Kontraktor Kontrak Kerja Sama.',
+      chapter: 'BAB III.10: Evaluasi Kinerja Pengelolaan SDM KKKS.',
+      summaryHeading: 'Summary Evaluasi Kinerja Pengelolaan SDM KKKS',
+      scope: 'Pengelolaan SDM ini mencakup: Organization, Development, Compensation & Benefit, Industrial Relations, dan Medical.',
+      summary: 'Evaluasi Kinerja Pengelolaan SDM KKKS adalah evaluasi tahunan yang dilakukan oleh Fungsi Pengelola SDM (FPSDM) SKK Migas terhadap kinerja pengelolaan SDM di KKKS Produksi dengan menerapkan prinsip yang objektif dan transparan.',
+      introPillars: 'Evaluasi kinerja ini dikelompokkan ke dalam pilar utama, yaitu:',
+      pillars: [
+        { name: 'Career Development Monitoring (CDM)', description: 'Meliputi aktivitas perencanaan tenaga kerja, pengelolaan kinerja, pengelolaan kompetensi, pengelolaan posisi kunci, serta pengelolaan kompensasi dan benefit.' },
+        { name: 'Human Resource Compliance (HRC)', description: 'Meliputi aktivitas Rencana Penggunaan Tenaga Kerja (RPTK), pengelolaan Tenaga Kerja Asing (TKA), dan hubungan industrial.' },
+        { name: 'Occupational Health (Kesehatan Kerja)', description: 'Meliputi pemantauan dan pengelolaan program kesehatan kerja pekerja.' }
+      ]
+    };
+    // Tampilkan ringkasan rinci untuk CDM; jenis lain tetap menggunakan data profil.
+    if (p.id === 'cdm' || p.detailedOverview) {
+      const d = p.id === 'cdm' ? cdmOverview : p.detailedOverview;
       const pillars = (d.pillars || []).map(x =>
         `<li><strong>${esc(x.name)}:</strong> ${esc(x.description)}</li>`
       ).join('');
