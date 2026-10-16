@@ -41,15 +41,15 @@
     document.querySelectorAll('.audit-card').forEach(b=>b.addEventListener('click',()=>openAudit(b.dataset.audit)));
   }
   function navigate(page,hash=true){
-    if(!['beranda','jelajahi','glosarium','panduan'].includes(page))page='beranda';
+    if(!['beranda','jelajahi','peta','glosarium','panduan'].includes(page))page='beranda';
     activePage=page;
     document.querySelectorAll('.page').forEach(e=>e.classList.toggle('hidden',e.id!=='page-'+page));
     document.querySelectorAll('.nav-link[data-page]').forEach(e=>e.classList.toggle('active',e.dataset.page===page));
-    $('#breadcrumb-current').textContent = ({beranda:'Ringkasan',jelajahi:'Jelajahi klausul',glosarium:'Glosarium',panduan:'Cara menggunakan'})[page];
+    $('#breadcrumb-current').textContent = ({beranda:'Ringkasan',jelajahi:'Jelajahi klausul',peta:'Peta audit',glosarium:'Glosarium',panduan:'Cara menggunakan'})[page];
     if(hash && location.hash!==`#${page}`){history.replaceState(null,'',`#${page}`);}
     $('#sidebar').classList.remove('open');$('#mobile-overlay').classList.remove('visible');
     window.scrollTo({top:0,behavior:'instant'});
-    if(page==='jelajahi')applyFilters();
+    if(page==='jelajahi')applyFilters();if(page==='peta')renderPeta();
   }
   function openAudit(id){
     if(!profileMap[id])return;
@@ -79,7 +79,7 @@
       if(hc!=='all' && i.hc!==hc)return false;
       if(group!=='all' && i.group!==group)return false;
       if(ready!=='all' && getStatus(i)!==ready)return false;
-      if(words.length){const hay=normalize([profileMap[i.audit].name, profileMap[i.audit].label,i.code,i.title,i.description,i.group,i.pic,i.hc,...i.evidence,...i.metadata].join(' '));if(!words.every(w=>hay.includes(w)))return false;}
+      if(words.length){const hay=normalize([profileMap[i.audit].name, profileMap[i.audit].label,i.code,i.title,i.description,i.group,i.pic,i.hc,i.referenceText||'',...i.evidence,...i.metadata].join(' '));if(!words.every(w=>hay.includes(w)))return false;}
       return true;
     });
     context();
@@ -103,7 +103,7 @@
     const list=i.evidence.map(x=>`<li>${esc(x)}</li>`).join('');
     const root = i.code.match(/^(?:[4-9]|10)(?=\.)/);
     const path=root?`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`:`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`;
-    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(i.title)}</h2><p class="dialog-subtitle">${path}</p><div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div><div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section"><h3>03 / Contoh dokumen yang bisa ditelusuri</h3><p>Bukan daftar wajib; sesuaikan dengan protokol, ruang lingkup, dan persetujuan pengendali dokumen.</p><ul>${list}</ul></div><div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div><div class="dialog-section"><h3>05 / Dasar informasi</h3><p><a class="dialog-source" href="${esc(i.source)}" target="_blank" rel="noopener noreferrer">Lihat sumber rujukan publik ↗</a></p><p class="small-warning">${esc(p.warning)}</p></div><div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`;
+    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(i.title)}</h2><p class="dialog-subtitle">${path}</p><div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div><div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section"><h3>03 / Contoh dokumen yang bisa ditelusuri</h3><p>Bukan daftar wajib; sesuaikan dengan protokol, ruang lingkup, dan persetujuan pengendali dokumen.</p><ul>${list}</ul></div><div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div><div class="dialog-section"><h3>05 / Dasar informasi</h3><p><a class="dialog-source" href="${esc(i.source)}" target="_blank" rel="noopener noreferrer">Lihat sumber umum terkait (bukan verifikasi klausul) ↗</a></p><p class="small-warning">${esc(p.warning)}</p></div><div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`;
     $('#detail-status').addEventListener('change',(e)=>{saveStatus(i.id,e.target.value);toast('Status lokal diperbarui: '+e.target.value);});
     const dialog=$('#detail-dialog');if(!dialog.open)dialog.showModal();
   }
@@ -123,8 +123,29 @@
     const blob=new Blob(['\uFEFF'+lines.map(row=>row.map(csvSafe).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8;'});
     const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='audit-atlas-hasil-filter.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast(`${filtered.length} topik diekspor ke CSV`);
   }
+
+  function renderPeta(){
+    const sel=$('#peta-audit-select'), search=normalize($('#peta-search').value.trim());
+    const words=search.split(/\s+/).filter(Boolean);
+    const entries=(DATA.framework||[]).filter(f=>{
+      if(sel.value!=='all'&&f.audit!==sel.value)return false;
+      const hay=normalize([profileMap[f.audit].name,f.audit_as_tertuang,f.group,f.reference,...f.indicators,...f.evidence,...f.tags].join(' '));
+      return words.every(w=>hay.includes(w));
+    });
+    $('#peta-result-count').textContent=entries.length+' kelompok besar';
+    $('#peta-empty').classList.toggle('hidden',entries.length>0);
+    $('#peta-list').innerHTML=entries.map(f=>`<details class="peta-card"><summary><span class="peta-number">${String(f.position).padStart(2,'0')}</span><span class="peta-labels"><small>${esc(profileMap[f.audit].name)} · ${esc(f.level)}</small><strong>${esc(f.group)}</strong><span>${esc(f.reference)} · Belum diverifikasi</span></span><span class="peta-chevron">⌄</span></summary><div class="peta-detail"><div class="peta-detail-col"><h3>Indikator penilaian (dari tabel)</h3><ul>${f.indicators.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="peta-detail-col"><h3>Contoh dokumen eviden (dari tabel)</h3><ul>${f.evidence.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="peta-detail-full"><p><strong>Referensi tercantum:</strong> ${esc(f.reference)}. <strong>Peran:</strong> ${esc(f.pic)}.</p><p class="peta-validation">⚠ ${esc(f.validation)}</p><div class="peta-tags">${f.tags.slice(0,9).map(t=>`<span>#${esc(t)}</span>`).join('')}</div><button class="btn btn-outline peta-to-detail" data-peta-audit="${esc(f.audit)}">Jelajahi topik lebih rinci →</button></div></div></details>`).join('');
+    document.querySelectorAll('.peta-to-detail').forEach(b=>b.addEventListener('click',()=>openAudit(b.dataset.petaAudit)));
+  }
+  function exportPetaCsv(){
+    const rows=[['Jenis Audit','Kelompok Besar','Referensi pada tabel (belum diverifikasi)','Indikator','Eviden','Status Validasi'],...(DATA.framework||[]).map(f=>[profileMap[f.audit].name,f.group,f.reference,f.indicators.join('; '),f.evidence.join('; '),f.validation])];
+    const blob=new Blob(['\uFEFF'+rows.map(row=>row.map(csvSafe).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8;'});
+    const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='audit-atlas-peta-kelompok-besar.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Peta audit diekspor');
+  }
   function init(){
     buildNavigation();updateStats();refreshGroups();renderGlossary();
+    $('#peta-audit-select').innerHTML='<option value="all">Semua jenis audit</option>'+DATA.profiles.filter(p=>(DATA.framework||[]).some(f=>f.audit===p.id)).map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
+    $('#peta-audit-select').addEventListener('change',renderPeta);$('#peta-search').addEventListener('input',debounce(renderPeta));$('#peta-export').addEventListener('click',exportPetaCsv);renderPeta();
     $('#audit-select').addEventListener('change',e=>{activeAudit=e.target.value;shown=18;refreshGroups();applyFilters();});
     $('#hc-select').addEventListener('change',()=>{shown=18;applyFilters();});
     $('#group-select').addEventListener('change',()=>{shown=18;applyFilters();});

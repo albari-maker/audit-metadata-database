@@ -1,9 +1,9 @@
 {
   "title": "Audit Metadata Database",
-  "subtitle": "Panduan publik untuk memahami audit dari umum ke khusus",
-  "version": "1.0.0",
+  "subtitle": "Panduan publik audit dari kelompok besar hingga topik dan contoh bukti",
+  "version": "1.1.0",
   "date": "2026-10-16",
-  "notice": "Seluruh bukti adalah CONTOH dokumen generik, bukan unggahan bukti asli. Kode ISO merupakan peta orientasi dan harus dicek terhadap edisi resmi. Data disusun dari workbook awal, disunting agar tidak memuat data individual atau isi rekaman internal.",
+  "notice": "Konten ini bersifat edukatif, bukan checklist normatif resmi. 32 kelompok peta audit berasal dari tabel ringkasan pengguna. Referensi PTK, OSHA/CCPS, kode ISO, dan pengelompokan SUPREME dalam tabel tersebut belum diverifikasi terhadap naskah resmi atau protokol perusahaan. Contoh bukti bukan dokumen aktual; jangan masukkan data rahasia atau data pribadi ke website publik.",
   "references": [
     {
       "title": "CDM SKK Migas",
@@ -159,9 +159,9 @@
     },
     {
       "id": "ptk",
-      "name": "Audit K3LL SKK Migas",
+      "name": "Audit SIAP SELAMAT / K3LL SKK Migas",
       "label": "PTK-005 / SIAP SELAMAT",
-      "short": "Panduan umum untuk pemeriksaan pengelolaan K3LL hulu migas dan bukti penerapannya.",
+      "short": "Panduan awal topik pengelolaan K3LL dan kesiapan SIAP SELAMAT; validasi protokol dan terminologi resmi sebelum audit.",
       "purpose": "Membantu melihat elemen K3LL, sumber daya, operasi, tanggap darurat, dan evaluasi.",
       "audience": "HSE, operasi, HC, SCM, manajemen",
       "version": "PTK-005 (cek revisi berlaku)",
@@ -174,7 +174,7 @@
         "Konfirmasi revisi PTK dan butir checklist audit yang digunakan.",
         "Susun bukti pelaksanaan tiap elemen dengan PIC yang tepat."
       ],
-      "warning": "SIAP SELAMAT dapat merujuk pada sistem/aplikasi, bukan otomatis nama jenis audit. Hubungan dengan PTK-005 dan edisi protokol harus dikonfirmasi."
+      "warning": "Referensi PTK-005 dan keterkaitannya dengan SIAP SELAMAT dalam tabel pengguna harus dikonfirmasi pada protokol berlaku. Pemetaan ini bukan daftar resmi."
     },
     {
       "id": "psaims",
@@ -4767,28 +4767,1330 @@
       "source": "https://www.pertamina.com/Media/File/Energia-51-17-Desember-2018.pdf",
       "status": "Struktur publik",
       "origin": "Kerangka panduan publik"
+    },
+    {
+      "id": "map-cdm-01",
+      "audit": "cdm",
+      "code": "PETA 01",
+      "title": "Perencanaan Tenaga Kerja",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Efisiensi struktur (WP&B) & penggantian TKA..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Bagan Organisasi, Manpower Planning, RPTKA."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "cdm",
+        "perencanaan",
+        "tenaga",
+        "kerja",
+        "ptk",
+        "018",
+        "efisiensi",
+        "struktur",
+        "penggantian",
+        "tka",
+        "bagan",
+        "organisasi",
+        "manpower",
+        "planning",
+        "rptka"
+      ],
+      "source": "https://industri.kontan.co.id/news/skk-migas-ingatkan-kontraktor-kks-tingkatkan-sdm",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "PTK-018 Rev II (Pasal 5.4)",
+      "isFramework": true
+    },
+    {
+      "id": "map-cdm-02",
+      "audit": "cdm",
+      "code": "PETA 02",
+      "title": "Pengelolaan Kinerja",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Ketersediaan KPI & distribusi hasil evaluasi..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Form KPI, Rekap Performance Appraisal."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "cdm",
+        "pengelolaan",
+        "kinerja",
+        "ptk",
+        "018",
+        "ketersediaan",
+        "kpi",
+        "distribusi",
+        "hasil",
+        "evaluasi",
+        "form",
+        "rekap",
+        "performance",
+        "appraisal"
+      ],
+      "source": "https://industri.kontan.co.id/news/skk-migas-ingatkan-kontraktor-kks-tingkatkan-sdm",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "PTK-018 Rev II (Pasal 5.4)",
+      "isFramework": true
+    },
+    {
+      "id": "map-cdm-03",
+      "audit": "cdm",
+      "code": "PETA 03",
+      "title": "Pengelolaan Kompetensi",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Identifikasi gap kompetensi & realisasi training..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Matriks Kompetensi, Laporan Pelatihan."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "cdm",
+        "pengelolaan",
+        "kompetensi",
+        "ptk",
+        "018",
+        "identifikasi",
+        "gap",
+        "realisasi",
+        "training",
+        "matriks",
+        "laporan",
+        "pelatihan"
+      ],
+      "source": "https://industri.kontan.co.id/news/skk-migas-ingatkan-kontraktor-kks-tingkatkan-sdm",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "PTK-018 Rev II (Pasal 5.4)",
+      "isFramework": true
+    },
+    {
+      "id": "map-cdm-04",
+      "audit": "cdm",
+      "code": "PETA 04",
+      "title": "Posisi Kunci & Suksesi",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Ketersediaan Talent Pool jabatan strategis..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Succession Matrix (9-Box), Career Path."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "cdm",
+        "posisi",
+        "kunci",
+        "suksesi",
+        "ptk",
+        "018",
+        "ketersediaan",
+        "talent",
+        "pool",
+        "jabatan",
+        "strategis",
+        "succession",
+        "matrix",
+        "box",
+        "career",
+        "path"
+      ],
+      "source": "https://industri.kontan.co.id/news/skk-migas-ingatkan-kontraktor-kks-tingkatkan-sdm",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "PTK-018 Rev II (Pasal 5.4)",
+      "isFramework": true
+    },
+    {
+      "id": "map-cdm-05",
+      "audit": "cdm",
+      "code": "PETA 05",
+      "title": "Kompensasi & Benefit",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Kepatuhan normatif (SUSU, BPJS, Pajak)..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Dokumen SUSU, Bukti Setor BPJS, PKB/PP."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "cdm",
+        "kompensasi",
+        "benefit",
+        "ptk",
+        "018",
+        "kepatuhan",
+        "normatif",
+        "susu",
+        "bpjs",
+        "pajak",
+        "bukti",
+        "setor",
+        "pkb"
+      ],
+      "source": "https://industri.kontan.co.id/news/skk-migas-ingatkan-kontraktor-kks-tingkatkan-sdm",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "PTK-018 Rev II (Pasal 5.4)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso9001-01",
+      "audit": "iso9001",
+      "code": "PETA 01",
+      "title": "Konteks & Kepemimpinan",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Isu bisnis & stakeholder (Semua); Komitmen Mutu (ISO 9001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Analisis Konteks (SWOT) & Kebijakan SMT (Semua)",
+        "Peta Proses Bisnis (ISO 9001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso9001",
+        "konteks",
+        "kepemimpinan",
+        "isu",
+        "bisnis",
+        "stakeholder",
+        "komitmen",
+        "mutu",
+        "9001",
+        "analisis",
+        "swot",
+        "kebijakan",
+        "proses"
+      ],
+      "source": "https://www.iso.org/standard/9001",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 4 & 5)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso14001-01",
+      "audit": "iso14001",
+      "code": "PETA 01",
+      "title": "Konteks & Kepemimpinan",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Isu bisnis & stakeholder (Semua); Komitmen Lingkungan (ISO 14001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Analisis Konteks (SWOT) & Kebijakan SMT (Semua)"
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso14001",
+        "konteks",
+        "kepemimpinan",
+        "isu",
+        "bisnis",
+        "stakeholder",
+        "komitmen",
+        "lingkungan",
+        "14001",
+        "analisis",
+        "swot",
+        "kebijakan"
+      ],
+      "source": "https://www.iso.org/standard/14001",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 4 & 5)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso45001-01",
+      "audit": "iso45001",
+      "code": "PETA 01",
+      "title": "Konteks & Kepemimpinan",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Isu bisnis & stakeholder (Semua); Partisipasi Pekerja/K3 (ISO 45001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Analisis Konteks (SWOT) & Kebijakan SMT (Semua)",
+        "SK & Notulen Rapat P2K3 (ISO 45001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso45001",
+        "konteks",
+        "kepemimpinan",
+        "isu",
+        "bisnis",
+        "stakeholder",
+        "partisipasi",
+        "pekerja",
+        "kesehatan",
+        "keselamatan",
+        "kerja",
+        "45001",
+        "analisis",
+        "swot",
+        "kebijakan",
+        "notulen",
+        "rapat",
+        "p2kesehatan"
+      ],
+      "source": "https://www.iso.org/standard/63787.html",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 4 & 5)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso9001-02",
+      "audit": "iso9001",
+      "code": "PETA 02",
+      "title": "Perencanaan Risiko",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Risiko operasional/bisnis (ISO 9001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Risk & Opportunity Register (ISO 9001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso9001",
+        "perencanaan",
+        "risiko",
+        "operasional",
+        "bisnis",
+        "9001",
+        "risk",
+        "opportunity",
+        "register"
+      ],
+      "source": "https://www.iso.org/standard/9001",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 6)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso14001-02",
+      "audit": "iso14001",
+      "code": "PETA 02",
+      "title": "Perencanaan Risiko",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Aspek Dampak Lingkungan/IADL (ISO 14001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Dokumen IADL (ISO 14001)"
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso14001",
+        "perencanaan",
+        "risiko",
+        "aspek",
+        "dampak",
+        "lingkungan",
+        "iadl",
+        "14001"
+      ],
+      "source": "https://www.iso.org/standard/14001",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 6)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso45001-02",
+      "audit": "iso45001",
+      "code": "PETA 02",
+      "title": "Perencanaan Risiko",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Bahaya & Risiko K3/HIRADC (ISO 45001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "JSA / HIRADC (ISO 45001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso45001",
+        "perencanaan",
+        "risiko",
+        "bahaya",
+        "kesehatan",
+        "keselamatan",
+        "kerja",
+        "hiradc",
+        "45001",
+        "jsa"
+      ],
+      "source": "https://www.iso.org/standard/63787.html",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 6)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso9001-03",
+      "audit": "iso9001",
+      "code": "PETA 03",
+      "title": "Dukungan & Operasional",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: SDM & Kalibrasi Alat (Semua); Kontrol Produksi & Kualitas Vendor (ISO 9001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Matriks Kompetensi & Master List Dokumen (Semua)",
+        "SOP Produksi / Quality Plan (ISO 9001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso9001",
+        "dukungan",
+        "operasional",
+        "sdm",
+        "kalibrasi",
+        "alat",
+        "kontrol",
+        "produksi",
+        "kualitas",
+        "vendor",
+        "9001",
+        "matriks",
+        "kompetensi",
+        "master",
+        "list",
+        "sop",
+        "quality",
+        "plan"
+      ],
+      "source": "https://www.iso.org/standard/9001",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 7 & 8)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso14001-03",
+      "audit": "iso14001",
+      "code": "PETA 03",
+      "title": "Dukungan & Operasional",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: SDM & Kalibrasi Alat (Semua); Limbah, Emisi & B3 (ISO 14001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Matriks Kompetensi & Master List Dokumen (Semua)",
+        "Manifest Limbah B3 (ISO 14001)"
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso14001",
+        "dukungan",
+        "operasional",
+        "sdm",
+        "kalibrasi",
+        "alat",
+        "limbah",
+        "emisi",
+        "14001",
+        "matriks",
+        "kompetensi",
+        "master",
+        "list",
+        "manifest"
+      ],
+      "source": "https://www.iso.org/standard/14001",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 7 & 8)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso45001-03",
+      "audit": "iso45001",
+      "code": "PETA 03",
+      "title": "Dukungan & Operasional",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: SDM & Kalibrasi Alat (Semua); APD, LOTO, Emergency Drill (ISO 45001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Matriks Kompetensi & Master List Dokumen (Semua)",
+        "Permit to Work, MOC, Skenario Darurat (ISO 45001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso45001",
+        "dukungan",
+        "operasional",
+        "sdm",
+        "kalibrasi",
+        "alat",
+        "apd",
+        "loto",
+        "emergency",
+        "drill",
+        "45001",
+        "matriks",
+        "kompetensi",
+        "master",
+        "list",
+        "permit",
+        "work",
+        "moc",
+        "skenario",
+        "darurat"
+      ],
+      "source": "https://www.iso.org/standard/63787.html",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 7 & 8)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso9001-04",
+      "audit": "iso9001",
+      "code": "PETA 04",
+      "title": "Evaluasi & Peningkatan",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Audit Internal, MR, & CAPA (Semua); Kepuasan Pelanggan (ISO 9001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Laporan Audit SMT & Tinjauan Manajemen (Semua)",
+        "Survei Kepuasan Pelanggan (ISO 9001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso9001",
+        "evaluasi",
+        "peningkatan",
+        "internal",
+        "capa",
+        "kepuasan",
+        "pelanggan",
+        "9001",
+        "laporan",
+        "tinjauan",
+        "manajemen",
+        "survei"
+      ],
+      "source": "https://www.iso.org/standard/9001",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 9 & 10)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso14001-04",
+      "audit": "iso14001",
+      "code": "PETA 04",
+      "title": "Evaluasi & Peningkatan",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Audit Internal, MR, & CAPA (Semua); Baku Mutu Lingkungan (ISO 14001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Laporan Audit SMT & Tinjauan Manajemen (Semua)",
+        "Hasil Uji Lab Udara/Air (ISO 14001)"
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso14001",
+        "evaluasi",
+        "peningkatan",
+        "internal",
+        "capa",
+        "baku",
+        "mutu",
+        "lingkungan",
+        "14001",
+        "laporan",
+        "tinjauan",
+        "manajemen",
+        "hasil",
+        "uji",
+        "lab",
+        "udara",
+        "air"
+      ],
+      "source": "https://www.iso.org/standard/14001",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 9 & 10)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso45001-04",
+      "audit": "iso45001",
+      "code": "PETA 04",
+      "title": "Evaluasi & Peningkatan",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Audit Internal, MR, & CAPA (Semua); Investigasi Insiden/RCA (ISO 45001).",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Laporan Audit SMT & Tinjauan Manajemen (Semua)",
+        "Laporan Investigasi Kecelakaan (ISO 45001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso45001",
+        "evaluasi",
+        "peningkatan",
+        "internal",
+        "capa",
+        "investigasi",
+        "insiden",
+        "rca",
+        "45001",
+        "laporan",
+        "tinjauan",
+        "manajemen",
+        "kecelakaan"
+      ],
+      "source": "https://www.iso.org/standard/63787.html",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 9 & 10)",
+      "isFramework": true
+    },
+    {
+      "id": "map-surveilans-01",
+      "audit": "surveilans",
+      "code": "PETA 01",
+      "title": "Tinjauan NC & Sasaran",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Efektivitas penutupan temuan tahun lalu & progres pencapaian   KPI..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Logbook CAPA, Dashboard Pencapaian SMT."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "surveilans",
+        "tinjauan",
+        "sasaran",
+        "efektivitas",
+        "penutupan",
+        "temuan",
+        "lalu",
+        "progres",
+        "pencapaian",
+        "kpi",
+        "logbook",
+        "capa",
+        "dashboard"
+      ],
+      "source": "https://www.iso.org/conformity-assessment.html",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 6, 9, 10)",
+      "isFramework": true
+    },
+    {
+      "id": "map-surveilans-02",
+      "audit": "surveilans",
+      "code": "PETA 02",
+      "title": "Operasional (Sampling)",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Konsistensi penerapan SOP di departemen yang diaudit tahun ini..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Rekaman Operasional Harian, Bukti Respons Keluhan."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "surveilans",
+        "operasional",
+        "sampling",
+        "konsistensi",
+        "penerapan",
+        "sop",
+        "departemen",
+        "diaudit",
+        "rekaman",
+        "harian",
+        "bukti",
+        "respons",
+        "keluhan"
+      ],
+      "source": "https://www.iso.org/conformity-assessment.html",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "HLS Annex SL (Klausul 8)",
+      "isFramework": true
+    },
+    {
+      "id": "map-ptk-01",
+      "audit": "ptk",
+      "code": "PETA 01",
+      "title": "Komitmen & Risiko",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Management Walkthrough (MWT) & Life Saving Rules..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Laporan MWT, Kebijakan K3LL, Permit to Work."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "ptk",
+        "komitmen",
+        "risiko",
+        "ptk",
+        "005",
+        "management",
+        "walkthrough",
+        "mwt",
+        "life",
+        "saving",
+        "rules",
+        "laporan",
+        "kebijakan",
+        "kesehatan",
+        "keselamatan",
+        "kerjall",
+        "permit",
+        "work"
+      ],
+      "source": "https://literasihukum.com/public/index.php/en/regulations/329642/pedoman-tata-kerja-pengelolaan-kesehatan-keselamatan-kerja-dan-lindungan-lingkungan-di-kegiatan-usaha-hulu-minyak-dan-gas-bumi?download=1",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "PTK-005",
+      "isFramework": true
+    },
+    {
+      "id": "map-ptk-02",
+      "audit": "ptk",
+      "code": "PETA 02",
+      "title": "Budaya SWA & Kompetensi",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Partisipasi pekerja menegur bahaya (Stop Work Authority)..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Kartu Observasi (BBS), Kebijakan SWA, Sertifikat BNSP."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "ptk",
+        "budaya",
+        "swa",
+        "kompetensi",
+        "ptk",
+        "005",
+        "partisipasi",
+        "pekerja",
+        "menegur",
+        "bahaya",
+        "stop",
+        "work",
+        "authority",
+        "kartu",
+        "observasi",
+        "bbs",
+        "kebijakan",
+        "sertifikat",
+        "bnsp"
+      ],
+      "source": "https://literasihukum.com/public/index.php/en/regulations/329642/pedoman-tata-kerja-pengelolaan-kesehatan-keselamatan-kerja-dan-lindungan-lingkungan-di-kegiatan-usaha-hulu-minyak-dan-gas-bumi?download=1",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "PTK-005",
+      "isFramework": true
+    },
+    {
+      "id": "map-ptk-03",
+      "audit": "ptk",
+      "code": "PETA 03",
+      "title": "Pengelolaan Kontraktor",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Penilaian K3 vendor sejak fase prakualifikasi..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Dokumen CSMS, HSE Plan Kontraktor."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "ptk",
+        "pengelolaan",
+        "kontraktor",
+        "ptk",
+        "005",
+        "penilaian",
+        "kesehatan",
+        "keselamatan",
+        "kerja",
+        "vendor",
+        "sejak",
+        "fase",
+        "prakualifikasi",
+        "csms",
+        "hse",
+        "plan"
+      ],
+      "source": "https://literasihukum.com/public/index.php/en/regulations/329642/pedoman-tata-kerja-pengelolaan-kesehatan-keselamatan-kerja-dan-lindungan-lingkungan-di-kegiatan-usaha-hulu-minyak-dan-gas-bumi?download=1",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "PTK-005",
+      "isFramework": true
+    },
+    {
+      "id": "map-ptk-04",
+      "audit": "ptk",
+      "code": "PETA 04",
+      "title": "Darurat & Investigasi",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Kesiapan sarana pemadam & transparansi Lesson Learned..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Dokumen ERP, Bukti Inspeksi APAR/Hydrant, RCA Insiden."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "ptk",
+        "darurat",
+        "investigasi",
+        "ptk",
+        "005",
+        "kesiapan",
+        "sarana",
+        "pemadam",
+        "transparansi",
+        "lesson",
+        "learned",
+        "erp",
+        "bukti",
+        "inspeksi",
+        "apar",
+        "hydrant",
+        "rca",
+        "insiden"
+      ],
+      "source": "https://literasihukum.com/public/index.php/en/regulations/329642/pedoman-tata-kerja-pengelolaan-kesehatan-keselamatan-kerja-dan-lindungan-lingkungan-di-kegiatan-usaha-hulu-minyak-dan-gas-bumi?download=1",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "PTK-005",
+      "isFramework": true
+    },
+    {
+      "id": "map-psaims-01",
+      "audit": "psaims",
+      "code": "PETA 01",
+      "title": "Komitmen & Bahaya",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Budaya Process Safety & pembaruan data fasilitas (PSI)..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "P&ID, PFD, Laporan Studi HAZOP/LOPA/QRA."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "psaims",
+        "komitmen",
+        "bahaya",
+        "osha",
+        "1910",
+        "119",
+        "ccps",
+        "budaya",
+        "process",
+        "safety",
+        "pembaruan",
+        "data",
+        "fasilitas",
+        "psi",
+        "pfd",
+        "laporan",
+        "studi",
+        "hazop",
+        "lopa",
+        "qra"
+      ],
+      "source": "https://pertamina.com/Media/File/Sustainability-Insight-May-2024.pdf",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "OSHA 1910.119 / CCPS",
+      "isFramework": true
+    },
+    {
+      "id": "map-psaims-02",
+      "audit": "psaims",
+      "code": "PETA 02",
+      "title": "Integritas Aset & MOC",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Inspeksi alat kritis (Safety Critical Elements) & perizinan   modifikasi..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Bukti Preventive Maintenance SCE, Register MOC Teknis."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "psaims",
+        "integritas",
+        "aset",
+        "moc",
+        "osha",
+        "1910",
+        "119",
+        "ccps",
+        "inspeksi",
+        "alat",
+        "kritis",
+        "safety",
+        "critical",
+        "elements",
+        "perizinan",
+        "modifikasi",
+        "bukti",
+        "preventive",
+        "maintenance",
+        "sce",
+        "register",
+        "teknis"
+      ],
+      "source": "https://pertamina.com/Media/File/Sustainability-Insight-May-2024.pdf",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "OSHA 1910.119 / CCPS",
+      "isFramework": true
+    },
+    {
+      "id": "map-psaims-03",
+      "audit": "psaims",
+      "code": "PETA 03",
+      "title": "Belajar dari Insiden",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Penanganan kebocoran berisiko ledakan/beracun (LOPC)..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Laporan LOPC (Loss of Primary Containment), Safety Alert."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "psaims",
+        "belajar",
+        "insiden",
+        "osha",
+        "1910",
+        "119",
+        "ccps",
+        "penanganan",
+        "kebocoran",
+        "berisiko",
+        "ledakan",
+        "beracun",
+        "lopc",
+        "laporan",
+        "loss",
+        "primary",
+        "containment",
+        "safety",
+        "alert"
+      ],
+      "source": "https://pertamina.com/Media/File/Sustainability-Insight-May-2024.pdf",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "OSHA 1910.119 / CCPS",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso50001-01",
+      "audit": "iso50001",
+      "code": "PETA 01",
+      "title": "Perencanaan Energi",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Tinjauan alat paling boros (SEU) & penentuan Garis Dasar   (EnB)..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Laporan Energy Review, Daftar SEU, Metrik EnPI."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso50001",
+        "perencanaan",
+        "energi",
+        "50001",
+        "tinjauan",
+        "alat",
+        "paling",
+        "boros",
+        "seu",
+        "penentuan",
+        "garis",
+        "dasar",
+        "enb",
+        "laporan",
+        "energy",
+        "review",
+        "daftar",
+        "metrik",
+        "enpi"
+      ],
+      "source": "https://www.iso.org/standard/69426.html",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "Klausul 6 (ISO 50001)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso50001-02",
+      "audit": "iso50001",
+      "code": "PETA 02",
+      "title": "Operasi & Pengadaan",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Pembelian alat/jasa yang wajib mempertimbangkan kriteria efisiensi   energi..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "SOP Pengoperasian Mesin, Dokumen/Kriteria Purchasing."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso50001",
+        "operasi",
+        "pengadaan",
+        "50001",
+        "pembelian",
+        "alat",
+        "jasa",
+        "wajib",
+        "mempertimbangkan",
+        "kriteria",
+        "efisiensi",
+        "energi",
+        "sop",
+        "pengoperasian",
+        "mesin",
+        "purchasing"
+      ],
+      "source": "https://www.iso.org/standard/69426.html",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "Klausul 8 (ISO 50001)",
+      "isFramework": true
+    },
+    {
+      "id": "map-iso50001-03",
+      "audit": "iso50001",
+      "code": "PETA 03",
+      "title": "Peningkatan Kinerja",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Bukti nyata (kuantitatif) penurunan konsumsi energi per produksi..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Data Tagihan Utilitas (kWh/Gas), Laporan Penghematan Biaya."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "iso50001",
+        "peningkatan",
+        "kinerja",
+        "50001",
+        "bukti",
+        "nyata",
+        "kuantitatif",
+        "penurunan",
+        "konsumsi",
+        "energi",
+        "per",
+        "produksi",
+        "data",
+        "tagihan",
+        "utilitas",
+        "kwh",
+        "gas",
+        "laporan",
+        "penghematan",
+        "biaya"
+      ],
+      "source": "https://www.iso.org/standard/69426.html",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "Klausul 10 (ISO 50001)",
+      "isFramework": true
+    },
+    {
+      "id": "map-supreme-01",
+      "audit": "supreme",
+      "code": "PETA 01",
+      "title": "Kepemimpinan & Organisasi",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Akuntabilitas pimpinan (Generative Culture) & pemenuhan legal..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "KPI HSSE Pimpinan, Legal Register, Intervention Card."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "supreme",
+        "kepemimpinan",
+        "organisasi",
+        "akuntabilitas",
+        "pimpinan",
+        "generative",
+        "culture",
+        "pemenuhan",
+        "legal",
+        "kpi",
+        "hsse",
+        "register",
+        "intervention",
+        "card"
+      ],
+      "source": "https://www.pertamina.com/Media/File/Energia-51-17-Desember-2018.pdf",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "Elemen 1, 2, 3",
+      "isFramework": true
+    },
+    {
+      "id": "map-supreme-02",
+      "audit": "supreme",
+      "code": "PETA 02",
+      "title": "Risiko & Prosedur",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Profil Risiko Corporate & ketersediaan SOP kerja aman..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Corporate Risk Register, SOP Kritis, Formulir MOC."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "supreme",
+        "risiko",
+        "prosedur",
+        "profil",
+        "corporate",
+        "ketersediaan",
+        "sop",
+        "kerja",
+        "aman",
+        "risk",
+        "register",
+        "kritis",
+        "formulir",
+        "moc"
+      ],
+      "source": "https://www.pertamina.com/Media/File/Energia-51-17-Desember-2018.pdf",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "Elemen 4 & 5",
+      "isFramework": true
+    },
+    {
+      "id": "map-supreme-03",
+      "audit": "supreme",
+      "code": "PETA 03",
+      "title": "Operasi, Jaminan & Evaluasi",
+      "group": "Peta kelompok besar / ringkasan tematik",
+      "description": "Fokus pemeriksaan menurut tabel ringkasan: Integritas aset, CSMS, Inspeksi Lapangan, & Rapat Evaluasi..",
+      "question": "Apa bukti penerapan topik ini dan bagaimana organisasi dapat menunjukkan catatan yang dapat ditelusuri?",
+      "evidence": [
+        "Hasil Penilaian CSMS, Laporan Inspeksi/Patroli, CAPA."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "metadata": [
+        "peta-audit",
+        "kelompok-besar",
+        "ringkasan",
+        "supreme",
+        "operasi",
+        "jaminan",
+        "evaluasi",
+        "integritas",
+        "aset",
+        "csms",
+        "inspeksi",
+        "lapangan",
+        "rapat",
+        "hasil",
+        "penilaian",
+        "laporan",
+        "patroli",
+        "capa"
+      ],
+      "source": "https://www.pertamina.com/Media/File/Energia-51-17-Desember-2018.pdf",
+      "status": "Perlu validasi",
+      "origin": "Tabel pemetaan tambahan yang diunggah pengguna; referensi belum divalidasi",
+      "referenceText": "Elemen 6, 7, 8",
+      "isFramework": true
     }
   ],
   "glossary": [
     {
-      "term": "Audit",
-      "meaning": "Pemeriksaan sistematis terhadap kriteria tertentu dengan bukti yang dapat ditelusuri."
+      "term": "9-Box",
+      "meaning": "Matriks sembilan kotak untuk membantu memetakan kinerja dan potensi dalam manajemen talenta."
     },
     {
-      "term": "Auditor",
-      "meaning": "Orang yang melakukan audit sesuai kompetensi dan penugasannya."
+      "term": "Annex SL / HLS",
+      "meaning": "Kerangka struktur tingkat tinggi yang dipakai untuk memudahkan keselarasan beberapa standar sistem manajemen; bukan pengganti naskah ISO spesifik."
+    },
+    {
+      "term": "APAR",
+      "meaning": "Alat Pemadam Api Ringan untuk penanganan awal kebakaran tertentu."
+    },
+    {
+      "term": "Audit",
+      "meaning": "Pemeriksaan sistematis terhadap kriteria tertentu dengan bukti yang dapat ditelusuri."
     },
     {
       "term": "Auditee",
       "meaning": "Unit atau pihak yang diperiksa dalam audit."
     },
     {
-      "term": "Klausul",
-      "meaning": "Bagian bernomor dalam standar atau pedoman audit."
+      "term": "Auditor",
+      "meaning": "Orang yang melakukan audit sesuai kompetensi dan penugasannya."
     },
     {
-      "term": "Subklausul",
-      "meaning": "Bagian lebih rinci di bawah klausul utama."
+      "term": "B3",
+      "meaning": "Bahan Berbahaya dan Beracun; pengelolaannya mengikuti persyaratan yang berlaku."
+    },
+    {
+      "term": "BBS",
+      "meaning": "Behavior Based Safety, pendekatan pengamatan dan penguatan perilaku aman."
+    },
+    {
+      "term": "CAPA",
+      "meaning": "Corrective and Preventive Action: istilah umum untuk tindakan korektif dan pencegahan dalam perbaikan proses. Periksa istilah normatif di standar masing-masing."
+    },
+    {
+      "term": "Corrective Action",
+      "meaning": "Tindakan untuk menghilangkan penyebab ketidaksesuaian agar tidak berulang."
+    },
+    {
+      "term": "CSMS",
+      "meaning": "Contractor Safety Management System, pengelolaan keselamatan kontraktor."
+    },
+    {
+      "term": "EnB",
+      "meaning": "Energy Baseline, garis dasar pembanding kinerja energi."
+    },
+    {
+      "term": "EnPI",
+      "meaning": "Energy Performance Indicator, indikator kinerja energi."
+    },
+    {
+      "term": "ERP",
+      "meaning": "Emergency Response Plan: rencana langkah respons terhadap keadaan darurat."
     },
     {
       "term": "Evidence / Bukti Audit",
@@ -4799,6 +6101,78 @@
       "meaning": "Hasil evaluasi bukti terhadap kriteria audit."
     },
     {
+      "term": "HAZOP",
+      "meaning": "Hazard and Operability Study: metode terstruktur untuk mengkaji potensi penyimpangan dan bahaya proses."
+    },
+    {
+      "term": "HC",
+      "meaning": "Human Capital, fungsi yang menangani tata kelola SDM."
+    },
+    {
+      "term": "HIRADC",
+      "meaning": "Hazard Identification, Risk Assessment and Determining Controls: proses mengenali bahaya, menilai risiko, dan menentukan pengendalian."
+    },
+    {
+      "term": "HSE / HSSE",
+      "meaning": "Health, Safety, (Security), and Environment, area kesehatan, keselamatan, keamanan dan lingkungan."
+    },
+    {
+      "term": "IADL",
+      "meaning": "Identifikasi Aspek dan Dampak Lingkungan: pencatatan aktivitas yang memiliki dampak lingkungan."
+    },
+    {
+      "term": "IDP",
+      "meaning": "Individual Development Plan, rencana pengembangan pekerja."
+    },
+    {
+      "term": "ISO",
+      "meaning": "International Organization for Standardization, badan internasional pengembangan standar."
+    },
+    {
+      "term": "JSA",
+      "meaning": "Job Safety Analysis: pemecahan langkah kerja untuk mengenali bahaya dan cara pengendaliannya."
+    },
+    {
+      "term": "Klausul",
+      "meaning": "Bagian bernomor dalam standar atau pedoman audit."
+    },
+    {
+      "term": "KPI",
+      "meaning": "Key Performance Indicator: ukuran untuk memantau pencapaian sasaran kerja."
+    },
+    {
+      "term": "Legal Register",
+      "meaning": "Daftar persyaratan hukum dan ketentuan lain yang perlu diketahui serta dipantau organisasi."
+    },
+    {
+      "term": "Life Saving Rules",
+      "meaning": "Aturan keselamatan untuk mengurangi risiko fatal dalam pekerjaan berbahaya."
+    },
+    {
+      "term": "LOPA",
+      "meaning": "Layer of Protection Analysis: metode penilaian kecukupan lapisan pengendalian risiko proses."
+    },
+    {
+      "term": "LOPC",
+      "meaning": "Loss of Primary Containment: hilangnya pengungkungan primer suatu bahan atau fluida proses."
+    },
+    {
+      "term": "LOTO",
+      "meaning": "Lockout Tagout: prosedur mengisolasi sumber energi berbahaya sebelum pekerjaan tertentu."
+    },
+    {
+      "term": "Matriks kompetensi",
+      "meaning": "Daftar yang menunjukkan kompetensi yang dibutuhkan dan kompetensi yang dimiliki atau perlu dikembangkan."
+    },
+    {
+      "term": "MOC",
+      "meaning": "Management of Change, pengendalian perubahan yang dapat berdampak pada risiko."
+    },
+    {
+      "term": "MWT",
+      "meaning": "Management Walkthrough: kegiatan pimpinan meninjau penerapan keselamatan atau kondisi kerja di lapangan."
+    },
+    {
       "term": "Nonconformity (NC)",
       "meaning": "Ketidaksesuaian terhadap suatu persyaratan atau kriteria."
     },
@@ -4807,68 +6181,1269 @@
       "meaning": "Opportunity for Improvement, peluang perbaikan yang diidentifikasi."
     },
     {
-      "term": "Corrective Action",
-      "meaning": "Tindakan untuk menghilangkan penyebab ketidaksesuaian agar tidak berulang."
+      "term": "P&ID",
+      "meaning": "Piping and Instrumentation Diagram: gambar hubungan perpipaan, instrumen, dan peralatan dalam suatu proses."
     },
     {
-      "term": "Root Cause Analysis",
-      "meaning": "Analisis penyebab mendasar terjadinya masalah."
+      "term": "P2K3",
+      "meaning": "Panitia Pembina Keselamatan dan Kesehatan Kerja, forum pembinaan K3 di tempat kerja."
+    },
+    {
+      "term": "Performance Appraisal",
+      "meaning": "Proses penilaian capaian dan perilaku kerja pekerja berdasarkan kriteria organisasi."
+    },
+    {
+      "term": "PFD",
+      "meaning": "Process Flow Diagram: diagram aliran umum suatu proses."
     },
     {
       "term": "PIC",
       "meaning": "Person in Charge, penanggung jawab proses atau dokumen."
     },
     {
-      "term": "HC",
-      "meaning": "Human Capital, fungsi yang menangani tata kelola SDM."
-    },
-    {
-      "term": "HSE / HSSE",
-      "meaning": "Health, Safety, (Security), and Environment, area kesehatan, keselamatan, keamanan dan lingkungan."
-    },
-    {
-      "term": "MOC",
-      "meaning": "Management of Change, pengendalian perubahan yang dapat berdampak pada risiko."
-    },
-    {
-      "term": "EnPI",
-      "meaning": "Energy Performance Indicator, indikator kinerja energi."
-    },
-    {
-      "term": "EnB",
-      "meaning": "Energy Baseline, garis dasar pembanding kinerja energi."
-    },
-    {
-      "term": "CSMS",
-      "meaning": "Contractor Safety Management System, pengelolaan keselamatan kontraktor."
-    },
-    {
       "term": "PSAIMS",
       "meaning": "Process Safety & Asset Integrity Management System, keselamatan proses dan integritas aset."
+    },
+    {
+      "term": "PSI",
+      "meaning": "Process Safety Information: informasi teknis tentang bahan, proses, peralatan, dan bahaya dalam pengelolaan keselamatan proses."
+    },
+    {
+      "term": "PTK",
+      "meaning": "Pedoman Tata Kerja, petunjuk teknis untuk lingkup tertentu."
+    },
+    {
+      "term": "QRA",
+      "meaning": "Quantitative Risk Assessment: penilaian risiko dengan pendekatan perhitungan kuantitatif."
+    },
+    {
+      "term": "Root Cause Analysis",
+      "meaning": "Analisis penyebab mendasar terjadinya masalah."
+    },
+    {
+      "term": "RPTKA",
+      "meaning": "Rencana Penggunaan Tenaga Kerja Asing: dokumen perencanaan penggunaan TKA sesuai ketentuan."
+    },
+    {
+      "term": "SCE",
+      "meaning": "Safety Critical Elements: peralatan atau sistem yang perannya penting dalam mencegah atau memitigasi kejadian besar."
+    },
+    {
+      "term": "SEU",
+      "meaning": "Significant Energy Use: penggunaan energi yang dianggap signifikan dalam suatu organisasi."
+    },
+    {
+      "term": "Subklausul",
+      "meaning": "Bagian lebih rinci di bawah klausul utama."
     },
     {
       "term": "Surveilans",
       "meaning": "Audit pemeliharaan untuk memastikan sistem bersertifikat tetap berjalan."
     },
     {
+      "term": "SUSU (istilah sumber)",
+      "meaning": "Istilah pengupahan yang muncul pada tabel sumber. Kepanjangan serta rujukan resminya belum dapat dipastikan dari tabel tersebut."
+    },
+    {
+      "term": "SWA",
+      "meaning": "Stop Work Authority: kewenangan menghentikan pekerjaan saat kondisi dinilai tidak aman."
+    },
+    {
+      "term": "Talent Pool",
+      "meaning": "Kumpulan kandidat yang disiapkan atau dinilai potensial untuk kebutuhan jabatan."
+    },
+    {
+      "term": "TKA",
+      "meaning": "Tenaga Kerja Asing: pekerja warga negara asing sesuai ketentuan yang berlaku."
+    },
+    {
       "term": "TNA",
       "meaning": "Training Needs Analysis, analisis kebutuhan pelatihan."
     },
     {
-      "term": "IDP",
-      "meaning": "Individual Development Plan, rencana pengembangan pekerja."
+      "term": "WP&B",
+      "meaning": "Work Program and Budget: rencana kerja dan anggaran kegiatan. Dalam konteks hulu migas, periksa dokumen resmi yang digunakan."
+    }
+  ],
+  "framework": [
+    {
+      "id": "map-cdm-01",
+      "audit": "cdm",
+      "audit_as_tertuang": "CDM SKK Migas    (Pengelolaan SDM)",
+      "level": "Kelompok besar / pilar",
+      "group": "Perencanaan Tenaga Kerja",
+      "position": 1,
+      "reference": "PTK-018 Rev II (Pasal 5.4)",
+      "indicators": [
+        "Efisiensi struktur (WP&B) & penggantian TKA."
+      ],
+      "evidence": [
+        "Bagan Organisasi, Manpower Planning, RPTKA."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "tags": [
+        "perencanaan",
+        "tenaga",
+        "kerja",
+        "ptk",
+        "018",
+        "efisiensi",
+        "struktur",
+        "penggantian",
+        "tka",
+        "bagan",
+        "organisasi",
+        "manpower",
+        "planning",
+        "rptka"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
     },
     {
-      "term": "BBS",
-      "meaning": "Behavior Based Safety, pendekatan pengamatan dan penguatan perilaku aman."
+      "id": "map-cdm-02",
+      "audit": "cdm",
+      "audit_as_tertuang": "CDM SKK Migas    (Pengelolaan SDM)",
+      "level": "Kelompok besar / pilar",
+      "group": "Pengelolaan Kinerja",
+      "position": 2,
+      "reference": "PTK-018 Rev II (Pasal 5.4)",
+      "indicators": [
+        "Ketersediaan KPI & distribusi hasil evaluasi."
+      ],
+      "evidence": [
+        "Form KPI, Rekap Performance Appraisal."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "tags": [
+        "pengelolaan",
+        "kinerja",
+        "ptk",
+        "018",
+        "ketersediaan",
+        "kpi",
+        "distribusi",
+        "hasil",
+        "evaluasi",
+        "form",
+        "rekap",
+        "performance",
+        "appraisal"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
     },
     {
-      "term": "ISO",
-      "meaning": "International Organization for Standardization, badan internasional pengembangan standar."
+      "id": "map-cdm-03",
+      "audit": "cdm",
+      "audit_as_tertuang": "CDM SKK Migas    (Pengelolaan SDM)",
+      "level": "Kelompok besar / pilar",
+      "group": "Pengelolaan Kompetensi",
+      "position": 3,
+      "reference": "PTK-018 Rev II (Pasal 5.4)",
+      "indicators": [
+        "Identifikasi gap kompetensi & realisasi training."
+      ],
+      "evidence": [
+        "Matriks Kompetensi, Laporan Pelatihan."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "tags": [
+        "pengelolaan",
+        "kompetensi",
+        "ptk",
+        "018",
+        "identifikasi",
+        "gap",
+        "realisasi",
+        "training",
+        "matriks",
+        "laporan",
+        "pelatihan"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
     },
     {
-      "term": "PTK",
-      "meaning": "Pedoman Tata Kerja, petunjuk teknis untuk lingkup tertentu."
+      "id": "map-cdm-04",
+      "audit": "cdm",
+      "audit_as_tertuang": "CDM SKK Migas    (Pengelolaan SDM)",
+      "level": "Kelompok besar / pilar",
+      "group": "Posisi Kunci & Suksesi",
+      "position": 4,
+      "reference": "PTK-018 Rev II (Pasal 5.4)",
+      "indicators": [
+        "Ketersediaan Talent Pool jabatan strategis."
+      ],
+      "evidence": [
+        "Succession Matrix (9-Box), Career Path."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "tags": [
+        "posisi",
+        "kunci",
+        "suksesi",
+        "ptk",
+        "018",
+        "ketersediaan",
+        "talent",
+        "pool",
+        "jabatan",
+        "strategis",
+        "succession",
+        "matrix",
+        "box",
+        "career",
+        "path"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-cdm-05",
+      "audit": "cdm",
+      "audit_as_tertuang": "CDM SKK Migas    (Pengelolaan SDM)",
+      "level": "Kelompok besar / pilar",
+      "group": "Kompensasi & Benefit",
+      "position": 5,
+      "reference": "PTK-018 Rev II (Pasal 5.4)",
+      "indicators": [
+        "Kepatuhan normatif (SUSU, BPJS, Pajak)."
+      ],
+      "evidence": [
+        "Dokumen SUSU, Bukti Setor BPJS, PKB/PP."
+      ],
+      "pic": "HC / pengelola SDM",
+      "hc": "Utama",
+      "tags": [
+        "kompensasi",
+        "benefit",
+        "ptk",
+        "018",
+        "kepatuhan",
+        "normatif",
+        "susu",
+        "bpjs",
+        "pajak",
+        "bukti",
+        "setor",
+        "pkb"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso9001-01",
+      "audit": "iso9001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Konteks & Kepemimpinan",
+      "position": 1,
+      "reference": "HLS Annex SL (Klausul 4 & 5)",
+      "indicators": [
+        "Isu bisnis & stakeholder (Semua)",
+        "Komitmen Mutu (ISO 9001)"
+      ],
+      "evidence": [
+        "Analisis Konteks (SWOT) & Kebijakan SMT (Semua)",
+        "Peta Proses Bisnis (ISO 9001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "konteks",
+        "kepemimpinan",
+        "isu",
+        "bisnis",
+        "stakeholder",
+        "komitmen",
+        "mutu",
+        "9001",
+        "analisis",
+        "swot",
+        "kebijakan",
+        "proses"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso14001-01",
+      "audit": "iso14001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Konteks & Kepemimpinan",
+      "position": 1,
+      "reference": "HLS Annex SL (Klausul 4 & 5)",
+      "indicators": [
+        "Isu bisnis & stakeholder (Semua)",
+        "Komitmen Lingkungan (ISO 14001)"
+      ],
+      "evidence": [
+        "Analisis Konteks (SWOT) & Kebijakan SMT (Semua)"
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "konteks",
+        "kepemimpinan",
+        "isu",
+        "bisnis",
+        "stakeholder",
+        "komitmen",
+        "lingkungan",
+        "14001",
+        "analisis",
+        "swot",
+        "kebijakan"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso45001-01",
+      "audit": "iso45001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Konteks & Kepemimpinan",
+      "position": 1,
+      "reference": "HLS Annex SL (Klausul 4 & 5)",
+      "indicators": [
+        "Isu bisnis & stakeholder (Semua)",
+        "Partisipasi Pekerja/K3 (ISO 45001)"
+      ],
+      "evidence": [
+        "Analisis Konteks (SWOT) & Kebijakan SMT (Semua)",
+        "SK & Notulen Rapat P2K3 (ISO 45001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "konteks",
+        "kepemimpinan",
+        "isu",
+        "bisnis",
+        "stakeholder",
+        "partisipasi",
+        "pekerja",
+        "kesehatan",
+        "keselamatan",
+        "kerja",
+        "45001",
+        "analisis",
+        "swot",
+        "kebijakan",
+        "notulen",
+        "rapat",
+        "p2kesehatan"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso9001-02",
+      "audit": "iso9001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Perencanaan Risiko",
+      "position": 2,
+      "reference": "HLS Annex SL (Klausul 6)",
+      "indicators": [
+        "Risiko operasional/bisnis (ISO 9001)"
+      ],
+      "evidence": [
+        "Risk & Opportunity Register (ISO 9001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "perencanaan",
+        "risiko",
+        "operasional",
+        "bisnis",
+        "9001",
+        "risk",
+        "opportunity",
+        "register"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso14001-02",
+      "audit": "iso14001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Perencanaan Risiko",
+      "position": 2,
+      "reference": "HLS Annex SL (Klausul 6)",
+      "indicators": [
+        "Aspek Dampak Lingkungan/IADL (ISO 14001)"
+      ],
+      "evidence": [
+        "Dokumen IADL (ISO 14001)"
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "perencanaan",
+        "risiko",
+        "aspek",
+        "dampak",
+        "lingkungan",
+        "iadl",
+        "14001"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso45001-02",
+      "audit": "iso45001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Perencanaan Risiko",
+      "position": 2,
+      "reference": "HLS Annex SL (Klausul 6)",
+      "indicators": [
+        "Bahaya & Risiko K3/HIRADC (ISO 45001)"
+      ],
+      "evidence": [
+        "JSA / HIRADC (ISO 45001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "perencanaan",
+        "risiko",
+        "bahaya",
+        "kesehatan",
+        "keselamatan",
+        "kerja",
+        "hiradc",
+        "45001",
+        "jsa"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso9001-03",
+      "audit": "iso9001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Dukungan & Operasional",
+      "position": 3,
+      "reference": "HLS Annex SL (Klausul 7 & 8)",
+      "indicators": [
+        "SDM & Kalibrasi Alat (Semua)",
+        "Kontrol Produksi & Kualitas Vendor (ISO 9001)"
+      ],
+      "evidence": [
+        "Matriks Kompetensi & Master List Dokumen (Semua)",
+        "SOP Produksi / Quality Plan (ISO 9001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "dukungan",
+        "operasional",
+        "sdm",
+        "kalibrasi",
+        "alat",
+        "kontrol",
+        "produksi",
+        "kualitas",
+        "vendor",
+        "9001",
+        "matriks",
+        "kompetensi",
+        "master",
+        "list",
+        "sop",
+        "quality",
+        "plan"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso14001-03",
+      "audit": "iso14001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Dukungan & Operasional",
+      "position": 3,
+      "reference": "HLS Annex SL (Klausul 7 & 8)",
+      "indicators": [
+        "SDM & Kalibrasi Alat (Semua)",
+        "Limbah, Emisi & B3 (ISO 14001)"
+      ],
+      "evidence": [
+        "Matriks Kompetensi & Master List Dokumen (Semua)",
+        "Manifest Limbah B3 (ISO 14001)"
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "dukungan",
+        "operasional",
+        "sdm",
+        "kalibrasi",
+        "alat",
+        "limbah",
+        "emisi",
+        "14001",
+        "matriks",
+        "kompetensi",
+        "master",
+        "list",
+        "manifest"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso45001-03",
+      "audit": "iso45001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Dukungan & Operasional",
+      "position": 3,
+      "reference": "HLS Annex SL (Klausul 7 & 8)",
+      "indicators": [
+        "SDM & Kalibrasi Alat (Semua)",
+        "APD, LOTO, Emergency Drill (ISO 45001)"
+      ],
+      "evidence": [
+        "Matriks Kompetensi & Master List Dokumen (Semua)",
+        "Permit to Work, MOC, Skenario Darurat (ISO 45001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "dukungan",
+        "operasional",
+        "sdm",
+        "kalibrasi",
+        "alat",
+        "apd",
+        "loto",
+        "emergency",
+        "drill",
+        "45001",
+        "matriks",
+        "kompetensi",
+        "master",
+        "list",
+        "permit",
+        "work",
+        "moc",
+        "skenario",
+        "darurat"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso9001-04",
+      "audit": "iso9001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Evaluasi & Peningkatan",
+      "position": 4,
+      "reference": "HLS Annex SL (Klausul 9 & 10)",
+      "indicators": [
+        "Audit Internal, MR, & CAPA (Semua)",
+        "Kepuasan Pelanggan (ISO 9001)"
+      ],
+      "evidence": [
+        "Laporan Audit SMT & Tinjauan Manajemen (Semua)",
+        "Survei Kepuasan Pelanggan (ISO 9001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "evaluasi",
+        "peningkatan",
+        "internal",
+        "capa",
+        "kepuasan",
+        "pelanggan",
+        "9001",
+        "laporan",
+        "tinjauan",
+        "manajemen",
+        "survei"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso14001-04",
+      "audit": "iso14001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Evaluasi & Peningkatan",
+      "position": 4,
+      "reference": "HLS Annex SL (Klausul 9 & 10)",
+      "indicators": [
+        "Audit Internal, MR, & CAPA (Semua)",
+        "Baku Mutu Lingkungan (ISO 14001)"
+      ],
+      "evidence": [
+        "Laporan Audit SMT & Tinjauan Manajemen (Semua)",
+        "Hasil Uji Lab Udara/Air (ISO 14001)"
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "evaluasi",
+        "peningkatan",
+        "internal",
+        "capa",
+        "baku",
+        "mutu",
+        "lingkungan",
+        "14001",
+        "laporan",
+        "tinjauan",
+        "manajemen",
+        "hasil",
+        "uji",
+        "lab",
+        "udara",
+        "air"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso45001-04",
+      "audit": "iso45001",
+      "audit_as_tertuang": "ISO SMT    (Mutu, Lingkungan, K3)",
+      "level": "Kelompok besar / pilar",
+      "group": "Evaluasi & Peningkatan",
+      "position": 4,
+      "reference": "HLS Annex SL (Klausul 9 & 10)",
+      "indicators": [
+        "Audit Internal, MR, & CAPA (Semua)",
+        "Investigasi Insiden/RCA (ISO 45001)"
+      ],
+      "evidence": [
+        "Laporan Audit SMT & Tinjauan Manajemen (Semua)",
+        "Laporan Investigasi Kecelakaan (ISO 45001)"
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "evaluasi",
+        "peningkatan",
+        "internal",
+        "capa",
+        "investigasi",
+        "insiden",
+        "rca",
+        "45001",
+        "laporan",
+        "tinjauan",
+        "manajemen",
+        "kecelakaan"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-surveilans-01",
+      "audit": "surveilans",
+      "audit_as_tertuang": "ISO Surveillance    (Pengawasan Tahunan)",
+      "level": "Kelompok besar / pilar",
+      "group": "Tinjauan NC & Sasaran",
+      "position": 1,
+      "reference": "HLS Annex SL (Klausul 6, 9, 10)",
+      "indicators": [
+        "Efektivitas penutupan temuan tahun lalu & progres pencapaian   KPI."
+      ],
+      "evidence": [
+        "Logbook CAPA, Dashboard Pencapaian SMT."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "tinjauan",
+        "sasaran",
+        "efektivitas",
+        "penutupan",
+        "temuan",
+        "lalu",
+        "progres",
+        "pencapaian",
+        "kpi",
+        "logbook",
+        "capa",
+        "dashboard"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-surveilans-02",
+      "audit": "surveilans",
+      "audit_as_tertuang": "ISO Surveillance    (Pengawasan Tahunan)",
+      "level": "Kelompok besar / pilar",
+      "group": "Operasional (Sampling)",
+      "position": 2,
+      "reference": "HLS Annex SL (Klausul 8)",
+      "indicators": [
+        "Konsistensi penerapan SOP di departemen yang diaudit tahun ini."
+      ],
+      "evidence": [
+        "Rekaman Operasional Harian, Bukti Respons Keluhan."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "operasional",
+        "sampling",
+        "konsistensi",
+        "penerapan",
+        "sop",
+        "departemen",
+        "diaudit",
+        "rekaman",
+        "harian",
+        "bukti",
+        "respons",
+        "keluhan"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-ptk-01",
+      "audit": "ptk",
+      "audit_as_tertuang": "K3 SIAP SELAMAT    (Hulu Migas / SKK)",
+      "level": "Kelompok besar / pilar",
+      "group": "Komitmen & Risiko",
+      "position": 1,
+      "reference": "PTK-005",
+      "indicators": [
+        "Management Walkthrough (MWT) & Life Saving Rules."
+      ],
+      "evidence": [
+        "Laporan MWT, Kebijakan K3LL, Permit to Work."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "komitmen",
+        "risiko",
+        "ptk",
+        "005",
+        "management",
+        "walkthrough",
+        "mwt",
+        "life",
+        "saving",
+        "rules",
+        "laporan",
+        "kebijakan",
+        "kesehatan",
+        "keselamatan",
+        "kerjall",
+        "permit",
+        "work"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-ptk-02",
+      "audit": "ptk",
+      "audit_as_tertuang": "K3 SIAP SELAMAT    (Hulu Migas / SKK)",
+      "level": "Kelompok besar / pilar",
+      "group": "Budaya SWA & Kompetensi",
+      "position": 2,
+      "reference": "PTK-005",
+      "indicators": [
+        "Partisipasi pekerja menegur bahaya (Stop Work Authority)."
+      ],
+      "evidence": [
+        "Kartu Observasi (BBS), Kebijakan SWA, Sertifikat BNSP."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "budaya",
+        "swa",
+        "kompetensi",
+        "ptk",
+        "005",
+        "partisipasi",
+        "pekerja",
+        "menegur",
+        "bahaya",
+        "stop",
+        "work",
+        "authority",
+        "kartu",
+        "observasi",
+        "bbs",
+        "kebijakan",
+        "sertifikat",
+        "bnsp"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-ptk-03",
+      "audit": "ptk",
+      "audit_as_tertuang": "K3 SIAP SELAMAT    (Hulu Migas / SKK)",
+      "level": "Kelompok besar / pilar",
+      "group": "Pengelolaan Kontraktor",
+      "position": 3,
+      "reference": "PTK-005",
+      "indicators": [
+        "Penilaian K3 vendor sejak fase prakualifikasi."
+      ],
+      "evidence": [
+        "Dokumen CSMS, HSE Plan Kontraktor."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "pengelolaan",
+        "kontraktor",
+        "ptk",
+        "005",
+        "penilaian",
+        "kesehatan",
+        "keselamatan",
+        "kerja",
+        "vendor",
+        "sejak",
+        "fase",
+        "prakualifikasi",
+        "csms",
+        "hse",
+        "plan"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-ptk-04",
+      "audit": "ptk",
+      "audit_as_tertuang": "K3 SIAP SELAMAT    (Hulu Migas / SKK)",
+      "level": "Kelompok besar / pilar",
+      "group": "Darurat & Investigasi",
+      "position": 4,
+      "reference": "PTK-005",
+      "indicators": [
+        "Kesiapan sarana pemadam & transparansi Lesson Learned."
+      ],
+      "evidence": [
+        "Dokumen ERP, Bukti Inspeksi APAR/Hydrant, RCA Insiden."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "darurat",
+        "investigasi",
+        "ptk",
+        "005",
+        "kesiapan",
+        "sarana",
+        "pemadam",
+        "transparansi",
+        "lesson",
+        "learned",
+        "erp",
+        "bukti",
+        "inspeksi",
+        "apar",
+        "hydrant",
+        "rca",
+        "insiden"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-psaims-01",
+      "audit": "psaims",
+      "audit_as_tertuang": "PSAIMS    (Process Safety)",
+      "level": "Kelompok besar / pilar",
+      "group": "Komitmen & Bahaya",
+      "position": 1,
+      "reference": "OSHA 1910.119 / CCPS",
+      "indicators": [
+        "Budaya Process Safety & pembaruan data fasilitas (PSI)."
+      ],
+      "evidence": [
+        "P&ID, PFD, Laporan Studi HAZOP/LOPA/QRA."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "komitmen",
+        "bahaya",
+        "osha",
+        "1910",
+        "119",
+        "ccps",
+        "budaya",
+        "process",
+        "safety",
+        "pembaruan",
+        "data",
+        "fasilitas",
+        "psi",
+        "pfd",
+        "laporan",
+        "studi",
+        "hazop",
+        "lopa",
+        "qra"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-psaims-02",
+      "audit": "psaims",
+      "audit_as_tertuang": "PSAIMS    (Process Safety)",
+      "level": "Kelompok besar / pilar",
+      "group": "Integritas Aset & MOC",
+      "position": 2,
+      "reference": "OSHA 1910.119 / CCPS",
+      "indicators": [
+        "Inspeksi alat kritis (Safety Critical Elements) & perizinan   modifikasi."
+      ],
+      "evidence": [
+        "Bukti Preventive Maintenance SCE, Register MOC Teknis."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "integritas",
+        "aset",
+        "moc",
+        "osha",
+        "1910",
+        "119",
+        "ccps",
+        "inspeksi",
+        "alat",
+        "kritis",
+        "safety",
+        "critical",
+        "elements",
+        "perizinan",
+        "modifikasi",
+        "bukti",
+        "preventive",
+        "maintenance",
+        "sce",
+        "register",
+        "teknis"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-psaims-03",
+      "audit": "psaims",
+      "audit_as_tertuang": "PSAIMS    (Process Safety)",
+      "level": "Kelompok besar / pilar",
+      "group": "Belajar dari Insiden",
+      "position": 3,
+      "reference": "OSHA 1910.119 / CCPS",
+      "indicators": [
+        "Penanganan kebocoran berisiko ledakan/beracun (LOPC)."
+      ],
+      "evidence": [
+        "Laporan LOPC (Loss of Primary Containment), Safety Alert."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "belajar",
+        "insiden",
+        "osha",
+        "1910",
+        "119",
+        "ccps",
+        "penanganan",
+        "kebocoran",
+        "berisiko",
+        "ledakan",
+        "beracun",
+        "lopc",
+        "laporan",
+        "loss",
+        "primary",
+        "containment",
+        "safety",
+        "alert"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso50001-01",
+      "audit": "iso50001",
+      "audit_as_tertuang": "ISO 50001    (Manajemen Energi)",
+      "level": "Kelompok besar / pilar",
+      "group": "Perencanaan Energi",
+      "position": 1,
+      "reference": "Klausul 6 (ISO 50001)",
+      "indicators": [
+        "Tinjauan alat paling boros (SEU) & penentuan Garis Dasar   (EnB)."
+      ],
+      "evidence": [
+        "Laporan Energy Review, Daftar SEU, Metrik EnPI."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "perencanaan",
+        "energi",
+        "50001",
+        "tinjauan",
+        "alat",
+        "paling",
+        "boros",
+        "seu",
+        "penentuan",
+        "garis",
+        "dasar",
+        "enb",
+        "laporan",
+        "energy",
+        "review",
+        "daftar",
+        "metrik",
+        "enpi"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso50001-02",
+      "audit": "iso50001",
+      "audit_as_tertuang": "ISO 50001    (Manajemen Energi)",
+      "level": "Kelompok besar / pilar",
+      "group": "Operasi & Pengadaan",
+      "position": 2,
+      "reference": "Klausul 8 (ISO 50001)",
+      "indicators": [
+        "Pembelian alat/jasa yang wajib mempertimbangkan kriteria efisiensi   energi."
+      ],
+      "evidence": [
+        "SOP Pengoperasian Mesin, Dokumen/Kriteria Purchasing."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "operasi",
+        "pengadaan",
+        "50001",
+        "pembelian",
+        "alat",
+        "jasa",
+        "wajib",
+        "mempertimbangkan",
+        "kriteria",
+        "efisiensi",
+        "energi",
+        "sop",
+        "pengoperasian",
+        "mesin",
+        "purchasing"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-iso50001-03",
+      "audit": "iso50001",
+      "audit_as_tertuang": "ISO 50001    (Manajemen Energi)",
+      "level": "Kelompok besar / pilar",
+      "group": "Peningkatan Kinerja",
+      "position": 3,
+      "reference": "Klausul 10 (ISO 50001)",
+      "indicators": [
+        "Bukti nyata (kuantitatif) penurunan konsumsi energi per produksi."
+      ],
+      "evidence": [
+        "Data Tagihan Utilitas (kWh/Gas), Laporan Penghematan Biaya."
+      ],
+      "pic": "Fungsi teknis terkait",
+      "hc": "Tidak langsung",
+      "tags": [
+        "peningkatan",
+        "kinerja",
+        "50001",
+        "bukti",
+        "nyata",
+        "kuantitatif",
+        "penurunan",
+        "konsumsi",
+        "energi",
+        "per",
+        "produksi",
+        "data",
+        "tagihan",
+        "utilitas",
+        "kwh",
+        "gas",
+        "laporan",
+        "penghematan",
+        "biaya"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-supreme-01",
+      "audit": "supreme",
+      "audit_as_tertuang": "SUPREME    (Pertamina HSSE)",
+      "level": "Kelompok besar / pilar",
+      "group": "Kepemimpinan & Organisasi",
+      "position": 1,
+      "reference": "Elemen 1, 2, 3",
+      "indicators": [
+        "Akuntabilitas pimpinan (Generative Culture) & pemenuhan legal."
+      ],
+      "evidence": [
+        "KPI HSSE Pimpinan, Legal Register, Intervention Card."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "kepemimpinan",
+        "organisasi",
+        "akuntabilitas",
+        "pimpinan",
+        "generative",
+        "culture",
+        "pemenuhan",
+        "legal",
+        "kpi",
+        "hsse",
+        "register",
+        "intervention",
+        "card"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-supreme-02",
+      "audit": "supreme",
+      "audit_as_tertuang": "SUPREME    (Pertamina HSSE)",
+      "level": "Kelompok besar / pilar",
+      "group": "Risiko & Prosedur",
+      "position": 2,
+      "reference": "Elemen 4 & 5",
+      "indicators": [
+        "Profil Risiko Corporate & ketersediaan SOP kerja aman."
+      ],
+      "evidence": [
+        "Corporate Risk Register, SOP Kritis, Formulir MOC."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "risiko",
+        "prosedur",
+        "profil",
+        "corporate",
+        "ketersediaan",
+        "sop",
+        "kerja",
+        "aman",
+        "risk",
+        "register",
+        "kritis",
+        "formulir",
+        "moc"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
+    },
+    {
+      "id": "map-supreme-03",
+      "audit": "supreme",
+      "audit_as_tertuang": "SUPREME    (Pertamina HSSE)",
+      "level": "Kelompok besar / pilar",
+      "group": "Operasi, Jaminan & Evaluasi",
+      "position": 3,
+      "reference": "Elemen 6, 7, 8",
+      "indicators": [
+        "Integritas aset, CSMS, Inspeksi Lapangan, & Rapat Evaluasi."
+      ],
+      "evidence": [
+        "Hasil Penilaian CSMS, Laporan Inspeksi/Patroli, CAPA."
+      ],
+      "pic": "Fungsi terkait / HC bila relevan",
+      "hc": "Pendukung",
+      "tags": [
+        "operasi",
+        "jaminan",
+        "evaluasi",
+        "integritas",
+        "aset",
+        "csms",
+        "inspeksi",
+        "lapangan",
+        "rapat",
+        "hasil",
+        "penilaian",
+        "laporan",
+        "patroli",
+        "capa"
+      ],
+      "sourceLabel": "Tabel pemetaan yang diunggah pengguna",
+      "validation": "Perlu verifikasi dengan protokol/standar resmi sebelum digunakan sebagai kriteria audit",
+      "originalGrouping": "Ringkasan tematik, bukan kutipan klausul resmi"
     }
   ]
 }
