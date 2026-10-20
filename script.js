@@ -151,19 +151,19 @@
         "introduction": "Evaluasi PSAIMS pada kerangka Pertamina Hulu Energi Subholding Upstream dikelompokkan ke dalam 4 pilar utama yang mencakup 15 elemen, yaitu:",
         "pillars": [
                 [
-                        "Pemenuhan Peraturan dan Standar (Regulatory and Standards Compliance)",
+                        "Regulatory and Standards Compliance (Pemenuhan Peraturan dan Standar)",
                         "Meliputi Elemen 1, Izin Operasi, yang mencakup pemenuhan perizinan kegiatan operasional; serta Elemen 2, Pemenuhan Standar Teknis, yang mencakup penerapan regulasi, persyaratan teknis, standar industri, dan ketentuan keselamatan fasilitas."
                 ],
                 [
-                        "Memahami dan Mengomunikasikan Risiko Keselamatan Proses (Understanding and Communicating Process Safety Risks)",
+                        "Understanding and Communicating Process Safety Risks (Memahami dan Mengomunikasikan Risiko Keselamatan Proses)",
                         "Meliputi Elemen 3, Informasi Keselamatan Proses; Elemen 4, Analisis Bahaya Proses; Elemen 5, Komunikasi dan Kesadaran Keselamatan Proses; serta Elemen 6, Kompetensi Keselamatan Proses. Pilar ini berfokus pada identifikasi potensi bahaya, penilaian risiko, penyampaian informasi keselamatan, serta pengembangan kompetensi pekerja."
                 ],
                 [
-                        "Operasi dan Pemeliharaan Fasilitas (Facility Operation and Maintenance)",
+                        "Facility Operation and Maintenance (Operasi dan Pemeliharaan Fasilitas)",
                         "Meliputi Elemen 7, Kesiapan Operasi dan Start-Up; Elemen 8, Pengendalian Operasi; Elemen 9, Integritas dan Keandalan Peralatan; Elemen 10, Manajemen Perubahan Fasilitas; serta Elemen 11, Kesiapan Menghadapi Kecelakaan Besar. Pilar ini mencakup pengendalian kegiatan operasi, inspeksi dan pemeliharaan peralatan, pengelolaan perubahan fasilitas, serta kesiapsiagaan menghadapi keadaan darurat."
                 ],
                 [
-                        "Belajar dari Pengalaman (Learning from Experience)",
+                        "Learning from Experience (Belajar dari Pengalaman)",
                         "Meliputi Elemen 12, Investigasi Kecelakaan Proses; Elemen 13, Belajar dari Kejadian; Elemen 14, Audit Keselamatan Proses dan Integritas Aset; serta Elemen 15, Pengukuran Kinerja Keselamatan Proses dan Integritas Aset. Pilar ini berfokus pada evaluasi kejadian, identifikasi akar penyebab, pelaksanaan audit, pemantauan indikator kinerja, dan tindakan perbaikan berkelanjutan."
                 ]
         ]
