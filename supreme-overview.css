@@ -1,0 +1,42 @@
+/* Audit Atlas — penataan tambahan bagian overview. Cocok dengan style.css lama. */
+#audit-context .overview-section + .overview-section {
+  margin-top: 20px;
+  border-top: 1px solid #dbe7e3;
+  padding-top: 20px;
+}
+#audit-context .overview-section h4 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #123c3a;
+}
+#audit-context .overview-section p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #3d5c64;
+}
+#audit-context .overview-pillars {
+  margin: 16px 0 0;
+  padding: 18px 18px 18px 45px;
+  border: 1px solid #f3dfb1;
+  background: #fffaf0;
+  border-radius: 12px;
+  color: #385962;
+}
+#audit-context .overview-pillars li {
+  padding-left: 5px;
+  margin-bottom: 11px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+#audit-context .overview-pillars li:last-child { margin-bottom: 0; }
+#audit-context .overview-pillars li::marker {
+  color: #9b6a1b;
+  font-weight: 800;
+}
+#audit-context .overview-pillars strong { color: #163d50; }
+@media (max-width: 650px) {
+  #audit-context .overview-pillars {padding: 14px 12px 14px 35px;}
+  #audit-context .overview-pillars li {font-size: 13px;}
+}
