@@ -138,6 +138,52 @@
         </div>`;
       return;
     }
+    // Pembaruan keterangan Audit PSAIMS v1.6 (teks supplied by user; acuan tetap perlu dikonfirmasi dengan dokumen resmi).
+    if (p.id === 'psaims') {
+      const overview = {
+        "title": "AUDIT PSAIMS (Process Safety and Asset Integrity Management System)",
+        "reference": "Pedoman PT Pertamina Hulu Energi (PHE) Nomor: A8-004/PHE04000/2021-S9 Revisi 0 tentang Process Safety and Asset Integrity Management System (PSAIMS), sebagai acuan penerapan sistem manajemen keselamatan proses dan integritas aset di lingkungan Pertamina Hulu Energi Subholding Upstream. Pelaksanaan audit mengacu pada ketentuan dan elemen PSAIMS yang ditetapkan perusahaan untuk memastikan keandalan fasilitas operasi serta pencegahan kecelakaan besar (Major Accident).",
+        "summary": [
+                "Audit PSAIMS merupakan audit sistem manajemen keselamatan proses dan integritas aset yang dilakukan untuk mengevaluasi kesesuaian dan efektivitas penerapan Process Safety and Asset Integrity Management System dalam mengidentifikasi, mengendalikan, serta memitigasi risiko kecelakaan besar pada kegiatan operasional minyak dan gas bumi.",
+                "Audit dilakukan melalui pemeriksaan dokumen, wawancara dengan personel terkait, serta verifikasi langsung di lapangan untuk memastikan pengendalian risiko, keandalan peralatan, pemenuhan standar teknis, dan penerapan prosedur keselamatan proses.",
+                "Hasil audit digunakan untuk mengidentifikasi ketidaksesuaian, menentukan rekomendasi perbaikan, serta meningkatkan keandalan operasi secara berkelanjutan guna mencapai Zero Major Accident dan Safe & Reliable Operation."
+        ],
+        "introduction": "Evaluasi PSAIMS pada kerangka Pertamina Hulu Energi Subholding Upstream dikelompokkan ke dalam 4 pilar utama yang mencakup 15 elemen, yaitu:",
+        "pillars": [
+                [
+                        "Pemenuhan Peraturan dan Standar (Regulatory and Standards Compliance)",
+                        "Meliputi Elemen 1, Izin Operasi, yang mencakup pemenuhan perizinan kegiatan operasional; serta Elemen 2, Pemenuhan Standar Teknis, yang mencakup penerapan regulasi, persyaratan teknis, standar industri, dan ketentuan keselamatan fasilitas."
+                ],
+                [
+                        "Memahami dan Mengomunikasikan Risiko Keselamatan Proses (Understanding and Communicating Process Safety Risks)",
+                        "Meliputi Elemen 3, Informasi Keselamatan Proses; Elemen 4, Analisis Bahaya Proses; Elemen 5, Komunikasi dan Kesadaran Keselamatan Proses; serta Elemen 6, Kompetensi Keselamatan Proses. Pilar ini berfokus pada identifikasi potensi bahaya, penilaian risiko, penyampaian informasi keselamatan, serta pengembangan kompetensi pekerja."
+                ],
+                [
+                        "Operasi dan Pemeliharaan Fasilitas (Facility Operation and Maintenance)",
+                        "Meliputi Elemen 7, Kesiapan Operasi dan Start-Up; Elemen 8, Pengendalian Operasi; Elemen 9, Integritas dan Keandalan Peralatan; Elemen 10, Manajemen Perubahan Fasilitas; serta Elemen 11, Kesiapan Menghadapi Kecelakaan Besar. Pilar ini mencakup pengendalian kegiatan operasi, inspeksi dan pemeliharaan peralatan, pengelolaan perubahan fasilitas, serta kesiapsiagaan menghadapi keadaan darurat."
+                ],
+                [
+                        "Belajar dari Pengalaman (Learning from Experience)",
+                        "Meliputi Elemen 12, Investigasi Kecelakaan Proses; Elemen 13, Belajar dari Kejadian; Elemen 14, Audit Keselamatan Proses dan Integritas Aset; serta Elemen 15, Pengukuran Kinerja Keselamatan Proses dan Integritas Aset. Pilar ini berfokus pada evaluasi kejadian, identifikasi akar penyebab, pelaksanaan audit, pemantauan indikator kinerja, dan tindakan perbaikan berkelanjutan."
+                ]
+        ]
+};
+      el.innerHTML = `
+        <div class="context-head"><h3>${esc(overview.title)}</h3></div>
+        <div class="overview-section">
+          <h4>Acuan Pelaksanaan</h4>
+          <p>${esc(overview.reference)}</p>
+        </div>
+        <div class="overview-section">
+          <h4>Summary</h4>
+          ${overview.summary.map(text => `<p>${esc(text)}</p>`).join('')}
+          <p>${esc(overview.introduction)}</p>
+          <ol class="overview-pillars">
+            ${overview.pillars.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
+          </ol>
+        </div>`;
+      return;
+    }
     if (p.detailedOverview) {
       const d = p.detailedOverview;
       const pillars = (d.pillars || []).map(x =>
