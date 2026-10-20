@@ -100,6 +100,44 @@
         </div>`;
       return;
     }
+    // Ringkasan Audit SUPREME - revisi publik v1.5 (teks diberikan pengguna).
+    if (p.id === 'supreme') {
+      const overview = {
+        title: 'Audit SUPREME',
+        reference: 'Pertamina Standard Nomor PS-S-023-440-2023 tentang SUPREME (Sustainability Pertamina Expectations for Management Excellence), yang merupakan pembaruan dari Pertamina Standard Nomor PS-Sy-0001-15-2019. Pelaksanaan audit mengacu pada Pedoman Implementasi SUPREME dan SUPREME Internal Audit Protocol (SIAP) sebagai panduan penilaian penerapan sistem manajemen HSSE di lingkungan Pertamina.',
+        summary: [
+          'Audit SUPREME merupakan audit sistem manajemen internal Pertamina untuk mengevaluasi penerapan Health, Safety, Security, and Environment (HSSE) secara terstruktur dan sistematis dalam mengelola risiko operasional, memastikan kepatuhan terhadap ketentuan yang berlaku, mencegah kecelakaan kerja, serta mendukung keberlanjutan bisnis perusahaan.',
+          'Audit dilakukan melalui pemeriksaan dokumen, wawancara, dan observasi lapangan untuk menilai kesesuaian serta efektivitas implementasi sistem manajemen HSSE.',
+          'Hasil audit digunakan sebagai dasar penyusunan rekomendasi dan tindakan perbaikan berkelanjutan (continuous improvement).'
+        ],
+        introduction: 'Evaluasi SUPREME dikelompokkan ke dalam 8 proses utama, yaitu:',
+        pillars: [
+          ['Leadership and Accountability (Kepemimpinan dan Akuntabilitas)', 'Meliputi komitmen pimpinan, keterlibatan manajemen, pengawasan pelaksanaan HSSE, pengukuran kinerja, serta pengembangan budaya keselamatan kerja.'],
+          ['Policy and Objectives (Kebijakan dan Sasaran)', 'Meliputi penetapan kebijakan HSSE, kepatuhan terhadap peraturan perundang-undangan, serta penyusunan sasaran dan target kinerja HSSE perusahaan.'],
+          ['Organization, Responsibilities, Resources, and Documents (Organisasi, Tanggung Jawab, Sumber Daya, dan Dokumen)', 'Meliputi struktur organisasi, pembagian tanggung jawab, penyediaan sumber daya, pengelolaan kompetensi dan pelatihan pekerja, komunikasi, serta pengendalian dokumen HSSE.'],
+          ['Risk Management (Manajemen Risiko)', 'Meliputi identifikasi bahaya, penilaian risiko, penetapan tindakan pengendalian, pemantauan risiko, serta pengelolaan risiko residual dalam kegiatan operasional perusahaan.'],
+          ['Planning and Procedures (Perencanaan dan Prosedur)', 'Meliputi penyusunan rencana kerja HSSE, prosedur dan instruksi kerja, pengelolaan perubahan (Management of Change), integritas aset, sistem izin kerja aman, serta perencanaan tanggap darurat.'],
+          ['Implementation and Operational Control (Implementasi dan Pengendalian Operasional)', 'Meliputi penerapan prosedur HSSE, pengawasan kegiatan operasional, pengelolaan keselamatan kontraktor, pelaksanaan izin kerja aman, pengendalian perubahan, serta kesiapsiagaan dan pelaksanaan tanggap darurat.'],
+          ['Assurance: Monitoring, Measurement, and Audit (Jaminan: Pemantauan, Pengukuran, dan Audit)', 'Meliputi pemantauan kinerja HSSE, pengukuran pencapaian indikator, pelaporan dan investigasi insiden, penanganan ketidaksesuaian, pelaksanaan audit internal, serta pemantauan tindakan perbaikan.'],
+          ['Management Review (Tinjauan Manajemen)', 'Meliputi evaluasi hasil penerapan sistem manajemen HSSE oleh manajemen, peninjauan pencapaian sasaran, evaluasi hasil audit, penetapan tindak lanjut, serta peningkatan berkelanjutan terhadap efektivitas pengendalian risiko.']
+        ]
+      };
+      el.innerHTML = `
+        <div class="context-head"><h3>${esc(overview.title)}</h3></div>
+        <div class="overview-section">
+          <h4>Acuan Pelaksanaan</h4>
+          <p>${esc(overview.reference)}</p>
+        </div>
+        <div class="overview-section">
+          <h4>Summary</h4>
+          ${overview.summary.map(text => `<p>${esc(text)}</p>`).join('')}
+          <p>${esc(overview.introduction)}</p>
+          <ol class="overview-pillars">
+            ${overview.pillars.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
+          </ol>
+        </div>`;
+      return;
+    }
     if (p.detailedOverview) {
       const d = p.detailedOverview;
       const pillars = (d.pillars || []).map(x =>
