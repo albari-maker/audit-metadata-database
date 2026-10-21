@@ -144,33 +144,34 @@
       updateCdmReferenceAvailability();
       return;
     }
-    // Ringkasan Audit SUPREME - revisi publik v1.5 (teks diberikan pengguna).
-    // v1.8: Delapan proses dan 191 ekspektasi didasarkan pada PDF SUPREME 2018 yang diunggah.
-    // Ini berbeda dari nomor Pertamina Standard tahun 2023 yang pernah disebut dalam materi ringkasan.
+    // Audit SUPREME - pengantar dari redaksi pengguna (v1.9).
+    // Indeks 191 ekspektasi yang ditelusuri tetap bersumber dari PDF tahun 2018.
     if (p.id === 'supreme') {
-      const names = [
-        ['Kepemimpinan dan Akuntabilitas', '30', '15–17'],
-        ['Kebijakan dan Sasaran', '7', '18–19'],
-        ['Organisasi, Tanggung Jawab, Sumber Daya, dan Dokumen', '20', '20–22'],
-        ['Manajemen Risiko', '23', '23–26'],
-        ['Perencanaan dan Prosedur', '34', '27–31'],
-        ['Implementasi dan Pengendalian Operasional', '33', '32–36'],
-        ['Jaminan: Pemantauan, Pengukuran, dan Audit', '27', '37–40'],
-        ['Tinjauan', '17', '41–43']
-      ];
-      el.innerHTML = `<div class="context-head"><h3>Audit SUPREME</h3><span class="context-tag">PDF sumber 2018</span></div>
+      const overview = {
+        processes: [
+          ['Leadership and Accountability (Kepemimpinan dan Akuntabilitas)', 'Penilaian terhadap komitmen dan keterlibatan pimpinan dalam penerapan sistem manajemen HSSE, pelaksanaan pengawasan, akuntabilitas terhadap pencapaian kinerja, serta penguatan budaya keselamatan di lingkungan perusahaan.'],
+          ['Policy and Objectives (Kebijakan dan Sasaran)', 'Penilaian terhadap penetapan, penerapan, dan komunikasi kebijakan HSSE, kesesuaian dengan peraturan perundang-undangan dan persyaratan yang berlaku, serta perumusan sasaran dan target kinerja HSSE yang terukur.'],
+          ['Organization, Responsibilities, Resources, and Documents (Organisasi, Tanggung Jawab, Sumber Daya, dan Dokumen)', 'Penilaian terhadap kejelasan struktur organisasi dan pembagian tanggung jawab, kecukupan sumber daya, pengelolaan kompetensi dan pelatihan pekerja, efektivitas komunikasi, serta pengelolaan dan pengendalian dokumen HSSE.'],
+          ['Risk Management (Manajemen Risiko)', 'Penilaian terhadap pelaksanaan identifikasi bahaya, analisis dan evaluasi risiko, penetapan langkah pengendalian, pemantauan efektivitas pengendalian, serta pengelolaan risiko residual dalam kegiatan operasional perusahaan.'],
+          ['Planning and Procedures (Perencanaan dan Prosedur)', 'Penilaian terhadap penyusunan rencana kerja HSSE, penetapan prosedur dan instruksi kerja, perencanaan pengelolaan perubahan (Management of Change), pengelolaan integritas aset, ketentuan sistem izin kerja aman, serta perencanaan kesiapsiagaan dan tanggap darurat.'],
+          ['Implementation and Operational Control (Implementasi dan Pengendalian Operasional)', 'Penilaian terhadap pelaksanaan prosedur dan pengendalian HSSE dalam kegiatan operasional, pengawasan keselamatan kerja, pengelolaan keselamatan kontraktor, penerapan sistem izin kerja aman, pelaksanaan pengendalian perubahan, serta kesiapsiagaan dan penanganan kondisi darurat.'],
+          ['Assurance: Monitoring, Measurement, and Audit (Jaminan: Pemantauan, Pengukuran, dan Audit)', 'Penilaian terhadap pelaksanaan pemantauan dan pengukuran kinerja HSSE, pencapaian indikator kinerja, pelaporan dan investigasi insiden, penanganan ketidaksesuaian, pelaksanaan audit internal, serta verifikasi efektivitas tindakan korektif dan tindak lanjut hasil audit.'],
+          ['Management Review (Tinjauan Manajemen)', 'Penilaian terhadap pelaksanaan tinjauan manajemen atas kinerja dan efektivitas sistem manajemen HSSE, pencapaian sasaran, hasil audit dan evaluasi kepatuhan, penetapan keputusan serta tindak lanjut perbaikan, dan penguatan peningkatan berkelanjutan dalam pengelolaan risiko operasional.']
+        ]
+      };
+      el.innerHTML = `
+        <div class="context-head"><h3>Audit SUPREME</h3><span class="context-tag">Audit sumber 2018</span></div>
         <div class="overview-section">
-          <h4>Acuan yang dipakai dalam pembaruan ini</h4>
-          <p>Dokumen <strong>SUPREME (Sustainability Pertamina Expectations for HSSE Management Excellence)</strong> yang diunggah, dengan sambutan bertanggal 30 November 2018. Dokumen tersebut menyebutkan <strong>8 proses dan 191 ekspektasi</strong> (halaman PDF 8).</p>
-          <p>Dalam materi audit yang telah dibahas sebelumnya terdapat rujukan Pertamina Standard PS-S-023-440-2023 dan SUPREME Internal Audit Protocol (SIAP). <strong>Dokumen 2018 ini tidak membuktikan bahwa butir 2018 masih identik dengan standar/protokol 2023.</strong> Gunakan standar dan protokol resmi yang berlaku untuk menentukan daftar periksa final.</p>
+          <h4>Acuan Pelaksanaan</h4>
+          <p>Pertamina Standard Nomor PS-S-023-440-2023 tentang <em>SUPREME (Sustainability Pertamina Expectations for Management Excellence)</em>, yang merupakan pembaruan dari Pertamina Standard Nomor PS-Sy-0001-15-2019. Pelaksanaan audit mengacu pada Pedoman Implementasi SUPREME dan <em>SUPREME Internal Audit Protocol</em> (SIAP) sebagai panduan penilaian penerapan sistem manajemen <em>Health, Safety, Security, and Environment</em> (HSSE) di lingkungan Pertamina.</p>
         </div>
         <div class="overview-section">
           <h4>Summary</h4>
-          <p>SUPREME mengintegrasikan pengelolaan aspek HSSE dengan pendekatan manajemen risiko dan perbaikan berkelanjutan menggunakan siklus Plan–Do–Check–Act (PDCA). Struktur dalam PDF sumber ditelusuri berdasarkan nomor proses, nomor ekspektasi, dan halaman asalnya.</p>
-          <p><strong>Delapan proses utama (sesuai susunan dalam PDF):</strong></p>
-          <ol class="overview-pillars">${names.map(([n,c,p])=>`<li><strong>${esc(n)}</strong> — ${esc(c)} ekspektasi (PDF halaman ${esc(p)}).</li>`).join('')}</ol>
-          <p><strong>Cara menelusuri:</strong> gunakan filter Audit SUPREME, lalu ketik nomor ekspektasi seperti <code>2.1</code>, <code>3.10</code>, atau <code>5.30</code> untuk melihat ringkasan dan rujukan halamannya.</p>
-          <p class="small-warning">Ringkasan ekspektasi di website adalah parafrasa/ikhtisar singkat, bukan reproduksi persyaratan yang lengkap maupun protokol penilaian resmi. File PDF sumber tidak disertakan untuk publikasi otomatis.</p>
+          <p>Audit SUPREME merupakan audit sistem manajemen internal Pertamina yang dilaksanakan untuk mengevaluasi kesesuaian dan efektivitas penerapan sistem manajemen <em>Health, Safety, Security, and Environment</em> (HSSE) dalam pengelolaan risiko operasional, pemenuhan ketentuan yang berlaku, pencegahan kecelakaan kerja, serta keberlanjutan kegiatan operasional perusahaan.</p>
+          <p>Pelaksanaan audit dilakukan melalui pemeriksaan dokumen, wawancara, dan observasi lapangan untuk memastikan kesesuaian antara persyaratan sistem manajemen HSSE dengan implementasinya. Hasil audit menjadi dasar penetapan rekomendasi, tindakan korektif, dan peningkatan berkelanjutan (<em>continuous improvement</em>) terhadap kinerja HSSE perusahaan.</p>
+          <p><strong>Evaluasi SUPREME dikelompokkan ke dalam 8 proses utama, yaitu:</strong></p>
+          <ol class="overview-pillars">${overview.processes.map(([name,description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}</ol>
+          <p class="small-warning">Catatan sumber: bagian acuan pelaksanaan dan ringkasan di atas menggunakan redaksi yang diberikan pemilik website. Data ekspektasi bernomor dalam daftar pencarian tetap diindeks dari PDF SUPREME tahun 2018; kesesuaiannya dengan standar dan protokol 2023 belum diverifikasi.</p>
         </div>`;
       return;
     }
@@ -314,13 +315,6 @@
     $('#search-input').value='';$('#audit-select').value='all';$('#hc-select').value='all';$('#readiness-select').value='all';refreshGroups();$('#group-select').value='all';applyFilters();
   }
   const csvSafe = v => { let t=String(v??'');if(/^[\s]*[=+\-@]/.test(t))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'; };
-  function exportCsv(){
-    const columns=['Jenis Audit','Kode Klausul','Kelompok Umum','Nama Topik','Penjelasan Sederhana','PIC Perkiraan','Peran HC','Contoh Bukti','Status Lokal','Status Verifikasi','Sumber URL'];
-    const lines=[columns,...filtered.map(x=>[profileMap[x.audit].name,x.code,x.group,x.title,x.description,x.pic,x.hc,x.evidence.join('; '),getStatus(x),x.status,x.source])];
-    const blob=new Blob(['\uFEFF'+lines.map(row=>row.map(csvSafe).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8;'});
-    const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='audit-atlas-hasil-filter.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast(`${filtered.length} topik diekspor ke CSV`);
-  }
-
   function renderPeta(){
     const sel=$('#peta-audit-select'), search=normalize($('#peta-search').value.trim());
     const words=search.split(/\s+/).filter(Boolean);
@@ -351,7 +345,6 @@
     $('#glossary-search').addEventListener('input',debounce(renderGlossary));
     $('#reset-filters').addEventListener('click',reset);$('#empty-reset').addEventListener('click',reset);
     $('#load-more').addEventListener('click',()=>{shown+=18;renderResults();});
-    $('#export-csv').addEventListener('click',exportCsv);
     $('#dialog-close').addEventListener('click',()=>$('#detail-dialog').close());
     $('#detail-dialog').addEventListener('click',e=>{if(e.target===$('#detail-dialog'))$('#detail-dialog').close();});
     $('#open-search').addEventListener('click',()=>{navigate('jelajahi');$('#search-input').focus();});

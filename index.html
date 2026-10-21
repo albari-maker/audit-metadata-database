@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#0c2533" />
   <meta name="description" content="Panduan audit publik berbasis metadata tagging: pahami jenis audit, klausul dan elemen, contoh bukti, HC, dan istilah penting dalam bahasa sederhana." />
   <title>Audit Atlas · Database Panduan Audit</title>
-  <link rel="stylesheet" href="style.css?v=supreme-pdf-v18-20261021" />
-  <script src="audit-data.js?v=supreme-pdf-v18-20261021" defer></script>
-  <script src="script.js?v=supreme-pdf-v18-20261021" defer></script>
+  <link rel="stylesheet" href="style.css?v=supreme-acuan-v19-20261021" />
+  <script src="audit-data.js?v=supreme-acuan-v19-20261021" defer></script>
+  <script src="script.js?v=supreme-acuan-v19-20261021" defer></script>
   <style>
     #audit-context .overview-section + .overview-section {margin-top:20px;border-top:1px solid #dbe7e3;padding-top:20px}
     #audit-context .overview-section h4 {margin:0 0 10px;font-size:15px;font-weight:800;color:#123c3a}
@@ -73,7 +73,7 @@
           <div class="bottom-help"><div class="bottom-help-symbol">?</div><div><strong>Baru pertama kali menghadapi audit?</strong><p>Mulai dari jenis audit, pahami topik umumnya, lalu buka contoh bukti dan tanyakan PIC yang tepat.</p></div><button class="btn btn-dark" data-page="panduan">Pelajari alurnya →</button></div>
         </section>
         <section class="page hidden" id="page-jelajahi">
-          <div class="page-heading"><div><span class="eyebrow eyebrow-dark">EXPLORE THE LIBRARY</span><h1>Jelajahi klausul <em>& elemen audit.</em></h1><p>Telusuri dari kelompok audit, klausul utama, subklausul, hingga contoh bukti yang sebaiknya dipahami.</p></div><button class="btn btn-outline" id="export-csv">↓ Ekspor hasil (CSV)</button></div>
+          <div class="page-heading"><div><span class="eyebrow eyebrow-dark">EXPLORE THE LIBRARY</span><h1>Jelajahi klausul <em>& elemen audit.</em></h1><p>Telusuri dari kelompok audit, klausul utama, subklausul, hingga contoh bukti yang sebaiknya dipahami.</p></div></div>
           <div class="filter-panel"><label class="search-input"><span>⌕</span><input id="search-input" type="search" placeholder="Cari kata kunci: kompetensi, 7.2, HC, training..." autocomplete="off" aria-label="Cari topik audit"/><kbd>/</kbd></label><div class="filters"><label>Jenis audit <select id="audit-select"><option value="all">Semua jenis audit</option></select></label><label>Peran HC <select id="hc-select"><option value="all">Semua keterlibatan</option><option value="Utama">HC utama</option><option value="Pendukung">HC pendukung</option><option value="Tidak langsung">Tidak langsung</option></select></label><label>Kelompok / klausul <select id="group-select"><option value="all">Semua kelompok</option></select></label><label>Status pencatatan <select id="readiness-select"><option value="all">Semua status</option><option>Belum dicek</option><option>Dalam proses</option><option>Siap</option><option>Perlu konfirmasi</option></select></label></div><div class="filter-footer"><div id="active-filter-summary">Menampilkan seluruh kategori</div><button class="text-button" id="reset-filters">↺ Reset filter</button></div></div>
           <div id="audit-context" class="audit-context hidden"></div>
           <div class="result-header"><div><strong id="result-count">0 topik</strong><span> · Pilih topik untuk membuka penjelasan dan bukti</span></div><span class="result-hint">Dari umum → khusus</span></div><div id="result-list" class="result-list"></div><div id="empty-state" class="empty-state hidden"><div>⌕</div><h3>Tidak ada hasil untuk filter ini</h3><p>Coba kata kunci lain atau pilih semua kategori.</p><button class="btn btn-outline" id="empty-reset">Hapus filter</button></div><button id="load-more" class="btn btn-more hidden">Tampilkan lebih banyak ↓</button>
