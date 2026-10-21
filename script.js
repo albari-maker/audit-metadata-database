@@ -119,6 +119,36 @@
         </div>`;
       return;
     }
+    // Audit Surveilans - revisi ringkasan dan delapan komponen (v1.12).
+    // Semua uraian mengacu pada naskah yang diberikan pemilik website.
+    if (p.id === 'surveilans') {
+      const overview = {
+        components: [
+          ['Internal Audit and Management Review (Audit Internal dan Tinjauan Manajemen)', 'Penilaian terhadap pelaksanaan audit internal, identifikasi dan penyelesaian temuan, efektivitas tindakan perbaikan, serta pelaksanaan tinjauan manajemen dalam mengevaluasi kesesuaian dan kinerja sistem manajemen perusahaan.'],
+          ['Corrective Actions on Previous Nonconformities (Tindakan Korektif atas Ketidaksesuaian Sebelumnya)', 'Penilaian terhadap penyelesaian ketidaksesuaian yang teridentifikasi pada audit sebelumnya, pelaksanaan analisis akar penyebab, penerapan tindakan korektif, serta verifikasi efektivitas perbaikan dalam mencegah terulangnya ketidaksesuaian.'],
+          ['Complaints Handling (Penanganan Keluhan)', 'Penilaian terhadap penerapan mekanisme penerimaan, pencatatan, investigasi, dan penyelesaian keluhan dari pelanggan maupun pihak berkepentingan, serta efektivitas tindak lanjut dalam memastikan kesesuaian penerapan sistem manajemen.'],
+          ['Management System Effectiveness (Efektivitas Sistem Manajemen)', 'Penilaian terhadap efektivitas penerapan sistem manajemen dalam mencapai sasaran organisasi, pemenuhan indikator kinerja, kesesuaian terhadap persyaratan standar, serta pencapaian hasil yang diharapkan dari sistem manajemen yang disertifikasi.'],
+          ['Continual Improvement (Peningkatan Berkelanjutan)', 'Penilaian terhadap perkembangan dan realisasi program peningkatan berkelanjutan, pelaksanaan rencana perbaikan, pengukuran hasil peningkatan kinerja, serta tindak lanjut peluang perbaikan untuk meningkatkan efektivitas sistem manajemen perusahaan.'],
+          ['Operational Control (Pengendalian Operasional)', 'Penilaian terhadap konsistensi penerapan prosedur dan pengendalian operasional, efektivitas pengelolaan risiko, pemenuhan persyaratan yang berlaku, serta pelaksanaan pemantauan dan pengawasan kegiatan operasional berdasarkan standar sistem manajemen yang disertifikasi.'],
+          ['Management of Changes (Pengelolaan Perubahan)', 'Penilaian terhadap identifikasi, evaluasi, dan pengendalian perubahan struktur organisasi, proses operasional, teknologi, kebijakan, persyaratan regulasi, serta ruang lingkup kegiatan yang berpotensi memengaruhi kesesuaian dan efektivitas sistem manajemen perusahaan.'],
+          ['Certification Marks and References (Penggunaan Tanda dan Referensi Sertifikasi)', 'Penilaian terhadap kesesuaian penggunaan logo atau tanda sertifikasi, ketepatan pernyataan status sertifikasi, penggunaan informasi sertifikasi dalam dokumen dan media publikasi, serta pemenuhan ketentuan penggunaan tanda sertifikasi yang ditetapkan oleh lembaga sertifikasi.']
+        ]
+      };
+      el.innerHTML = `
+        <div class="context-head"><h3>Audit Surveilans (Surveillance Audit)</h3></div>
+        <div class="overview-section">
+          <h4>Acuan Pelaksanaan</h4>
+          <p>Standar Internasional ISO/IEC 17021-1:2015 tentang <em>Conformity Assessment: Requirements for Bodies Providing Audit and Certification of Management Systems</em>, khususnya Klausul 9.6.2 tentang <em>Surveillance Activities</em>, sebagai dasar pelaksanaan audit pemeliharaan sertifikasi sistem manajemen. Pelaksanaan audit juga dapat menggunakan ISO 19011:2026 tentang <em>Guidelines for Auditing Management Systems</em> sebagai pedoman audit, serta mengacu pada persyaratan standar yang disertifikasi, seperti ISO 9001, ISO 14001, ISO 45001, dan ISO 50001.</p>
+        </div>
+        <div class="overview-section">
+          <h4>Summary</h4>
+          <p>Audit Surveilans merupakan audit pemeliharaan sertifikasi yang dilaksanakan secara berkala oleh lembaga sertifikasi independen untuk mengevaluasi konsistensi penerapan, kesesuaian, dan efektivitas sistem manajemen perusahaan berdasarkan persyaratan standar ISO yang telah disertifikasi.</p>
+          <p>Audit dilaksanakan sekurang-kurangnya satu kali setiap tahun kalender, kecuali pada tahun pelaksanaan sertifikasi ulang (<em>recertification</em>), dengan audit surveilans pertama dilakukan paling lambat 12 bulan sejak keputusan sertifikasi awal. Pelaksanaan audit dilakukan melalui pemeriksaan dokumen, wawancara, observasi lapangan, serta verifikasi tindak lanjut hasil audit sebelumnya untuk memastikan keberlanjutan penerapan dan pemenuhan persyaratan sistem manajemen. Hasil audit menjadi dasar pemeliharaan status sertifikasi, identifikasi ketidaksesuaian, penetapan tindakan korektif, serta peningkatan berkelanjutan (<em>continual improvement</em>) terhadap efektivitas sistem manajemen perusahaan.</p>
+          <p><strong>Evaluasi Audit Surveilans dikelompokkan ke dalam 8 komponen utama berdasarkan ISO/IEC 17021-1:2015 Klausul 9.6.2.2, yaitu:</strong></p>
+          <ol class="overview-pillars">${overview.components.map(([name,description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}</ol>
+        </div>`;
+      return;
+    }
     // Audit SUPREME - pengantar dari redaksi pengguna (v1.9).
     // Indeks 191 ekspektasi yang ditelusuri tetap bersumber dari PDF tahun 2018.
     if (p.id === 'supreme') {
@@ -272,7 +302,7 @@
       ? `<h3>05 / Rujukan dokumen sumber</h3><p><strong>SUPREME 2018</strong> · ${esc(i.referenceText||'Proses yang relevan dalam PDF SUPREME 2018.')}.</p><p>Rujukan ini dipetakan dari PDF <em>supreme.pdf</em> yang diunggah. PDF tidak dipublikasikan otomatis melalui website. Nomor butir dan halamannya dapat digunakan untuk menelusuri dokumen yang sah secara internal.</p><p class="small-warning">Belum diverifikasi kesesuaiannya dengan Pertamina Standard 2023 maupun SUPREME Internal Audit Protocol (SIAP) yang berlaku.</p>`
       : p.id==='cdm'
         ? `<h3>05 / Dasar informasi</h3><p><strong>PTK-018/SKKMA0000/2018/S0 Revisi II.</strong> Untuk dasar pengaturan evaluasi SDM, lihat BAB III.10 pada halaman PDF 68–71. Penjelasan subtopik dalam database tetap merupakan pemetaan tematik, bukan pengganti buku referensi penilaian kinerja KKKS.</p><p data-cdm-source-status role="status">Memeriksa ketersediaan PDF sumber...</p><p><a data-cdm-source-link hidden class="dialog-source" href="${cdmReferencePdf}#page=68" target="_blank" rel="noopener noreferrer">Lihat dokumen PTK, BAB III.10 ↗</a></p>`
-        : `<h3>05 / Dasar informasi</h3><p><a class="dialog-source" href="${esc(i.source)}" target="_blank" rel="noopener noreferrer">Lihat sumber umum terkait (bukan verifikasi klausul) ↗</a></p><p class="small-warning">${esc(p.warning)}</p>`;
+        : `<h3>05 / Dasar informasi</h3><p><a class="dialog-source" href="${esc(i.source)}" target="_blank" rel="noopener noreferrer">Lihat sumber umum terkait (bukan verifikasi klausul) ↗</a></p>${p.id==='surveilans'?'':`<p class="small-warning">${esc(p.warning)}</p>`}`;
     const root = i.code.match(/^(?:[4-9]|10)(?=\.)/);
     const path=root?`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`:`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`;
     $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(i.title)}</h2><p class="dialog-subtitle">${path}</p><div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div><div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div><div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div><div class="dialog-section">${sourceSection}</div><div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`;
