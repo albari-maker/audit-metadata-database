@@ -86,7 +86,7 @@
   function context(){
     const el=$('#audit-context');const p=profileMap[activeAudit];if(!p){el.classList.add('hidden');return;}
     el.classList.remove('hidden');
-    // Keterangan khusus CDM SKK Migas - pembaruan v1.4.
+    // Keterangan CDM SKK Migas - sesuai permintaan, tanpa panel dokumen tambahan (v1.11).
     // Teks ini dipakai sebagai ringkasan publik, bukan pengganti naskah PTK resmi.
     if (p.id === 'cdm') {
       const overview = {
@@ -116,13 +116,7 @@
           <ol class="overview-pillars">
             ${overview.pillars.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
           </ol>
-        </div>
-          <div class="cdm-doc-action">
-            <p data-cdm-source-status role="status">Memeriksa ketersediaan dokumen PDF...</p>
-            <a data-cdm-source-link hidden class="cdm-doc-button" href="${cdmReferencePdf}#page=68" target="_blank" rel="noopener noreferrer">↗ Baca BAB III.10 pada PDF (hlm. 68)</a>
-          </div>
         </div>`;
-      updateCdmReferenceAvailability();
       return;
     }
     // Audit SUPREME - pengantar dari redaksi pengguna (v1.9).

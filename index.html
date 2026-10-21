@@ -6,9 +6,10 @@
   <meta name="theme-color" content="#0c2533" />
   <meta name="description" content="Panduan audit publik berbasis metadata tagging: pahami jenis audit, klausul dan elemen, contoh bukti, HC, dan istilah penting dalam bahasa sederhana." />
   <title>Audit Atlas · Database Panduan Audit</title>
-  <link rel="stylesheet" href="style.css?v=supreme-acuan-v19-20261021" />
-  <script src="audit-data.js?v=supreme-acuan-v19-20261021" defer></script>
-  <script src="script.js?v=supreme-acuan-v19-20261021" defer></script>
+  <!-- AuditAtlas v1.11: clean CDM overview; no CDM reference panel. -->
+  <link rel="stylesheet" href="style.css?v=cdm-panel-clean-v111-20261021" />
+  <script src="audit-data.js?v=cdm-panel-clean-v111-20261021" defer></script>
+  <script src="script-auditatlas-v111.js?v=cdm-panel-clean-20261021" defer></script>
   <style>
     #audit-context .overview-section + .overview-section {margin-top:20px;border-top:1px solid #dbe7e3;padding-top:20px}
     #audit-context .overview-section h4 {margin:0 0 10px;font-size:15px;font-weight:800;color:#123c3a}
@@ -16,23 +17,6 @@
     #audit-context .overview-pillars {padding-left:24px;margin:12px 0;color:#385962}
     #audit-context .overview-pillars li {padding-left:5px;margin-bottom:11px;font-size:14px;line-height:1.8}
     #audit-context .overview-pillars li::marker {color:#168d7b;font-weight:800}
-    /* v1.7: dokumen acuan CDM (tanpa memuat PDF ke paket publik) */
-    #audit-context .cdm-doc-panel{background:#fff;border:1px solid #d2e6e0;border-radius:14px;padding:22px;margin-top:25px}
-    #audit-context .cdm-doc-lead{color:#466b6b}
-    #audit-context .cdm-doc-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:15px 0 19px}
-    #audit-context .cdm-doc-meta>div{border:1px solid #e0ebe7;border-radius:9px;padding:10px 13px;background:#f7fbf9;min-width:0}
-    #audit-context .cdm-doc-meta dt{font-size:11px;font-weight:700;color:#578175;text-transform:uppercase;letter-spacing:.025em;margin:0 0 5px}
-    #audit-context .cdm-doc-meta dd{margin:0;color:#163d42;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
-    #audit-context .cdm-doc-panel h5{margin:18px 0 8px;font-size:14px;color:#164641}
-    #audit-context .cdm-doc-findings{padding-left:23px;margin:10px 0 16px;color:#36545b;font-size:13px;line-height:1.7}
-    #audit-context .cdm-doc-findings li{padding-left:4px;margin-bottom:7px}
-    #audit-context .cdm-doc-caution{background:#fff7e9;border-left:3px solid #d7a84d;border-radius:7px;padding:11px 13px;color:#72572d!important;font-size:12px!important}
-    #audit-context .cdm-doc-action{border-top:1px solid #d8e8e3;margin-top:16px;padding-top:10px}
-    #audit-context .cdm-doc-action p{font-size:12px;line-height:1.65;color:#58747a}
-    #audit-context .cdm-doc-button{display:inline-flex;border-radius:9px;background:#0e7068;color:#fff;font-size:13px;font-weight:700;padding:10px 14px;text-decoration:none}
-    #audit-context .cdm-doc-button:hover{background:#0b5752}
-    [data-cdm-source-link][hidden]{display:none!important}
-    @media(max-width:600px){#audit-context .cdm-doc-meta{grid-template-columns:1fr}#audit-context .cdm-doc-panel{padding:15px}}
   </style>
 </head>
 <body>
@@ -42,7 +26,7 @@
         <div class="brand-mark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="2.5" y="2.5" width="19" height="19" rx="6" stroke="currentColor" stroke-opacity=".45"/></svg></div>
         <div><span class="brand-name">Audit<span>Atlas</span></span><small>Metadata knowledge base</small></div>
       </a>
-      <div class="workspace-label"><span class="live-dot"></span> PUBLIC KNOWLEDGE BASE <span class="version">v1.8</span></div>
+      <div class="workspace-label"><span class="live-dot"></span> PUBLIC KNOWLEDGE BASE <span class="version">v1.11</span></div>
       <nav aria-label="Navigasi utama" class="primary-nav">
         <span class="nav-heading">WORKSPACE</span>
         <button class="nav-link active" data-page="beranda"><span class="nav-icon">▦</span> Ringkasan <span class="nav-key">01</span></button>
