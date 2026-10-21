@@ -64,6 +64,25 @@
     c.innerHTML='<option value="all">Semua kelompok</option>'+arr.map(a=>`<option value="${esc(a)}">${esc(a)}</option>`).join('');
     c.value=arr.includes(last)?last:'all';
   }
+  // Dokumen acuan CDM hanya akan dapat dibuka jika pemilik website sendiri
+  // mengunggah berkas PDF berizin ke folder utama GitHub Pages.
+  const cdmReferencePdf = './PTK-018_SKK_Migas_Revisi_II.pdf';
+  async function updateCdmReferenceAvailability(){
+    const links=document.querySelectorAll('[data-cdm-source-link]');
+    const notes=document.querySelectorAll('[data-cdm-source-status]');
+    if(!links.length && !notes.length)return;
+    let found=false;
+    try {
+      const response=await fetch(cdmReferencePdf,{method:'HEAD',cache:'no-store'});
+      found=response.ok && (response.headers.get('content-type')||'').toLowerCase().includes('pdf');
+    } catch(_e) {found=false;}
+    links.forEach(link=>{link.hidden=!found;});
+    notes.forEach(note=>{
+      note.textContent=found
+        ? 'Dokumen PDF tersedia pada website. Silakan buka BAB III.10 (halaman PDF 68–71).'
+        : 'Dokumen PDF belum dipublikasikan pada website. Ringkasan dan nomor halaman di bawah sudah dapat digunakan sebagai panduan. Unggah berkas sumber hanya jika memiliki izin distribusi publik.';
+    });
+  }
   function context(){
     const el=$('#audit-context');const p=profileMap[activeAudit];if(!p){el.classList.add('hidden');return;}
     el.classList.remove('hidden');
@@ -97,44 +116,61 @@
           <ol class="overview-pillars">
             ${overview.pillars.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
           </ol>
+        </div>
+        <div class="overview-section cdm-doc-panel">
+          <h4>Dokumen Dasar Audit CDM SKK Migas</h4>
+          <p class="cdm-doc-lead">Rujukan langsung berdasarkan berkas PTK yang diperiksa, bukan hanya tautan berita atau rangkuman umum.</p>
+          <dl class="cdm-doc-meta">
+            <div><dt>Nomor pedoman</dt><dd>PTK-018/SKKMA0000/2018/S0</dd></div>
+            <div><dt>Revisi dan tanggal</dt><dd>Revisi II · 4 Oktober 2018</dd></div>
+            <div><dt>Judul</dt><dd>Pengelolaan Sumber Daya Manusia Kontraktor Kontrak Kerja Sama</dd></div>
+            <div><dt>Bagian relevan</dt><dd>BAB III Angka 10, Evaluasi Kinerja Pengelolaan SDM KKKS</dd></div>
+            <div><dt>Lokasi dalam dokumen</dt><dd>Halaman tercetak 58–61 · Halaman PDF 68–71 dari 167</dd></div>
+          </dl>
+          <h5>Poin penting yang ditemukan di dokumen</h5>
+          <ul class="cdm-doc-findings">
+            <li><strong>10.1.1:</strong> Evaluasi tahunan terhadap KKKS Produksi dengan prinsip objektif dan transparan (PDF hlm. 68).</li>
+            <li><strong>10.1.2.1–10.1.2.3:</strong> CDM, Human Resource Compliance, dan Kesehatan Kerja (PDF hlm. 69).</li>
+            <li><strong>10.4.1:</strong> Laporan kinerja periode tahun sebelumnya disampaikan pada kuartal pertama tahun berjalan (PDF hlm. 70).</li>
+            <li><strong>10.5.1:</strong> Pelaporan menggunakan standar kebutuhan data pada Lampiran 37 (PDF hlm. 70).</li>
+            <li><strong>10.5.6:</strong> Evaluasi dan pelaporan berkala tindak lanjut perbaikan pada setiap semester tahun berikutnya (PDF hlm. 71).</li>
+          </ul>
+          <p class="cdm-doc-caution"><strong>Catatan sumber:</strong> Butir 10.1.2 menyebut “dua kategori besar”, sedangkan butir 10.1.2.1–10.1.2.3 merinci tiga komponen. Ringkasan ini mengikuti tiga subbutir tersebut. Butir 10.1.4 dan 10.5.2 juga merujuk pada buku referensi penilaian kinerja pengelolaan SDM KKKS; untuk indikator rinci, sumber tambahan itu perlu diperoleh dan diperiksa.</p>
+          <div class="cdm-doc-action">
+            <p data-cdm-source-status role="status">Memeriksa ketersediaan dokumen PDF...</p>
+            <a data-cdm-source-link hidden class="cdm-doc-button" href="${cdmReferencePdf}#page=68" target="_blank" rel="noopener noreferrer">↗ Baca BAB III.10 pada PDF (hlm. 68)</a>
+          </div>
         </div>`;
+      updateCdmReferenceAvailability();
       return;
     }
     // Ringkasan Audit SUPREME - revisi publik v1.5 (teks diberikan pengguna).
+    // v1.8: Delapan proses dan 191 ekspektasi didasarkan pada PDF SUPREME 2018 yang diunggah.
+    // Ini berbeda dari nomor Pertamina Standard tahun 2023 yang pernah disebut dalam materi ringkasan.
     if (p.id === 'supreme') {
-      const overview = {
-        title: 'Audit SUPREME',
-        reference: 'Pertamina Standard Nomor PS-S-023-440-2023 tentang SUPREME (Sustainability Pertamina Expectations for Management Excellence), yang merupakan pembaruan dari Pertamina Standard Nomor PS-Sy-0001-15-2019. Pelaksanaan audit mengacu pada Pedoman Implementasi SUPREME dan SUPREME Internal Audit Protocol (SIAP) sebagai panduan penilaian penerapan sistem manajemen HSSE di lingkungan Pertamina.',
-        summary: [
-          'Audit SUPREME merupakan audit sistem manajemen internal Pertamina untuk mengevaluasi penerapan Health, Safety, Security, and Environment (HSSE) secara terstruktur dan sistematis dalam mengelola risiko operasional, memastikan kepatuhan terhadap ketentuan yang berlaku, mencegah kecelakaan kerja, serta mendukung keberlanjutan bisnis perusahaan.',
-          'Audit dilakukan melalui pemeriksaan dokumen, wawancara, dan observasi lapangan untuk menilai kesesuaian serta efektivitas implementasi sistem manajemen HSSE.',
-          'Hasil audit digunakan sebagai dasar penyusunan rekomendasi dan tindakan perbaikan berkelanjutan (continuous improvement).'
-        ],
-        introduction: 'Evaluasi SUPREME dikelompokkan ke dalam 8 proses utama, yaitu:',
-        pillars: [
-          ['Leadership and Accountability (Kepemimpinan dan Akuntabilitas)', 'Meliputi komitmen pimpinan, keterlibatan manajemen, pengawasan pelaksanaan HSSE, pengukuran kinerja, serta pengembangan budaya keselamatan kerja.'],
-          ['Policy and Objectives (Kebijakan dan Sasaran)', 'Meliputi penetapan kebijakan HSSE, kepatuhan terhadap peraturan perundang-undangan, serta penyusunan sasaran dan target kinerja HSSE perusahaan.'],
-          ['Organization, Responsibilities, Resources, and Documents (Organisasi, Tanggung Jawab, Sumber Daya, dan Dokumen)', 'Meliputi struktur organisasi, pembagian tanggung jawab, penyediaan sumber daya, pengelolaan kompetensi dan pelatihan pekerja, komunikasi, serta pengendalian dokumen HSSE.'],
-          ['Risk Management (Manajemen Risiko)', 'Meliputi identifikasi bahaya, penilaian risiko, penetapan tindakan pengendalian, pemantauan risiko, serta pengelolaan risiko residual dalam kegiatan operasional perusahaan.'],
-          ['Planning and Procedures (Perencanaan dan Prosedur)', 'Meliputi penyusunan rencana kerja HSSE, prosedur dan instruksi kerja, pengelolaan perubahan (Management of Change), integritas aset, sistem izin kerja aman, serta perencanaan tanggap darurat.'],
-          ['Implementation and Operational Control (Implementasi dan Pengendalian Operasional)', 'Meliputi penerapan prosedur HSSE, pengawasan kegiatan operasional, pengelolaan keselamatan kontraktor, pelaksanaan izin kerja aman, pengendalian perubahan, serta kesiapsiagaan dan pelaksanaan tanggap darurat.'],
-          ['Assurance: Monitoring, Measurement, and Audit (Jaminan: Pemantauan, Pengukuran, dan Audit)', 'Meliputi pemantauan kinerja HSSE, pengukuran pencapaian indikator, pelaporan dan investigasi insiden, penanganan ketidaksesuaian, pelaksanaan audit internal, serta pemantauan tindakan perbaikan.'],
-          ['Management Review (Tinjauan Manajemen)', 'Meliputi evaluasi hasil penerapan sistem manajemen HSSE oleh manajemen, peninjauan pencapaian sasaran, evaluasi hasil audit, penetapan tindak lanjut, serta peningkatan berkelanjutan terhadap efektivitas pengendalian risiko.']
-        ]
-      };
-      el.innerHTML = `
-        <div class="context-head"><h3>${esc(overview.title)}</h3></div>
+      const names = [
+        ['Kepemimpinan dan Akuntabilitas', '30', '15–17'],
+        ['Kebijakan dan Sasaran', '7', '18–19'],
+        ['Organisasi, Tanggung Jawab, Sumber Daya, dan Dokumen', '20', '20–22'],
+        ['Manajemen Risiko', '23', '23–26'],
+        ['Perencanaan dan Prosedur', '34', '27–31'],
+        ['Implementasi dan Pengendalian Operasional', '33', '32–36'],
+        ['Jaminan: Pemantauan, Pengukuran, dan Audit', '27', '37–40'],
+        ['Tinjauan', '17', '41–43']
+      ];
+      el.innerHTML = `<div class="context-head"><h3>Audit SUPREME</h3><span class="context-tag">PDF sumber 2018</span></div>
         <div class="overview-section">
-          <h4>Acuan Pelaksanaan</h4>
-          <p>${esc(overview.reference)}</p>
+          <h4>Acuan yang dipakai dalam pembaruan ini</h4>
+          <p>Dokumen <strong>SUPREME (Sustainability Pertamina Expectations for HSSE Management Excellence)</strong> yang diunggah, dengan sambutan bertanggal 30 November 2018. Dokumen tersebut menyebutkan <strong>8 proses dan 191 ekspektasi</strong> (halaman PDF 8).</p>
+          <p>Dalam materi audit yang telah dibahas sebelumnya terdapat rujukan Pertamina Standard PS-S-023-440-2023 dan SUPREME Internal Audit Protocol (SIAP). <strong>Dokumen 2018 ini tidak membuktikan bahwa butir 2018 masih identik dengan standar/protokol 2023.</strong> Gunakan standar dan protokol resmi yang berlaku untuk menentukan daftar periksa final.</p>
         </div>
         <div class="overview-section">
           <h4>Summary</h4>
-          ${overview.summary.map(text => `<p>${esc(text)}</p>`).join('')}
-          <p>${esc(overview.introduction)}</p>
-          <ol class="overview-pillars">
-            ${overview.pillars.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
-          </ol>
+          <p>SUPREME mengintegrasikan pengelolaan aspek HSSE dengan pendekatan manajemen risiko dan perbaikan berkelanjutan menggunakan siklus Plan–Do–Check–Act (PDCA). Struktur dalam PDF sumber ditelusuri berdasarkan nomor proses, nomor ekspektasi, dan halaman asalnya.</p>
+          <p><strong>Delapan proses utama (sesuai susunan dalam PDF):</strong></p>
+          <ol class="overview-pillars">${names.map(([n,c,p])=>`<li><strong>${esc(n)}</strong> — ${esc(c)} ekspektasi (PDF halaman ${esc(p)}).</li>`).join('')}</ol>
+          <p><strong>Cara menelusuri:</strong> gunakan filter Audit SUPREME, lalu ketik nomor ekspektasi seperti <code>2.1</code>, <code>3.10</code>, atau <code>5.30</code> untuk melihat ringkasan dan rujukan halamannya.</p>
+          <p class="small-warning">Ringkasan ekspektasi di website adalah parafrasa/ikhtisar singkat, bukan reproduksi persyaratan yang lengkap maupun protokol penilaian resmi. File PDF sumber tidak disertakan untuk publikasi otomatis.</p>
         </div>`;
       return;
     }
@@ -151,19 +187,19 @@
         "introduction": "Evaluasi PSAIMS pada kerangka Pertamina Hulu Energi Subholding Upstream dikelompokkan ke dalam 4 pilar utama yang mencakup 15 elemen, yaitu:",
         "pillars": [
                 [
-                        "Regulatory and Standards Compliance (Pemenuhan Peraturan dan Standar)",
+                        "Pemenuhan Peraturan dan Standar (Regulatory and Standards Compliance)",
                         "Meliputi Elemen 1, Izin Operasi, yang mencakup pemenuhan perizinan kegiatan operasional; serta Elemen 2, Pemenuhan Standar Teknis, yang mencakup penerapan regulasi, persyaratan teknis, standar industri, dan ketentuan keselamatan fasilitas."
                 ],
                 [
-                        "Understanding and Communicating Process Safety Risks (Memahami dan Mengomunikasikan Risiko Keselamatan Proses)",
+                        "Memahami dan Mengomunikasikan Risiko Keselamatan Proses (Understanding and Communicating Process Safety Risks)",
                         "Meliputi Elemen 3, Informasi Keselamatan Proses; Elemen 4, Analisis Bahaya Proses; Elemen 5, Komunikasi dan Kesadaran Keselamatan Proses; serta Elemen 6, Kompetensi Keselamatan Proses. Pilar ini berfokus pada identifikasi potensi bahaya, penilaian risiko, penyampaian informasi keselamatan, serta pengembangan kompetensi pekerja."
                 ],
                 [
-                        "Facility Operation and Maintenance (Operasi dan Pemeliharaan Fasilitas)",
+                        "Operasi dan Pemeliharaan Fasilitas (Facility Operation and Maintenance)",
                         "Meliputi Elemen 7, Kesiapan Operasi dan Start-Up; Elemen 8, Pengendalian Operasi; Elemen 9, Integritas dan Keandalan Peralatan; Elemen 10, Manajemen Perubahan Fasilitas; serta Elemen 11, Kesiapan Menghadapi Kecelakaan Besar. Pilar ini mencakup pengendalian kegiatan operasi, inspeksi dan pemeliharaan peralatan, pengelolaan perubahan fasilitas, serta kesiapsiagaan menghadapi keadaan darurat."
                 ],
                 [
-                        "Learning from Experience (Belajar dari Pengalaman)",
+                        "Belajar dari Pengalaman (Learning from Experience)",
                         "Meliputi Elemen 12, Investigasi Kecelakaan Proses; Elemen 13, Belajar dari Kejadian; Elemen 14, Audit Keselamatan Proses dan Integritas Aset; serta Elemen 15, Pengukuran Kinerja Keselamatan Proses dan Integritas Aset. Pilar ini berfokus pada evaluasi kejadian, identifikasi akar penyebab, pelaksanaan audit, pemantauan indikator kinerja, dan tindakan perbaikan berkelanjutan."
                 ]
         ]
@@ -219,6 +255,19 @@
       if(words.length){const hay=normalize([profileMap[i.audit].name, profileMap[i.audit].label,i.code,i.title,i.description,i.group,i.pic,i.hc,i.referenceText||'',...i.evidence,...i.metadata].join(' '));if(!words.every(w=>hay.includes(w)))return false;}
       return true;
     });
+    // SUPREME: tampilkan Proses 1, lalu ekspektasi 1.1..1.30, dst.
+    // Jika mencari kode eksak (misalnya 2.1), dahulukan hasil tersebut.
+    if(activeAudit==='supreme'){
+      const order=(item)=>{
+        const m=String(item.code).match(/^([1-8])(?:\.(\d+))?$/);
+        return m ? Number(m[1])*1000 + (m[2]===undefined?0:Number(m[2])) : 99999;
+      };
+      filtered.sort((a,b)=>{
+        const exactA=normalize(a.code)===search ? 1 : 0;
+        const exactB=normalize(b.code)===search ? 1 : 0;
+        return exactB-exactA || order(a)-order(b);
+      });
+    }
     context();
     $('#result-count').textContent=filtered.length+' topik';
     $('#active-filter-summary').textContent=(activeAudit==='all'?'Semua audit':profileMap[activeAudit].name)+(words.length?' · Kata kunci: '+search:'');
@@ -238,9 +287,20 @@
     const i=DATA.clauses.find(x=>x.id===id);if(!i)return;
     const p=profileMap[i.audit];
     const list=i.evidence.map(x=>`<li>${esc(x)}</li>`).join('');
+    const supreme2018=i.sourceType==='supreme-2018';
+    const isExpectation=supreme2018 && /^\d+\.\d+$/.test(i.code);
+    const evidenceSection=isExpectation
+      ? `<h3>03 / Penelusuran bukti</h3><p>Butir ini merupakan ringkasan singkat dari PDF SUPREME 2018, bukan checklist auditor. Jenis eviden spesifik harus dikonfirmasi melalui protokol audit terbaru dan fungsi pemilik proses.</p>`
+      : `<h3>03 / Contoh dokumen yang bisa ditelusuri</h3><p>Contoh awal, bukan daftar wajib. Sesuaikan dengan protokol, ruang lingkup, dan izin distribusi.</p><ul>${list}</ul>`;
+    const sourceSection=supreme2018
+      ? `<h3>05 / Rujukan dokumen sumber</h3><p><strong>SUPREME 2018</strong> · ${esc(i.referenceText||'Proses yang relevan dalam PDF SUPREME 2018.')}.</p><p>Rujukan ini dipetakan dari PDF <em>supreme.pdf</em> yang diunggah. PDF tidak dipublikasikan otomatis melalui website. Nomor butir dan halamannya dapat digunakan untuk menelusuri dokumen yang sah secara internal.</p><p class="small-warning">Belum diverifikasi kesesuaiannya dengan Pertamina Standard 2023 maupun SUPREME Internal Audit Protocol (SIAP) yang berlaku.</p>`
+      : p.id==='cdm'
+        ? `<h3>05 / Dasar informasi</h3><p><strong>PTK-018/SKKMA0000/2018/S0 Revisi II.</strong> Untuk dasar pengaturan evaluasi SDM, lihat BAB III.10 pada halaman PDF 68–71. Penjelasan subtopik dalam database tetap merupakan pemetaan tematik, bukan pengganti buku referensi penilaian kinerja KKKS.</p><p data-cdm-source-status role="status">Memeriksa ketersediaan PDF sumber...</p><p><a data-cdm-source-link hidden class="dialog-source" href="${cdmReferencePdf}#page=68" target="_blank" rel="noopener noreferrer">Lihat dokumen PTK, BAB III.10 ↗</a></p>`
+        : `<h3>05 / Dasar informasi</h3><p><a class="dialog-source" href="${esc(i.source)}" target="_blank" rel="noopener noreferrer">Lihat sumber umum terkait (bukan verifikasi klausul) ↗</a></p><p class="small-warning">${esc(p.warning)}</p>`;
     const root = i.code.match(/^(?:[4-9]|10)(?=\.)/);
     const path=root?`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`:`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`;
-    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(i.title)}</h2><p class="dialog-subtitle">${path}</p><div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div><div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section"><h3>03 / Contoh dokumen yang bisa ditelusuri</h3><p>Bukan daftar wajib; sesuaikan dengan protokol, ruang lingkup, dan persetujuan pengendali dokumen.</p><ul>${list}</ul></div><div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div><div class="dialog-section"><h3>05 / Dasar informasi</h3><p><a class="dialog-source" href="${esc(i.source)}" target="_blank" rel="noopener noreferrer">Lihat sumber umum terkait (bukan verifikasi klausul) ↗</a></p><p class="small-warning">${esc(p.warning)}</p></div><div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`;
+    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(i.title)}</h2><p class="dialog-subtitle">${path}</p><div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div><div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div><div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div><div class="dialog-section">${sourceSection}</div><div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`;
+    if(p.id==='cdm') updateCdmReferenceAvailability();
     $('#detail-status').addEventListener('change',(e)=>{saveStatus(i.id,e.target.value);toast('Status lokal diperbarui: '+e.target.value);});
     const dialog=$('#detail-dialog');if(!dialog.open)dialog.showModal();
   }
@@ -271,7 +331,7 @@
     });
     $('#peta-result-count').textContent=entries.length+' kelompok besar';
     $('#peta-empty').classList.toggle('hidden',entries.length>0);
-    $('#peta-list').innerHTML=entries.map(f=>`<details class="peta-card"><summary><span class="peta-number">${String(f.position).padStart(2,'0')}</span><span class="peta-labels"><small>${esc(profileMap[f.audit].name)} · ${esc(f.level)}</small><strong>${esc(f.group)}</strong><span>${esc(f.reference)} · Belum diverifikasi</span></span><span class="peta-chevron">⌄</span></summary><div class="peta-detail"><div class="peta-detail-col"><h3>Indikator penilaian (dari tabel)</h3><ul>${f.indicators.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="peta-detail-col"><h3>Contoh dokumen eviden (dari tabel)</h3><ul>${f.evidence.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="peta-detail-full"><p><strong>Referensi tercantum:</strong> ${esc(f.reference)}. <strong>Peran:</strong> ${esc(f.pic)}.</p><p class="peta-validation">⚠ ${esc(f.validation)}</p><div class="peta-tags">${f.tags.slice(0,9).map(t=>`<span>#${esc(t)}</span>`).join('')}</div><button class="btn btn-outline peta-to-detail" data-peta-audit="${esc(f.audit)}">Jelajahi topik lebih rinci →</button></div></div></details>`).join('');
+    $('#peta-list').innerHTML=entries.map(f=>`<details class="peta-card"><summary><span class="peta-number">${String(f.position).padStart(2,'0')}</span><span class="peta-labels"><small>${esc(profileMap[f.audit].name)} · ${esc(f.level)}</small><strong>${esc(f.group)}</strong><span>${esc(f.reference)} · ${f.audit==='supreme'?'Dari PDF SUPREME 2018':'Perlu verifikasi'}</span></span><span class="peta-chevron">⌄</span></summary><div class="peta-detail"><div class="peta-detail-col"><h3>Indikator penilaian (dari tabel)</h3><ul>${f.indicators.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="peta-detail-col"><h3>Contoh dokumen eviden (dari tabel)</h3><ul>${f.evidence.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div><div class="peta-detail-full"><p><strong>Referensi tercantum:</strong> ${esc(f.reference)}. <strong>Peran:</strong> ${esc(f.pic)}.</p><p class="peta-validation">ⓘ ${esc(f.validation)}</p><div class="peta-tags">${f.tags.slice(0,9).map(t=>`<span>#${esc(t)}</span>`).join('')}</div><button class="btn btn-outline peta-to-detail" data-peta-audit="${esc(f.audit)}">Jelajahi topik lebih rinci →</button></div></div></details>`).join('');
     document.querySelectorAll('.peta-to-detail').forEach(b=>b.addEventListener('click',()=>openAudit(b.dataset.petaAudit)));
   }
   function exportPetaCsv(){
