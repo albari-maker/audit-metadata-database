@@ -119,6 +119,33 @@
         </div>`;
       return;
     }
+    // Audit CSMS - keterangan berdasarkan naskah yang diberikan pemilik website (v1.13).
+    // Enam tahapan dipaparkan sebagai panduan; validasi klausul tetap menggunakan dokumen resmi.
+    if (p.id === 'csms') {
+      const stages = [
+        ['Risk Assessment (Penilaian Risiko)', 'Penilaian terhadap identifikasi potensi bahaya, tingkat risiko pekerjaan yang akan dikontrakkan, dampak terhadap keselamatan dan kesehatan kerja, keamanan, serta lingkungan, dan penetapan kategori risiko sebagai dasar penerapan persyaratan HSSE dalam pelaksanaan pekerjaan.'],
+        ['Pre-Qualification (Penilaian Kualifikasi)', 'Penilaian terhadap kelengkapan dan kesesuaian dokumen persyaratan HSSE, penerapan kebijakan keselamatan, kompetensi tenaga kerja, ketersediaan prosedur kerja aman, pengalaman pelaksanaan pekerjaan, serta rekam jejak kinerja HSSE kontraktor sebagai dasar penentuan kelayakan dalam mengikuti proses pengadaan.'],
+        ['Selection (Seleksi)', 'Penilaian terhadap kemampuan kontraktor dalam memenuhi persyaratan HSSE yang ditetapkan perusahaan melalui evaluasi kesesuaian HSSE Plan, metode pelaksanaan pekerjaan, kesiapan personel dan sumber daya, serta kecukupan rencana pengendalian risiko sebagai pertimbangan dalam proses pemilihan kontraktor.'],
+        ['Pre-Job Assessment (Penilaian Sebelum Bekerja)', 'Penilaian terhadap kesiapan kontraktor sebelum pelaksanaan pekerjaan melalui verifikasi kompetensi dan kelengkapan personel, kelayakan peralatan, penerapan prosedur kerja aman, identifikasi bahaya, kesiapan pengendalian risiko, serta pelaksanaan komunikasi keselamatan dan persiapan mobilisasi sesuai persyaratan HSSE.'],
+        ['Work in Progress Assessment (Penilaian Berjalan)', 'Penilaian terhadap konsistensi penerapan persyaratan HSSE selama pelaksanaan pekerjaan, kepatuhan terhadap prosedur keselamatan, efektivitas pengendalian risiko, pelaksanaan inspeksi dan pengawasan lapangan, pencapaian indikator kinerja HSSE, pelaporan serta investigasi insiden, dan efektivitas tindak lanjut terhadap temuan ketidaksesuaian.'],
+        ['Final Evaluation (Penilaian Akhir)', 'Penilaian terhadap keseluruhan kinerja HSSE kontraktor setelah penyelesaian pekerjaan berdasarkan pencapaian indikator keselamatan, kesesuaian pelaksanaan HSSE Plan, kepatuhan terhadap persyaratan kontrak, penyelesaian temuan dan tindakan korektif, serta penetapan hasil evaluasi sebagai dasar pertimbangan kelayakan kontraktor dalam pelaksanaan pekerjaan berikutnya.']
+      ];
+      el.innerHTML = `
+        <div class="context-head"><h3>Audit CSMS (Contractor Safety Management System)</h3></div>
+        <div class="overview-section">
+          <h4>Acuan Pelaksanaan</h4>
+          <p>Pedoman Tata Kerja SKK Migas Nomor PTK-005/SKKMA0000/2018/S0 tentang Pengelolaan Kesehatan, Keselamatan Kerja dan Lindungan Lingkungan di Kegiatan Usaha Hulu Minyak dan Gas Bumi, khususnya BAB IV tentang Pengelolaan Kesehatan, Keselamatan Kerja dan Lindungan Lingkungan untuk Mitra Kerja KKKS. Pelaksanaan audit di lingkungan Pertamina Hulu Energi juga mengacu pada Tata Kerja Organisasi (TKO) Nomor B8-004/PHE04000/2021-S9 Revisi 1 tentang Pengelolaan <em>Contractor Safety Management System</em> (CSMS), serta ISO 19011:2018 sebagai pedoman pelaksanaan audit sistem manajemen.</p>
+        </div>
+        <div class="overview-section">
+          <h4>Summary</h4>
+          <p>Audit CSMS merupakan audit sistem manajemen keselamatan kontraktor yang dilaksanakan untuk mengevaluasi kesesuaian, kesiapan, dan efektivitas penerapan <em>Health, Safety, Security, and Environment</em> (HSSE) oleh perusahaan kontraktor atau mitra kerja dalam melaksanakan pekerjaan berdasarkan persyaratan keselamatan yang ditetapkan oleh perusahaan pemberi kerja. Pelaksanaan audit dilakukan melalui pemeriksaan dokumen, wawancara, verifikasi lapangan, serta pemantauan kinerja HSSE kontraktor sejak tahap penilaian risiko, proses kualifikasi dan seleksi, persiapan pekerjaan, pelaksanaan kontrak, hingga evaluasi akhir pekerjaan. Hasil audit menjadi dasar penilaian kelayakan kontraktor, identifikasi ketidaksesuaian, penetapan tindakan korektif, serta peningkatan kinerja HSSE dalam upaya pencegahan kecelakaan kerja, penyakit akibat kerja, kerusakan lingkungan, dan risiko operasional perusahaan.</p>
+          <p><strong>Evaluasi CSMS dikelompokkan ke dalam 6 tahapan utama, yaitu:</strong></p>
+          <ol class="overview-pillars">
+            ${stages.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
+          </ol>
+        </div>`;
+      return;
+    }
     // Audit Surveilans - revisi ringkasan dan delapan komponen (v1.12).
     // Semua uraian mengacu pada naskah yang diberikan pemilik website.
     if (p.id === 'surveilans') {
@@ -302,7 +329,7 @@
       ? `<h3>05 / Rujukan dokumen sumber</h3><p><strong>SUPREME 2018</strong> · ${esc(i.referenceText||'Proses yang relevan dalam PDF SUPREME 2018.')}.</p><p>Rujukan ini dipetakan dari PDF <em>supreme.pdf</em> yang diunggah. PDF tidak dipublikasikan otomatis melalui website. Nomor butir dan halamannya dapat digunakan untuk menelusuri dokumen yang sah secara internal.</p><p class="small-warning">Belum diverifikasi kesesuaiannya dengan Pertamina Standard 2023 maupun SUPREME Internal Audit Protocol (SIAP) yang berlaku.</p>`
       : p.id==='cdm'
         ? `<h3>05 / Dasar informasi</h3><p><strong>PTK-018/SKKMA0000/2018/S0 Revisi II.</strong> Untuk dasar pengaturan evaluasi SDM, lihat BAB III.10 pada halaman PDF 68–71. Penjelasan subtopik dalam database tetap merupakan pemetaan tematik, bukan pengganti buku referensi penilaian kinerja KKKS.</p><p data-cdm-source-status role="status">Memeriksa ketersediaan PDF sumber...</p><p><a data-cdm-source-link hidden class="dialog-source" href="${cdmReferencePdf}#page=68" target="_blank" rel="noopener noreferrer">Lihat dokumen PTK, BAB III.10 ↗</a></p>`
-        : `<h3>05 / Dasar informasi</h3><p><a class="dialog-source" href="${esc(i.source)}" target="_blank" rel="noopener noreferrer">Lihat sumber umum terkait (bukan verifikasi klausul) ↗</a></p>${p.id==='surveilans'?'':`<p class="small-warning">${esc(p.warning)}</p>`}`;
+        : `<h3>05 / Dasar informasi</h3><p><a class="dialog-source" href="${esc(i.source)}" target="_blank" rel="noopener noreferrer">Lihat sumber umum terkait (bukan verifikasi klausul) ↗</a></p>${(p.id==='surveilans'||p.id==='csms')?'':`<p class="small-warning">${esc(p.warning)}</p>`}`;
     const root = i.code.match(/^(?:[4-9]|10)(?=\.)/);
     const path=root?`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`:`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`;
     $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(i.title)}</h2><p class="dialog-subtitle">${path}</p><div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div><div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div><div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div><div class="dialog-section">${sourceSection}</div><div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`;

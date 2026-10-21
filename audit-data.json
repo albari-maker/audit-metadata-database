@@ -1,7 +1,7 @@
 {
   "title": "Audit Metadata Database",
   "subtitle": "Panduan publik audit dari kelompok besar hingga topik dan contoh bukti",
-  "version": "1.8.0",
+  "version": "1.13.0",
   "date": "2026-10-21",
   "notice": "SUPREME versi 2018 pada PDF yang diunggah mencantumkan 8 proses dan 191 ekspektasi. Ringkasan butir dan pemetaan halaman telah disesuaikan ke dokumen tersebut. Tidak otomatis mewakili standar/protokol SUPREME edisi 2023 atau SIAP. Data selain SUPREME tetap mengikuti pemetaan sebelumnya.",
   "references": [
@@ -279,20 +279,23 @@
       "id": "csms",
       "name": "Audit CSMS",
       "label": "Kontraktor (tambahan)",
-      "short": "Orientasi evaluasi pengelolaan K3LL kontraktor, dari pra-kualifikasi sampai evaluasi akhir.",
-      "purpose": "Membantu menjelaskan tahapan pengawasan K3LL kontraktor dan contoh dokumen.",
+      "short": "Audit pengelolaan HSSE kontraktor melalui enam tahapan, dari penilaian risiko hingga evaluasi akhir pekerjaan.",
+      "purpose": "Memudahkan pemahaman acuan, tahapan pelaksanaan, dan persiapan dokumen keselamatan kontraktor.",
       "audience": "SCM, HSE, Pengelola Kontrak, HC",
-      "version": "PTK-005 (cek revisi berlaku)",
-      "confidence": "Perlu validasi",
+      "version": "PTK-005/SKKMA0000/2018/S0; TKO B8-004/PHE04000/2021-S9 Rev. 1",
+      "confidence": "Panduan CSMS",
       "icon": "briefcase",
       "color": "#64748B",
       "source": "https://literasihukum.com/public/index.php/en/regulations/329642/pedoman-tata-kerja-pengelolaan-kesehatan-keselamatan-kerja-dan-lindungan-lingkungan-di-kegiatan-usaha-hulu-minyak-dan-gas-bumi?download=1",
       "steps": [
-        "Pahami risiko pekerjaan kontraktor.",
-        "Pastikan penilaian kualifikasi dan evaluasi penerapan.",
-        "Tinjau bukti kompetensi dan evaluasi akhir pekerjaan."
+        "Risk Assessment",
+        "Pre-Qualification",
+        "Selection",
+        "Pre-Job Assessment",
+        "Work in Progress Assessment",
+        "Final Evaluation"
       ],
-      "warning": "Tahapan dan penomoran merupakan orientasi dari tabel awal; verifikasi dengan prosedur CSMS yang berlaku."
+      "warning": ""
     }
   ],
   "clauses": [
