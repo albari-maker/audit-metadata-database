@@ -117,25 +117,6 @@
             ${overview.pillars.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
           </ol>
         </div>
-        <div class="overview-section cdm-doc-panel">
-          <h4>Dokumen Dasar Audit CDM SKK Migas</h4>
-          <p class="cdm-doc-lead">Rujukan langsung berdasarkan berkas PTK yang diperiksa, bukan hanya tautan berita atau rangkuman umum.</p>
-          <dl class="cdm-doc-meta">
-            <div><dt>Nomor pedoman</dt><dd>PTK-018/SKKMA0000/2018/S0</dd></div>
-            <div><dt>Revisi dan tanggal</dt><dd>Revisi II · 4 Oktober 2018</dd></div>
-            <div><dt>Judul</dt><dd>Pengelolaan Sumber Daya Manusia Kontraktor Kontrak Kerja Sama</dd></div>
-            <div><dt>Bagian relevan</dt><dd>BAB III Angka 10, Evaluasi Kinerja Pengelolaan SDM KKKS</dd></div>
-            <div><dt>Lokasi dalam dokumen</dt><dd>Halaman tercetak 58–61 · Halaman PDF 68–71 dari 167</dd></div>
-          </dl>
-          <h5>Poin penting yang ditemukan di dokumen</h5>
-          <ul class="cdm-doc-findings">
-            <li><strong>10.1.1:</strong> Evaluasi tahunan terhadap KKKS Produksi dengan prinsip objektif dan transparan (PDF hlm. 68).</li>
-            <li><strong>10.1.2.1–10.1.2.3:</strong> CDM, Human Resource Compliance, dan Kesehatan Kerja (PDF hlm. 69).</li>
-            <li><strong>10.4.1:</strong> Laporan kinerja periode tahun sebelumnya disampaikan pada kuartal pertama tahun berjalan (PDF hlm. 70).</li>
-            <li><strong>10.5.1:</strong> Pelaporan menggunakan standar kebutuhan data pada Lampiran 37 (PDF hlm. 70).</li>
-            <li><strong>10.5.6:</strong> Evaluasi dan pelaporan berkala tindak lanjut perbaikan pada setiap semester tahun berikutnya (PDF hlm. 71).</li>
-          </ul>
-          <p class="cdm-doc-caution"><strong>Catatan sumber:</strong> Butir 10.1.2 menyebut “dua kategori besar”, sedangkan butir 10.1.2.1–10.1.2.3 merinci tiga komponen. Ringkasan ini mengikuti tiga subbutir tersebut. Butir 10.1.4 dan 10.5.2 juga merujuk pada buku referensi penilaian kinerja pengelolaan SDM KKKS; untuk indikator rinci, sumber tambahan itu perlu diperoleh dan diperiksa.</p>
           <div class="cdm-doc-action">
             <p data-cdm-source-status role="status">Memeriksa ketersediaan dokumen PDF...</p>
             <a data-cdm-source-link hidden class="cdm-doc-button" href="${cdmReferencePdf}#page=68" target="_blank" rel="noopener noreferrer">↗ Baca BAB III.10 pada PDF (hlm. 68)</a>
