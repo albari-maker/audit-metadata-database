@@ -1,15 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0c2533" />
-  <meta name="description" content="Panduan audit publik berbasis metadata tagging: pahami jenis audit, klausul dan elemen, contoh bukti, HC, dan istilah penting dalam bahasa sederhana." />
-  <title>Audit Atlas · Database Panduan Audit</title>
-  <link rel="stylesheet" href="style.css?v=glossary-v150-20261022" />
-  <script src="audit-data.js?v=glossary-v150-20261022" defer></script>
-  <script src="script.js?v=glossary-v150-20261022" defer></script>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#0b293a" name="theme-color"/>
+<meta content="Audit Knowledge Base, panduan audit berbasis metadata tagging: kategori, peta audit, klausul, eviden dan glosarium." name="description"/>
+<title>Pertamina Audit Knowledge Base | AuditAtlas</title>
+<!-- AuditAtlas v1.13: Audit Surveilans full overview; no obsolete warning. -->
+<link href="style.css?v=dashboard-v2-20261023" rel="stylesheet"/>
+<script defer="" src="audit-data.js?v=dashboard-v2-20261023"></script>
+<script defer="" src="script.js?v=dashboard-v2-20261023"></script>
+<style>
     #audit-context .overview-section + .overview-section {margin-top:20px;border-top:1px solid #dbe7e3;padding-top:20px}
     #audit-context .overview-section h4 {margin:0 0 10px;font-size:15px;font-weight:800;color:#123c3a}
     #audit-context .overview-section p {margin:8px 0;font-size:14px;line-height:1.8;color:#3d5c64}
@@ -17,75 +19,87 @@
     #audit-context .overview-pillars li {padding-left:5px;margin-bottom:11px;font-size:14px;line-height:1.8}
     #audit-context .overview-pillars li::marker {color:#168d7b;font-weight:800}
   </style>
-</head>
+<link href="dashboard.css?v=dashboard-v2-20261023" rel="stylesheet"/></head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" id="sidebar">
-      <a href="#beranda" class="brand" data-page="beranda" aria-label="Beranda Audit Atlas">
-        <div class="brand-mark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4 10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="2.5" y="2.5" width="19" height="19" rx="6" stroke="currentColor" stroke-opacity=".45"/></svg></div>
-        <div><span class="brand-name">Audit<span>Atlas</span></span><small>Metadata knowledge base</small></div>
-      </a>
-      <div class="workspace-label"><span class="live-dot"></span> PUBLIC KNOWLEDGE BASE <span class="version">v1.5</span></div>
-      <nav aria-label="Navigasi utama" class="primary-nav">
-        <span class="nav-heading">WORKSPACE</span>
-        <button class="nav-link active" data-page="beranda"><span class="nav-icon">▦</span> Ringkasan <span class="nav-key">01</span></button>
-        <button class="nav-link" data-page="jelajahi"><span class="nav-icon">⌕</span> Jelajahi klausul <span class="nav-key">02</span></button>
-        <button class="nav-link" data-page="peta"><span class="nav-icon">▤</span> Peta audit (umum → khusus) <span class="nav-key">03</span></button>
-        <button class="nav-link" data-page="glosarium"><span class="nav-icon">≡</span> Glosarium <span class="nav-key">04</span></button>
-        <button class="nav-link" data-page="panduan"><span class="nav-icon">◈</span> Cara menggunakan <span class="nav-key">05</span></button>
-        <span class="nav-heading margin-top">AKSES CEPAT</span>
-        <div id="sidebar-audits" class="sidebar-audits"></div>
-      </nav>
-      <div class="sidebar-bottom"><div class="sidebar-note"><span class="note-icon">ⓘ</span><p><strong>Basis panduan publik</strong><br>Contoh dokumen, bukan berkas audit asli. Verifikasi selalu dengan standar atau protokol yang berlaku.</p></div><p class="copyright">Disusun untuk membantu pembelajar audit • 2026</p></div>
-    </aside>
-    <div class="overlay-mobile" id="mobile-overlay"></div>
-    <div class="main-area">
-      <header class="topbar">
-        <div class="topbar-left"><button class="icon-button mobile-menu" id="menu-toggle" aria-label="Buka menu">☰</button><div class="breadcrumb">WORKSPACE <span>/</span> <strong id="breadcrumb-current">Ringkasan</strong></div></div>
-        <div class="topbar-right"><span class="topbar-public"><span class="live-dot"></span> Public Edition</span><button class="header-search" id="open-search" aria-label="Cari klausul"><span>⌕</span> Cari dalam database <kbd>/</kbd></button><a class="source-link" target="_blank" rel="noopener noreferrer" href="https://github.com/albari-maker/audit-metadata-database" title="Lihat repository GitHub">↗ <span>GitHub</span></a></div>
-      </header>
-      <main class="content">
-        <section class="page" id="page-beranda">
-          <div class="hero"><div class="hero-copy"><span class="eyebrow"><span class="tiny-square"></span> AUDIT KNOWLEDGE HUB</span><h1>Memahami audit,<br><em>tanpa harus bingung.</em></h1><p>Temukan penjelasan jenis audit, klausul dari umum ke khusus, serta contoh bukti pendukung. Dirancang untuk siapa pun yang baru mulai mempersiapkan audit.</p><div class="hero-actions"><button class="btn btn-primary" data-page="jelajahi">Jelajahi database <span>→</span></button><button class="btn btn-ghost" data-page="peta">Lihat peta audit umum ↗</button></div></div><div class="hero-visual" aria-hidden="true"><div class="radar-circle radar-lg"></div><div class="radar-circle radar-md"></div><div class="radar-circle radar-sm"></div><div class="radar-center">✓</div><span class="radar-label label-one">EVIDENCE</span><span class="radar-label label-two">KLAUSUL</span><span class="radar-label label-three">METADATA</span><div class="visual-corner">KNOWLEDGE<br>MAP / 001</div></div></div>
-          <div class="disclaimer-banner"><span>ⓘ</span><p><strong>Panduan edukatif, bukan protokol audit resmi.</strong> Contoh bukti tidak berarti wajib pada semua audit. ISO 9001:2026 dan ISO 14001:2026 memerlukan pencocokan ulang terhadap naskah standar resmi; elemen audit internal memerlukan checklist yang disahkan.</p></div>
-          <div class="section-title-row"><div><span class="eyebrow eyebrow-dark">OVERVIEW</span><h2>Database dalam angka</h2></div><span class="section-aside">182 topik termasuk 32 peta kelompok besar · semua perlu verifikasi sumber</span></div>
-          <div class="stats-grid"><div class="stat-card"><span class="stat-icon">◫</span><strong id="stat-audits">—</strong><span>Kelompok audit</span><small>Termasuk kategori pelengkap</small></div><div class="stat-card"><span class="stat-icon">▤</span><strong id="stat-clauses">—</strong><span>Topik / klausul</span><small>Ilustratif & terklasifikasi</small></div><div class="stat-card"><span class="stat-icon">⌁</span><strong id="stat-terms">—</strong><span>Istilah glosarium</span><small>Bahasa Indonesia sederhana</small></div><div class="stat-card"><span class="stat-icon">◉</span><strong id="stat-progress">0</strong><span>Topik ditandai siap</span><small>Hanya tersimpan di perangkat ini</small></div></div>
-          <div class="peta-promo"><div><strong>Baru: Peta audit dari umum ke khusus</strong><p>32 kelompok besar dari tabel tambahan, dipisahkan per jenis ISO. Buka indikator, contoh eviden, dan referensi dari tabel di satu tempat.</p></div><button class="btn btn-dark" data-page="peta">Lihat peta audit →</button></div>
-          <div class="section-title-row categories-heading"><div><span class="eyebrow eyebrow-dark">AUDIT DIRECTORY</span><h2>Kenali jenis auditnya</h2></div><button class="link-button" data-page="jelajahi">Lihat semua klausul <span>↗</span></button></div>
-          <div id="audit-grid" class="audit-grid"></div>
-          <div class="bottom-help"><div class="bottom-help-symbol">?</div><div><strong>Baru pertama kali menghadapi audit?</strong><p>Mulai dari jenis audit, pahami topik umumnya, lalu buka contoh bukti dan tanyakan PIC yang tepat.</p></div><button class="btn btn-dark" data-page="panduan">Pelajari alurnya →</button></div>
-        </section>
-        <section class="page hidden" id="page-jelajahi">
-          <div class="page-heading"><div><span class="eyebrow eyebrow-dark">EXPLORE THE LIBRARY</span><h1>Jelajahi klausul <em>& elemen audit.</em></h1><p>Telusuri dari kelompok audit, klausul utama, subklausul, hingga contoh bukti yang sebaiknya dipahami.</p></div><button class="btn btn-outline" id="export-csv">↓ Ekspor hasil (CSV)</button></div>
-          <div class="filter-panel"><label class="search-input"><span>⌕</span><input id="search-input" type="search" placeholder="Cari kata kunci: kompetensi, 7.2, HC, training..." autocomplete="off" aria-label="Cari topik audit"/><kbd>/</kbd></label><div class="filters"><label>Jenis audit <select id="audit-select"><option value="all">Semua jenis audit</option></select></label><label>Peran HC <select id="hc-select"><option value="all">Semua keterlibatan</option><option value="Utama">HC utama</option><option value="Pendukung">HC pendukung</option><option value="Tidak langsung">Tidak langsung</option></select></label><label>Kelompok / klausul <select id="group-select"><option value="all">Semua kelompok</option></select></label><label>Status pencatatan <select id="readiness-select"><option value="all">Semua status</option><option>Belum dicek</option><option>Dalam proses</option><option>Siap</option><option>Perlu konfirmasi</option></select></label></div><div class="filter-footer"><div id="active-filter-summary">Menampilkan seluruh kategori</div><button class="text-button" id="reset-filters">↺ Reset filter</button></div></div>
-          <div id="audit-context" class="audit-context hidden"></div>
-          <div class="result-header"><div><strong id="result-count">0 topik</strong><span> · Pilih topik untuk membuka penjelasan dan bukti</span></div><span class="result-hint">Dari umum → khusus</span></div><div id="result-list" class="result-list"></div><div id="empty-state" class="empty-state hidden"><div>⌕</div><h3>Tidak ada hasil untuk filter ini</h3><p>Coba kata kunci lain atau pilih semua kategori.</p><button class="btn btn-outline" id="empty-reset">Hapus filter</button></div><button id="load-more" class="btn btn-more hidden">Tampilkan lebih banyak ↓</button>
-        </section>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a aria-label="Pertamina Audit Knowledge Base, halaman Ringkasan" class="brand" data-page="beranda" href="#beranda"><img alt="PERTAMINA | AUDIT KNOWLEDGE BASE" loading="eager" src="logo-reference.png"/></a>
+<div class="workspace-label"><span class="live-dot"></span><span>Public Edition</span><span class="version">v2.0</span></div>
+<nav aria-label="Navigasi utama" class="primary-nav">
+<span class="nav-heading">WORKSPACE</span>
+<button class="nav-link active" data-page="beranda"><span aria-hidden="true" class="nav-icon">⌂</span><span class="nav-label">Ringkasan</span><span aria-hidden="true" class="nav-chevron">›</span></button>
+<button class="nav-link" data-page="jelajahi"><span aria-hidden="true" class="nav-icon">⌕</span><span class="nav-label">Jelajahi klausul</span><span aria-hidden="true" class="nav-chevron">›</span></button>
+<button class="nav-link" data-page="peta"><span aria-hidden="true" class="nav-icon">⚭</span><span class="nav-label">Peta audit (umum → khusus)</span><span aria-hidden="true" class="nav-chevron">›</span></button>
+<button class="nav-link" data-page="glosarium"><span aria-hidden="true" class="nav-icon">▤</span><span class="nav-label">Glosarium</span><span aria-hidden="true" class="nav-chevron">›</span></button>
+<button class="nav-link" data-page="panduan"><span aria-hidden="true" class="nav-icon">☷</span><span class="nav-label">Panduan penggunaan</span><span aria-hidden="true" class="nav-chevron">›</span></button>
+<span class="nav-heading margin-top">AKSES CEPAT</span>
+<div class="sidebar-audits" id="sidebar-audits"></div>
+</nav>
+<div class="sidebar-bottom"><div class="sidebar-note"><span class="note-icon">ⓘ</span><p><strong>Basis panduan publik</strong><br/>Contoh dokumen, bukan berkas audit asli. Verifikasi selalu dengan standar atau protokol yang berlaku.</p></div><p class="copyright">Disusun untuk membantu pembelajar audit • 2026</p></div>
+</aside>
+<div class="overlay-mobile" id="mobile-overlay"></div>
+<div class="main-area">
+<header class="topbar">
+<div class="topbar-left"><button aria-label="Buka menu" class="icon-button mobile-menu" id="menu-toggle">☰</button><div class="breadcrumb">WORKSPACE <span>/</span> <strong id="breadcrumb-current">Ringkasan</strong></div></div>
+<div class="topbar-right"><span class="topbar-public"><span class="live-dot"></span> Public Edition</span><button aria-label="Cari klausul" class="header-search" id="open-search"><span>⌕</span> Cari dalam database <kbd>/</kbd></button><a class="source-link" href="https://github.com/albari-maker/audit-metadata-database" rel="noopener noreferrer" target="_blank" title="Buka repository GitHub">GitHub ↗</a><span aria-label="Ikon notifikasi dekoratif" class="top-icon" role="img">♧<i></i></span><span aria-label="Avatar ilustratif" class="top-avatar" role="img">AZ</span></div>
+</header>
+<main class="content">
+<section class="page" id="page-beranda"><div class="hero">
+<div class="hero-copy">
+<div aria-hidden="true" class="hero-accent"><span></span><span></span></div>
+<span class="hero-overline">AUDIT KNOWLEDGE BASE / PUBLIC EDITION</span>
+<h1>Peta audit,<br/><em>dari umum ke khusus.</em></h1>
+<p>Mulai dari jenis audit, pilih kelompok besar, pahami klausul dan indikator, lalu lihat contoh dokumen pendukung yang relevan.</p>
+<form class="hero-search" id="hero-search-form" role="search">
+<span aria-hidden="true" class="hero-search-symbol">⌕</span>
+<input aria-label="Cari dalam basis pengetahuan audit" id="hero-search-input" placeholder="Cari pilar, klausul, indikator atau dokumen..." type="search"/>
+<button type="submit">Cari <span aria-hidden="true">→</span></button>
+</form>
+<span class="hero-tip">Temukan informasi dengan kode klausul atau kata kunci sederhana.</span>
+</div>
+<div class="hero-visual">
+<div class="hero-speech"><strong>Halo!</strong><span>Selamat datang di <b>Audit Knowledge Base.</b> Di sini kamu bisa mempelajari persyaratan audit, indikator, dan contoh dokumen pendukungnya.</span></div>
+<img alt="Ilustrasi pekerja berseragam menyapa pengunjung AuditAtlas" class="hero-worker" loading="eager" src="pekerja-pertamina.png"/>
+<span aria-hidden="true" class="hero-halo"></span>
+</div></div>
+<div class="stats-grid dashboard-stats">
+<div class="stat-card"><span class="stat-icon stat-icon-blue">▤</span><div class="stat-copy"><strong id="stat-audits">0</strong><span>Jenis audit</span><small>Kategori dalam database</small></div><i>›</i></div>
+<div class="stat-card"><span class="stat-icon stat-icon-lime">▱</span><div class="stat-copy"><strong id="stat-framework">0</strong><span>Pilar audit</span><small>Kelompok terpetakan</small></div><i>›</i></div>
+<div class="stat-card"><span class="stat-icon stat-icon-red">▤</span><div class="stat-copy"><strong id="stat-clauses">0</strong><span>Topik / indikator</span><small>Dalam basis pengetahuan</small></div><i>›</i></div>
+<div class="stat-card"><span class="stat-icon stat-icon-dark">▱</span><div class="stat-copy"><strong id="stat-evidence">0</strong><span>Contoh eviden</span><small>Entri referensi pendukung</small></div><i>›</i></div>
+</div>
+<div class="dashboard-hidden-stats"><span id="stat-terms"></span><span id="stat-progress"></span></div>
+<div class="directory-shell">
+<div class="section-title-row categories-heading"><div><span class="eyebrow eyebrow-dark">TELUSURI DATABASE</span><h2>Jelajahi berdasarkan jenis audit</h2></div><button class="link-button" data-page="jelajahi">Lihat semua <span>→</span></button></div>
+<div class="audit-grid" id="audit-grid"></div>
+</div>
+<div class="disclaimer-banner"><span>ⓘ</span><p><strong>Panduan edukatif, bukan protokol audit resmi.</strong> Contoh eviden adalah referensi penyiapan, bukan dokumen perusahaan. Persyaratan dan edisi standar harus diverifikasi dengan sumber resmi yang berlaku.</p></div>
+<div class="bottom-help"><div class="bottom-help-symbol">?</div><div><strong>Baru pertama kali mempersiapkan audit?</strong><p>Pilih jenis audit, pelajari klausul atau proses, lalu temukan contoh dokumen yang relevan.</p></div><button class="btn btn-dark" data-page="panduan">Panduan penggunaan →</button></div>
+</section>
+<section class="page hidden" id="page-jelajahi">
+<div class="page-heading"><div><span class="eyebrow eyebrow-dark">EXPLORE THE LIBRARY</span><h1>Jelajahi klausul <em>&amp; elemen audit.</em></h1><p>Telusuri dari kelompok audit, klausul utama, subklausul, hingga contoh bukti yang sebaiknya dipahami.</p></div></div>
+<div class="filter-panel"><label class="search-input"><span>⌕</span><input aria-label="Cari topik audit" autocomplete="off" id="search-input" placeholder="Cari kata kunci: kompetensi, 7.2, HC, training..." type="search"/><kbd>/</kbd></label><div class="filters"><label>Jenis audit <select id="audit-select"><option value="all">Semua jenis audit</option></select></label><label>Peran HC <select id="hc-select"><option value="all">Semua keterlibatan</option><option value="Utama">HC utama</option><option value="Pendukung">HC pendukung</option><option value="Tidak langsung">Tidak langsung</option></select></label><label>Kelompok / klausul <select id="group-select"><option value="all">Semua kelompok</option></select></label><label>Status pencatatan <select id="readiness-select"><option value="all">Semua status</option><option>Belum dicek</option><option>Dalam proses</option><option>Siap</option><option>Perlu konfirmasi</option></select></label></div><div class="filter-footer"><div id="active-filter-summary">Menampilkan seluruh kategori</div><button class="text-button" id="reset-filters">↺ Reset filter</button></div></div>
+<div class="audit-context hidden" id="audit-context"></div>
+<div class="result-header"><div><strong id="result-count">0 topik</strong><span> · Pilih topik untuk membuka penjelasan dan bukti</span></div><span class="result-hint">Dari umum → khusus</span></div><div class="result-list" id="result-list"></div><div class="empty-state hidden" id="empty-state"><div>⌕</div><h3>Tidak ada hasil untuk filter ini</h3><p>Coba kata kunci lain atau pilih semua kategori.</p><button class="btn btn-outline" id="empty-reset">Hapus filter</button></div><button class="btn btn-more hidden" id="load-more">Tampilkan lebih banyak ↓</button>
+</section>
+<section class="page hidden" id="page-peta">
 
-        <section class="page hidden" id="page-peta">
-          <div class="page-heading"><div><span class="eyebrow eyebrow-dark">AUDIT HIERARCHY MAP / 32 PILAR</span><h1>Peta audit, <em>dari umum ke khusus.</em></h1><p>Mulai dari jenis audit, pilih kelompok besar, lihat acuan yang disebut dalam tabel, kemudian baca indikator dan contoh dokumen yang mungkin relevan.</p></div><button class="btn btn-outline" id="peta-export">↓ Ekspor peta (CSV)</button></div>
-          <div class="disclaimer-banner"><span>ⓘ</span><p><strong>Referensi pada tabel belum diverifikasi.</strong> Penomoran PTK, hubungan OSHA/CCPS dengan PSAIMS, pengelompokan elemen SUPREME, serta klausul ISO adalah rujukan awal sesuai file yang dikirim, bukan klaim bahwa klausul tersebut sudah cocok dengan protokol audit resmi.</p></div>
-          <div class="filter-panel peta-filter"><label class="search-input"><span>⌕</span><input id="peta-search" type="search" placeholder="Cari pilar: kinerja, HIRADC, KPI, MOC, P2K3..." aria-label="Cari kelompok besar audit" autocomplete="off" /></label><div class="peta-toolbar"><label>Jenis audit <select id="peta-audit-select"><option value="all">Semua jenis audit</option></select></label><span id="peta-result-count">32 kelompok besar</span></div></div>
-          <div class="peta-route"><span>01 · JENIS AUDIT</span><b>→</b><span>02 · KELOMPOK BESAR</span><b>→</b><span>03 · INDIKATOR</span><b>→</b><span>04 · CONTOH EVIDEN</span></div>
-          <div id="peta-list" class="peta-list"></div>
-          <div id="peta-empty" class="empty-state hidden"><div>⌕</div><h3>Tidak ada peta yang sesuai</h3><p>Coba kata kunci atau jenis audit lain.</p></div>
-        </section>
-        <section class="page hidden" id="page-glosarium">
-          <div class="page-heading"><div><span class="eyebrow eyebrow-dark">LAMPIRAN · AUDIT DICTIONARY</span><h1>Glosarium <em>istilah audit.</em></h1><p>Kamus digital audit dalam bahasa Indonesia. Telusuri istilah umum, istilah khusus setiap audit, dan perbedaan istilah yang sering tertukar.</p></div><button class="btn btn-outline" id="glossary-export">↓ Ekspor glosarium (CSV)</button></div>
-          <div class="glossary-notice">Disusun sebagai panduan edukatif. Definisi normatif, klausul, dan istilah khusus internal tetap mengikuti dokumen resmi serta edisi yang berlaku.</div>
-          <div class="glossary-controls"><label class="search-input glossary-search"><span>⌕</span><input id="glossary-search" type="search" placeholder="Cari EnPI, ALARP, CSMS, Corrective Action..." autocomplete="off" aria-label="Cari istilah dan definisi audit"/></label><label class="glossary-category-label">Kategori audit<select id="glossary-category" aria-label="Filter kategori audit"><option value="all">Semua kategori audit</option></select></label><button class="btn btn-outline glossary-reset" id="glossary-reset">↺ Reset</button></div>
-          <div class="glossary-meta"><span id="glossary-result-count" aria-live="polite">0 istilah</span><span>Urutan: Istilah Umum → Jenis Audit → Perbedaan Istilah</span></div>
-          <nav class="glossary-quick-nav" id="glossary-quick-nav" aria-label="Navigasi kategori glosarium"></nav>
-          <div id="glossary-list" class="glossary-sections"></div>
-          <div id="glossary-empty" class="empty-state hidden"><div>⌕</div><h3>Istilah tidak ditemukan</h3><p>Coba singkatan, nama audit, atau kata kunci lain.</p></div>
-          <section class="glossary-differences" id="glossary-differences" aria-labelledby="glossary-differences-title"><div class="glossary-group-heading"><div><span class="glossary-group-label">BAGIAN PENUTUP</span><h2 id="glossary-differences-title">Perbedaan istilah yang sering tertukar</h2><p>Memahami dua istilah yang terlihat serupa tetapi digunakan untuk tujuan berbeda.</p></div><span id="glossary-diff-count"></span></div><div class="glossary-diff-grid" id="glossary-diff-list"></div></section>
-        </section>
-        <section class="page hidden" id="page-panduan"><div class="page-heading"><div><span class="eyebrow eyebrow-dark">GETTING STARTED</span><h1>Dari bingung <em>menjadi siap.</em></h1><p>Empat langkah sederhana menggunakan database secara bertanggung jawab.</p></div></div><div class="guide-steps"><article><span>01</span><div><h3>Pilih jenis audit</h3><p>Contoh: ISO 9001 untuk mutu, ISO 45001 untuk K3, atau SUPREME untuk manajemen HSSE. Periksa tujuan dan ruang lingkup audit sebelum mencari bukti.</p></div></article><article><span>02</span><div><h3>Telusuri klausul dari umum ke khusus</h3><p>Mulai dari kelompok seperti Dukungan, kemudian buka kode spesifik seperti 7.2 Kompetensi. Nama kode harus disamakan dengan edisi standar yang digunakan auditor.</p></div></article><article><span>03</span><div><h3>Cari pemilik dan contoh bukti</h3><p>Gunakan filter HC, lihat contoh dokumen, lalu konfirmasi PIC dan versi dokumen sebenarnya. Jangan mengunggah data pekerja, catatan kesehatan, atau bukti rahasia ke website publik.</p></div></article><article><span>04</span><div><h3>Tandai status persiapan</h3><p>Pilih Belum dicek, Dalam proses, Siap, atau Perlu konfirmasi. Status disimpan lokal di browser Anda, tidak menjadi bukti resmi dan tidak tersinkron ke GitHub.</p></div></article></div><div class="guide-columns"><div class="info-card"><h3>Struktur informasi</h3><p><strong>Jenis Audit</strong> → <strong>Kelompok Umum</strong> → <strong>Kode Klausul / Elemen</strong> → <strong>Penjelasan sederhana</strong> → <strong>Contoh Bukti</strong> → <strong>Status</strong>.</p></div><div class="info-card"><h3>Catatan versi dan verifikasi</h3><p>ISO 9001:2026 dan ISO 14001:2026 telah diterbitkan; ISO 45001 menggunakan edisi 2018 dengan amendemen 2024; ISO 50001 menggunakan 2018 dengan amendemen 2024. Pemetaan dari Excel awal bukan pengganti standar berlisensi atau daftar audit yang disahkan.</p></div></div><div class="info-card references-card"><h3>Sumber rujukan publik dan kebijakan data</h3><p>Tautan di bawah adalah titik awal pengecekan. Sebagian topik internal (CDM, PSAIMS, SIAP SELAMAT, LENS) memerlukan dokumen checklist resmi dan persetujuan penggunaannya.</p><div id="sources-list" class="sources-list"></div></div></section>
-      </main>
-      <footer class="footer"><span>© 2026 AuditAtlas · Public edition · Educational reference only</span><span>Disusun dari pemetaan awal, bukan salinan standar ISO atau protokol internal</span></footer>
-    </div>
-  </div>
-  <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-topbar"><div class="dialog-logo">AA<span>.</span></div><button class="dialog-close" id="dialog-close" aria-label="Tutup detail">✕</button></div><div class="dialog-scroll" id="dialog-content"></div></dialog>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="peta-intro-banner"><div class="peta-intro-copy"><span class="mini-accent"></span><div class="eyebrow eyebrow-dark">PETA AUDIT / UMUM KE KHUSUS</div><h1>Peta audit,<br/><em>dari umum ke khusus.</em></h1><p>Pilih jenis audit, telusuri kelompok besar, dan lihat indikator serta contoh eviden dari database yang sudah dipetakan.</p></div><img alt="Ilustrasi pekerja memberi salam" loading="lazy" src="pekerja-pertamina.png"/></div>
+<div class="peta-subheader"><div><h2>Jelajahi peta audit</h2><p>Pemetaan berbasis data referensi dan contoh indikator yang perlu diverifikasi sesuai standar berlaku.</p></div><button class="btn btn-outline" id="peta-export">↓ Ekspor peta (CSV)</button></div>
+
+<div class="disclaimer-banner"><span>ⓘ</span><p><strong>Referensi untuk sebagian kelompok masih memerlukan verifikasi.</strong> Penomoran PTK, hubungan OSHA/CCPS dengan PSAIMS, serta klausul ISO adalah rujukan awal sesuai file yang dikirim. Bagian SUPREME telah dipetakan ulang berdasarkan PDF 2018; kecocokannya dengan standar dan protokol audit tahun 2023 belum diverifikasi.</p></div>
+<div class="filter-panel peta-filter"><label class="search-input"><span>⌕</span><input aria-label="Cari kelompok besar audit" autocomplete="off" id="peta-search" placeholder="Cari pilar: kinerja, HIRADC, KPI, MOC, P2K3..." type="search"/></label><div class="peta-toolbar"><label>Jenis audit <select id="peta-audit-select"><option value="all">Semua jenis audit</option></select></label><span id="peta-result-count">37 kelompok besar</span></div></div>
+<div class="peta-route"><span>01 · JENIS AUDIT</span><b>→</b><span>02 · KELOMPOK BESAR</span><b>→</b><span>03 · INDIKATOR</span><b>→</b><span>04 · CONTOH EVIDEN</span></div>
+<div class="peta-list" id="peta-list"></div>
+<div class="empty-state hidden" id="peta-empty"><div>⌕</div><h3>Tidak ada peta yang sesuai</h3><p>Coba kata kunci atau jenis audit lain.</p></div>
+</section>
+<section class="page hidden" id="page-glosarium"><div class="page-heading"><div><span class="eyebrow eyebrow-dark">AUDIT DICTIONARY</span><h1>Glosarium <em>istilah audit.</em></h1><p>Kamus ringkas istilah yang sering dijumpai saat mengumpulkan dan menyiapkan bukti audit.</p></div></div><label class="search-input glossary-search"><span>⌕</span><input aria-label="Cari glosarium" id="glossary-search" placeholder="Cari istilah, misalnya evidence atau PIC..." type="search"/></label><div class="glossary-grid" id="glossary-list"></div></section>
+<section class="page hidden" id="page-panduan"><div class="page-heading"><div><span class="eyebrow eyebrow-dark">GETTING STARTED</span><h1>Dari bingung <em>menjadi siap.</em></h1><p>Empat langkah sederhana menggunakan database secara bertanggung jawab.</p></div></div><div class="guide-steps"><article><span>01</span><div><h3>Pilih jenis audit</h3><p>Contoh: ISO 9001 untuk mutu, ISO 45001 untuk K3, atau SUPREME untuk manajemen HSSE. SUPREME pada versi ini memakai sumber PDF 2018, bukan protokol 2023. Periksa tujuan dan ruang lingkup audit sebelum mencari bukti.</p></div></article><article><span>02</span><div><h3>Telusuri klausul dari umum ke khusus</h3><p>Mulai dari kelompok seperti Dukungan, kemudian buka kode spesifik seperti 7.2 Kompetensi. Nama kode harus disamakan dengan edisi standar yang digunakan auditor.</p></div></article><article><span>03</span><div><h3>Cari pemilik dan contoh bukti</h3><p>Gunakan filter HC, lihat contoh dokumen, lalu konfirmasi PIC dan versi dokumen sebenarnya. Jangan mengunggah data pekerja, catatan kesehatan, atau bukti rahasia ke website publik.</p></div></article><article><span>04</span><div><h3>Tandai status persiapan</h3><p>Pilih Belum dicek, Dalam proses, Siap, atau Perlu konfirmasi. Status disimpan lokal di browser Anda, tidak menjadi bukti resmi dan tidak tersinkron ke GitHub.</p></div></article></div><div class="guide-columns"><div class="info-card"><h3>Struktur informasi</h3><p><strong>Jenis Audit</strong> → <strong>Kelompok Umum</strong> → <strong>Kode Klausul / Elemen</strong> → <strong>Penjelasan sederhana</strong> → <strong>Contoh Bukti</strong> → <strong>Status</strong>.</p></div><div class="info-card"><h3>Catatan versi dan verifikasi</h3><p>ISO 9001:2026 dan ISO 14001:2026 telah diterbitkan; ISO 45001 menggunakan edisi 2018 dengan amendemen 2024; ISO 50001 menggunakan 2018 dengan amendemen 2024. Pemetaan dari Excel awal bukan pengganti standar berlisensi atau daftar audit yang disahkan.</p></div></div><div class="info-card references-card"><h3>Sumber rujukan publik dan kebijakan data</h3><p>Tautan di bawah adalah titik awal pengecekan. Sebagian topik (CDM, PSAIMS, SIAP SELAMAT, LENS) memerlukan dokumen checklist resmi dan persetujuan penggunaannya.</p><div class="sources-list" id="sources-list"></div></div></section>
+</main>
+<footer class="footer"><span>© 2026 Audit Knowledge Base · Public Edition</span><span>Proyek edukatif independen, bukan portal resmi Pertamina dan bukan pengganti protokol audit.</span></footer>
+</div>
+</div>
+<dialog aria-labelledby="dialog-title" class="detail-dialog" id="detail-dialog"><div class="dialog-topbar"><div class="dialog-logo">AA<span>.</span></div><button aria-label="Tutup detail" class="dialog-close" id="dialog-close">✕</button></div><div class="dialog-scroll" id="dialog-content"></div></dialog>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
 </body>
 </html>

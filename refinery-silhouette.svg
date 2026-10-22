@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" aria-hidden="true">
+<defs><linearGradient id="tower" x1="0" x2="1"><stop stop-color="#a2c7db" stop-opacity=".56"/><stop offset=".55" stop-color="#e9f8ff" stop-opacity=".74"/><stop offset="1" stop-color="#89adc7" stop-opacity=".36"/></linearGradient></defs>
+<g stroke="#84acc6" stroke-width="3" opacity=".48" fill="none">
+<path d="M0 365h900M0 403h900M15 330H880M15 380H880"/>
+<path d="M40 338v-165h38v165M54 175v-31h10v31M115 338v-120h45v120M130 218v-61h14v61M190 342V83h52v259M210 83V46h12v37M285 344V165h38v179M298 165v-31h12v31M365 345V105h44v240M380 105V68h13v37M460 342V200h35v142M473 200v-44h10v44M550 346V66h47v280M567 66V29h13v37M640 346V163h49v183M655 163v-27h12v27M756 345V118h44v227M771 118V78h13v40"/>
+<path d="M20 305h842M10 275h880M10 238h790M35 195h180m30 0h380M190 128h48M365 140h42M550 128h46"/>
+<path d="M18 325h845M28 355h840M24 390h820"/>
+<g stroke-width="2"><path d="M38 175h41M118 230h43M188 106h56M188 144h56M188 185h56M285 207h40M365 150h47M365 190h47M365 245h47M548 116h51M548 167h51M548 218h51M640 207h50M756 169h45M756 211h45"/></g>
+</g>
+<g fill="url(#tower)" opacity=".42"><rect x="190" y="83" width="52" height="258" rx="6"/><rect x="365" y="106" width="44" height="240" rx="6"/><rect x="550" y="67" width="47" height="276" rx="6"/><rect x="755" y="118" width="46" height="225" rx="6"/></g>
+<path d="M0 371q68-26 119-9t107-5q59-14 114 4t121 0q50-18 130 3t152-3q81-17 157 6v83H0z" fill="#9cc7b0" opacity=".44"/>
+<path d="M0 406q63-15 114-5t105-2q95-21 167 2t154 0q95-17 176 2t184 0v47H0z" fill="#7cb392" opacity=".34"/>
+</svg>

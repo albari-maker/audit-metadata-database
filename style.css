@@ -15,39 +15,3 @@
 .overview-pillars li { padding-left: 5px; margin-bottom: 10px; font-size: 13px; line-height: 1.8; }
 .overview-pillars li::marker { color: #168d7b; font-weight: 800; }
 @media (max-width:630px) { .audit-context:has(.overview-section) { padding: 18px; } .overview-section p, .overview-pillars li { font-size: 12px; } }
-
-
-/* Glosarium terintegrasi: memanfaatkan warna dan kartu AuditAtlas yang sudah ada. */
-.glossary-notice{margin:0 0 22px;padding:13px 17px;border:1px solid #dce9e5;background:#f0f7f5;border-radius:9px;color:#436960;font-size:12px;line-height:1.7}
-.glossary-controls{display:grid;grid-template-columns:minmax(260px,1fr) minmax(200px,260px) auto;gap:10px;align-items:end;margin-bottom:12px}
-.glossary-controls .glossary-search{max-width:none;margin:0;min-width:0}
-.glossary-category-label{display:flex;flex-direction:column;gap:6px;color:#536e75;font-size:11px;font-weight:700}
-.glossary-category-label select{height:44px;border-radius:8px;padding:0 12px;background:#fff;border:1px solid #d9e5e4;color:#26434c;min-width:0}
-.glossary-reset{height:44px}
-.glossary-meta{display:flex;justify-content:space-between;gap:15px;font-size:12px;color:#70878e;margin:5px 0 18px}
-.glossary-meta span:first-child{font-weight:800;color:#2e5a60}
-.glossary-quick-nav{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:29px}
-.glossary-quick-nav a{border:1px solid #d6e5e1;background:#fff;color:#3d666a;border-radius:18px;padding:8px 12px;font-size:11px;font-weight:700;transition:.15s}
-.glossary-quick-nav a:hover{background:#dcf7ef;border-color:#54bca5;color:#075e4d}
-.glossary-group{margin:0 0 34px;scroll-margin-top:24px}
-.glossary-group-heading{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:15px;padding-bottom:14px;border-bottom:1px solid #dce7e7}
-.glossary-group-label{font-size:10px;font-weight:850;letter-spacing:1.5px;color:#138f7c}
-.glossary-group-heading h2{font-size:20px;letter-spacing:-.45px;margin:5px 0 4px}
-.glossary-group-heading p{font-size:12px;color:#6e858c;margin:0;line-height:1.7}
-.glossary-group-heading>span{border:1px solid #dce7e7;background:#fff;border-radius:40px;padding:6px 10px;color:#617780;font-size:11px;white-space:nowrap}
-.glossary-item{padding:18px 19px;min-height:128px;box-shadow:0 4px 17px rgba(22,45,58,.025)}
-.glossary-item strong{font-size:13px;line-height:1.45;display:block;color:#153847}
-.glossary-item p{font-size:12px;margin:9px 0 0;line-height:1.7;color:#556f75}
-.glossary-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
-.glossary-tag{font-size:10px;font-weight:650;padding:4px 7px;border-radius:5px;background:#edf4f4;color:#4b7073}
-.glossary-tag-base{background:#eaf8f1;color:#16856e}
-.glossary-differences{margin-top:32px;scroll-margin-top:28px}
-.glossary-diff-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.glossary-diff-item{background:white;border:1px solid var(--line);border-radius:10px;padding:18px 19px}
-.glossary-diff-terms{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.glossary-diff-terms span{background:#f0f7f5;border:1px solid #e1ece8;padding:6px 9px;border-radius:5px;color:#254e53;font-size:12px;font-weight:800}
-.glossary-diff-terms b{color:#9ba9ac;font-size:11px}
-.glossary-diff-item p{font-size:12px;line-height:1.75;margin:13px 0 0;color:#607a81}
-@media(max-width:1000px){.glossary-controls{grid-template-columns:1fr 1fr}.glossary-reset{grid-column:1/-1;justify-self:start}}
-@media(max-width:630px){.glossary-controls{grid-template-columns:1fr}.glossary-reset{grid-column:auto;width:100%}.glossary-meta{flex-direction:column;gap:5px}.glossary-diff-grid{grid-template-columns:1fr}.glossary-group-heading{align-items:start}.glossary-group-heading h2{font-size:18px}}
-@media print{.sidebar,.topbar,.footer,.glossary-controls,.glossary-quick-nav,.glossary-export,.glossary-differences .glossary-diff-count{display:none!important}.main-area{margin:0}.content{padding:0}.glossary-item,.glossary-diff-item{break-inside:avoid;box-shadow:none}.glossary-group{break-before:auto}}
