@@ -402,6 +402,7 @@
     $('#load-more').addEventListener('click',()=>{shown+=18;renderResults();});
     $('#dialog-close').addEventListener('click',()=>$('#detail-dialog').close());
     $('#detail-dialog').addEventListener('click',e=>{if(e.target===$('#detail-dialog'))$('#detail-dialog').close();});
+    $('#peta-hero-search-form').addEventListener('submit',e=>{e.preventDefault();$('#peta-search').value=$('#peta-hero-search-input').value.trim();renderPeta();document.getElementById('peta-list-anchor').scrollIntoView({behavior:'smooth',block:'start'});});
     $('#hero-search-form').addEventListener('submit',e=>{e.preventDefault();
       activeAudit='all';$('#audit-select').value='all';$('#hc-select').value='all';$('#readiness-select').value='all';
       refreshGroups();$('#group-select').value='all';

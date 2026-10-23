@@ -338,3 +338,23 @@ html,body{background:#f3f8fc;color:#102a40}body{font-size:14px}button:focus-visi
 @media (max-width: 980px){
   #page-peta .hero-search button{min-width:110px}
 }
+
+
+/* v2.8: maintain the supplied visual reference proportions; no extra UI */
+@media(min-width:1441px){
+  .sidebar{width:clamp(274px,18.5vw,306px)}
+  .main-area{margin-left:clamp(274px,18.5vw,306px)}
+  .topbar{height:80px}
+  .content{padding:30px 40px 58px}
+  #page-beranda .hero,#page-peta .hero-peta{grid-template-columns:minmax(0,58%) minmax(0,42%)}
+  #page-beranda .hero h1,#page-peta .hero-peta h1{font-size:clamp(44px,3.3vw,55px)}
+}
+/* Bubble stays to the left of the character's face on the supplied desktop layouts. */
+@media(min-width:981px){
+  .feature-banner-bubble:not(.peta-bubble){left:-145px!important;top:25px!important;width:255px!important}
+  .feature-banner-worker,.feature-banner-worker.half-body{width:min(84%,325px)!important;right:0!important;bottom:0!important}
+}
+/* Small viewports keep the previous responsive arrangement. */
+@media(max-width:980px){
+  .feature-banner-bubble:not(.peta-bubble){display:none!important}
+}

@@ -1,0 +1,19 @@
+AUDIT KNOWLEDGE BASE | Final v2.8
+
+Perubahan
+- Menggunakan karakter ilustrasi pekerja Pertamina berhelm putih, berkacamata pelindung, radio, dan tablet, sesuai referensi terakhir.
+- Karakter sama pada Ringkasan, Jelajahi Klausul, Peta Audit, Glosarium, Panduan Penggunaan, dan bagian keterangan jenis audit (setengah badan).
+- Tombol/link GitHub pada header dihapus.
+- Semua database audit, filter, peta, detail klausul, dan glosarium dari versi sebelumnya dipertahankan.
+
+CARA MEMASANG
+1. Extract ZIP ini.
+2. Buka repository: https://github.com/albari-maker/audit-metadata-database
+3. Pilih Add file -> Upload files di branch main.
+4. Unggah 9 file inti yang ada di samping petunjuk ini, bukan file ZIP.
+5. Pastikan file dengan nama sama di root repository diganti oleh versi baru.
+6. Commit changes dan tunggu GitHub Pages selesai.
+7. Buka https://albari-maker.github.io/audit-metadata-database/ lalu Ctrl+Shift+R.
+
+PERHATIAN
+Jangan unggah dokumen audit rahasia atau dokumen internal tanpa izin ke repository publik.

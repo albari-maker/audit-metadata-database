@@ -1,0 +1,17 @@
+AUDITATLAS VISUAL EDITOR v2.8
+
+1. Unggah SELURUH file hasil ekstraksi ZIP ke root repository GitHub Pages yang sama.
+2. Buka: https://albari-maker.github.io/audit-metadata-database/?editor=1#beranda
+3. Panel pengaturan muncul di kanan atas. Pilih halaman dan elemen yang ingin diedit.
+4. Geser slider untuk posisi dan ukuran. Pada komputer, karakter atau bubble terpilih juga dapat digeser dengan mouse.
+5. Klik Simpan pratinjau untuk menyimpan di browser ini. Ini TIDAK mengubah website publik.
+6. Klik Unduh CSS. File bernama editor-overrides.css akan diunduh.
+7. Unggah HANYA editor-overrides.css ke root repository GitHub, mengganti file sebelumnya. Commit changes.
+8. Refresh situs normal (tanpa ?editor=1) setelah deployment berhasil.
+
+CATATAN KEAMANAN:
+Mode editor dibuka dengan parameter URL sehingga pengguna lain juga dapat melihat panel pratinjau jika tahu URL-nya.
+Namun fitur ini tidak memiliki token GitHub, backend, atau kemampuan menulis ke repository.
+Perubahan hanya berlaku lokal sampai pemilik repository mengunggah CSS secara manual.
+Jangan masukkan password/token GitHub ke halaman ini.
+File CSS hanya berlaku untuk layar desktop >= 901 px agar tata letak mobile tidak rusak.
