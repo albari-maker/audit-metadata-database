@@ -31,6 +31,10 @@
     $('#stat-clauses').textContent=DATA.clauses.length;
     const evidenceTotal=DATA.clauses.reduce((n,c)=>n+(c.evidence||[]).length,0)+(DATA.framework||[]).reduce((n,c)=>n+(c.evidence||[]).length,0);
     $('#stat-evidence').textContent=evidenceTotal;
+    if($('#peta-stat-audits')) $('#peta-stat-audits').textContent=DATA.profiles.length;
+    if($('#peta-stat-framework')) $('#peta-stat-framework').textContent=(DATA.framework||[]).length;
+    if($('#peta-stat-clauses')) $('#peta-stat-clauses').textContent=DATA.clauses.length;
+    if($('#peta-stat-evidence')) $('#peta-stat-evidence').textContent=evidenceTotal;
     $('#stat-terms').textContent=DATA.glossary.length;
     $('#stat-progress').textContent=DATA.clauses.filter(x=>getStatus(x)==='Siap').length;
   }
@@ -38,6 +42,7 @@
     $('#sidebar-audits').innerHTML=DATA.profiles.map(p=>`<button class="sidebar-audit-button" data-audit="${esc(p.id)}"><i class="side-audit-dot" style="background:${esc(p.color)}"></i><span>${esc(p.name)}</span></button>`).join('');
     const auditColors=['#0D6DB7','#6344e8','#0cb483','#ff9819','#39b8ef','#e51837','#147ade','#98a915','#747d92','#5d82a6','#0d888a'];
     $('#audit-grid').innerHTML=DATA.profiles.map((p,i)=>`<button class="audit-card" data-audit="${esc(p.id)}" aria-label="Jelajahi ${esc(p.name)}"><span class="audit-icon" style="background:${auditColors[i%auditColors.length]}">▤</span><span class="audit-card-copy"><strong>${esc(p.name)}</strong><small>${countMap[p.id]} topik</small></span><span class="audit-arrow" aria-hidden="true">›</span></button>`).join('');
+    if($('#audit-grid-peta')) $('#audit-grid-peta').innerHTML=DATA.profiles.map((p,i)=>`<button class="audit-card" data-audit="${esc(p.id)}" aria-label="Jelajahi ${esc(p.name)}"><span class="audit-icon" style="background:${auditColors[i%auditColors.length]}">▤</span><span class="audit-card-copy"><strong>${esc(p.name)}</strong><small>${countMap[p.id]} topik</small></span><span class="audit-arrow" aria-hidden="true">›</span></button>`).join('');
     $('#audit-select').innerHTML = `<option value="all">Semua jenis audit</option>${DATA.profiles.map(p=>`<option value="${esc(p.id)}">${esc(p.name)} (${countMap[p.id]})</option>`).join('')}`;
     $('#sources-list').innerHTML=DATA.profiles.map(p=>`<a href="${esc(p.source)}" target="_blank" rel="noopener noreferrer" title="Rujukan publik: ${esc(p.name)}">${esc(p.name)} <span>↗</span></a>`).join('');
     $('.primary-nav').addEventListener('click',(e)=>{const b=e.target.closest('[data-page], [data-audit]'); if(!b)return; if(b.dataset.audit)openAudit(b.dataset.audit);else navigate(b.dataset.page);});

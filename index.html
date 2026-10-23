@@ -8,9 +8,9 @@
 <meta content="Audit Knowledge Base, panduan audit berbasis metadata tagging: kategori, peta audit, klausul, eviden dan glosarium." name="description"/>
 <title>Pertamina Audit Knowledge Base | AuditAtlas</title>
 <!-- AuditAtlas v1.13: Audit Surveilans full overview; no obsolete warning. -->
-<link href="style.css?v=dashboard-final-v25-20261023" rel="stylesheet"/>
-<script defer="" src="audit-data.js?v=dashboard-final-v25-20261023"></script>
-<script defer="" src="script.js?v=dashboard-final-v25-20261023"></script>
+<link href="style.css?v=dashboard-final-v26-20261023" rel="stylesheet"/>
+<script defer="" src="audit-data.js?v=dashboard-final-v26-20261023"></script>
+<script defer="" src="script.js?v=dashboard-final-v26-20261023"></script>
 <style>
     #audit-context .overview-section + .overview-section {margin-top:20px;border-top:1px solid #dbe7e3;padding-top:20px}
     #audit-context .overview-section h4 {margin:0 0 10px;font-size:15px;font-weight:800;color:#123c3a}
@@ -19,12 +19,12 @@
     #audit-context .overview-pillars li {padding-left:5px;margin-bottom:11px;font-size:14px;line-height:1.8}
     #audit-context .overview-pillars li::marker {color:#168d7b;font-weight:800}
   </style>
-<link href="dashboard.css?v=dashboard-final-v25-20261023" rel="stylesheet"/></head>
+<link href="dashboard.css?v=dashboard-final-v26-20261023" rel="stylesheet"/></head>
 <body>
 <div class="app-shell">
 <aside class="sidebar" id="sidebar">
 <a aria-label="Pertamina Audit Knowledge Base, halaman Ringkasan" class="brand" data-page="beranda" href="#beranda"><img alt="PERTAMINA | AUDIT KNOWLEDGE BASE" loading="eager" src="logo-reference.png"/></a>
-<div class="workspace-label"><span class="live-dot"></span><span>Public Edition</span><span class="version">v2.5</span></div>
+<div class="workspace-label"><span class="live-dot"></span><span>Public Edition</span><span class="version">v2.6</span></div>
 <nav aria-label="Navigasi utama" class="primary-nav">
 <span class="nav-heading">WORKSPACE</span>
 <button class="nav-link active" data-page="beranda"><span aria-hidden="true" class="nav-icon">⌂</span><span class="nav-label">Ringkasan</span><span aria-hidden="true" class="nav-chevron">›</span></button>
@@ -84,10 +84,34 @@
 <div class="result-header"><div><strong id="result-count">0 topik</strong><span> · Pilih topik untuk membuka penjelasan dan bukti</span></div><span class="result-hint">Dari umum → khusus</span></div><div class="result-list" id="result-list"></div><div class="empty-state hidden" id="empty-state"><div>⌕</div><h3>Tidak ada hasil untuk filter ini</h3><p>Coba kata kunci lain atau pilih semua kategori.</p><button class="btn btn-outline" id="empty-reset">Hapus filter</button></div><button class="btn btn-more hidden" id="load-more">Tampilkan lebih banyak ↓</button>
 </section>
 <section class="page hidden" id="page-peta">
-
-<div class="peta-intro-banner"><div class="peta-intro-copy"><span class="mini-accent"></span><div class="eyebrow eyebrow-dark">PETA AUDIT / UMUM KE KHUSUS</div><h1>Peta audit,<br/><em>dari umum ke khusus.</em></h1><p>Pilih jenis audit, telusuri kelompok besar, dan lihat indikator serta contoh eviden dari database yang sudah dipetakan.</p></div><div class="feature-banner-bubble peta-bubble"><strong>Mulai dari peta.</strong><span>Lihat alur dari jenis audit menuju kelompok besar, indikator, dan contoh eviden yang bisa ditelusuri.</span></div><img alt="Ilustrasi pekerja berhelm dengan perlengkapan keselamatan" class="peta-banner-worker" loading="lazy" src="pekerja-pertamina.png"/></div>
-<div class="peta-subheader"><div><h2>Jelajahi peta audit</h2><p>Pemetaan berbasis data referensi dan contoh indikator yang perlu diverifikasi sesuai standar berlaku.</p></div><button class="btn btn-outline" id="peta-export">↓ Ekspor peta (CSV)</button></div>
-
+<div class="hero hero-peta">
+<div class="hero-copy">
+<div aria-hidden="true" class="hero-accent"><span></span><span></span></div>
+<span class="hero-overline">AUDIT KNOWLEDGE BASE / PUBLIC EDITION</span>
+<h1>Peta audit,<br/><em>dari umum ke khusus.</em></h1>
+<p>Mulai dari jenis audit, pilih kelompok besar, lihat acuan yang disebut dalam tabel, kemudian baca indikator dan contoh dokumen yang mungkin relevan.</p>
+<form class="hero-search" id="peta-hero-search-form" role="search">
+<span aria-hidden="true" class="hero-search-symbol">⌕</span>
+<input aria-label="Cari pilar dan indikator pada peta audit" id="peta-hero-search-input" placeholder="Cari pilar, klausul, indikator, atau dokumen..." type="search"/>
+<button type="submit">Cari</button>
+</form>
+</div>
+<div class="hero-visual">
+<div class="hero-speech"><strong>Halo!</strong><span>Selamat datang di <b>Audit Knowledge Base.</b> Di sini kamu bisa mempelajari persyaratan audit, indikator, dan contoh dokumen pendukungnya.</span></div>
+<img alt="Ilustrasi pekerja berhelm dengan perlengkapan keselamatan" class="hero-worker" loading="lazy" src="pekerja-pertamina.png"/>
+<span aria-hidden="true" class="hero-halo"></span>
+</div></div>
+<div class="stats-grid dashboard-stats peta-stats-grid">
+<div class="stat-card"><span class="stat-icon stat-icon-blue">▤</span><div class="stat-copy"><strong id="peta-stat-audits">0</strong><span>Jenis audit</span><small>Tersedia di database</small></div><i>›</i></div>
+<div class="stat-card"><span class="stat-icon stat-icon-lime">▱</span><div class="stat-copy"><strong id="peta-stat-framework">0</strong><span>Pilar audit</span><small>Terpetakan</small></div><i>›</i></div>
+<div class="stat-card"><span class="stat-icon stat-icon-red">▤</span><div class="stat-copy"><strong id="peta-stat-clauses">0</strong><span>Indikator</span><small>Dalam proses verifikasi</small></div><i>›</i></div>
+<div class="stat-card"><span class="stat-icon stat-icon-dark">▱</span><div class="stat-copy"><strong id="peta-stat-evidence">0</strong><span>Contoh dokumen</span><small>Referensi pendukung</small></div><i>›</i></div>
+</div>
+<div class="directory-shell peta-directory-shell">
+<div class="section-title-row categories-heading"><div><h2>Jelajahi berdasarkan jenis audit</h2></div><button class="link-button" type="button" onclick="document.getElementById('peta-list-anchor').scrollIntoView({behavior:'smooth', block:'start'})">Lihat semua <span>→</span></button></div>
+<div class="audit-grid" id="audit-grid-peta"></div>
+</div>
+<div class="peta-subheader" id="peta-list-anchor"><div><h2>Jelajahi peta audit</h2><p>Pilih jenis audit dan telusuri kelompok besar sebelum membuka indikator dan contoh eviden yang relevan.</p></div><button class="btn btn-outline" id="peta-export">↓ Ekspor peta (CSV)</button></div>
 <div class="disclaimer-banner"><span>ⓘ</span><p><strong>Referensi untuk sebagian kelompok masih memerlukan verifikasi.</strong> Penomoran PTK, hubungan OSHA/CCPS dengan PSAIMS, serta klausul ISO adalah rujukan awal sesuai file yang dikirim. Bagian SUPREME telah dipetakan ulang berdasarkan PDF 2018; kecocokannya dengan standar dan protokol audit tahun 2023 belum diverifikasi.</p></div>
 <div class="filter-panel peta-filter"><label class="search-input"><span>⌕</span><input aria-label="Cari kelompok besar audit" autocomplete="off" id="peta-search" placeholder="Cari pilar: kinerja, HIRADC, KPI, MOC, P2K3..." type="search"/></label><div class="peta-toolbar"><label>Jenis audit <select id="peta-audit-select"><option value="all">Semua jenis audit</option></select></label><span id="peta-result-count">37 kelompok besar</span></div></div>
 <div class="peta-route"><span>01 · JENIS AUDIT</span><b>→</b><span>02 · KELOMPOK BESAR</span><b>→</b><span>03 · INDIKATOR</span><b>→</b><span>04 · CONTOH EVIDEN</span></div>
