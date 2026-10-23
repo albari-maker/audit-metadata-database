@@ -1,4 +1,4 @@
-/* AuditAtlas Visual Editor v2.7 - editor lokal, bukan panel admin server. */
+/* AuditAtlas Visual Editor v3.0 - editor lokal, bukan panel admin server. */
 (() => {
   'use strict';
   const search = new URLSearchParams(location.search);
@@ -15,8 +15,7 @@
     {id:'glosarium-img',page:'glosarium',label:'Karakter',selector:'#page-glosarium .feature-banner-worker',anchor:'right-bottom'},
     {id:'glosarium-bubble',page:'glosarium',label:'Kotak percakapan',selector:'#page-glosarium .feature-banner-bubble',anchor:'left-top'},
     {id:'panduan-img',page:'panduan',label:'Karakter',selector:'#page-panduan .feature-banner-worker',anchor:'right-bottom'},
-    {id:'panduan-bubble',page:'panduan',label:'Kotak percakapan',selector:'#page-panduan .feature-banner-bubble',anchor:'left-top'},
-    {id:'audit-img',page:'jelajahi',label:'Karakter ringkasan audit',selector:'#page-jelajahi .audit-overview-visual img',anchor:'audit-image'}
+    {id:'panduan-bubble',page:'panduan',label:'Kotak percakapan',selector:'#page-panduan .feature-banner-bubble',anchor:'left-top'}
   ];
   const pageLabels={beranda:'Ringkasan',jelajahi:'Jelajahi Klausul',peta:'Peta Audit',glosarium:'Glosarium',panduan:'Panduan Penggunaan'};
   let changes = {};
@@ -69,7 +68,7 @@
   }
   function makePanel(){
     const panel=document.createElement('section');panel.id='ae-panel';panel.setAttribute('aria-label','Editor Visual AuditAtlas');
-    panel.innerHTML=`<header><strong>⚙️ Mode Editor Visual <small style="font-size:11px;opacity:.72">v2.7</small></strong><button id="ae-collapse" aria-label="Sembunyikan panel">−</button></header>
+    panel.innerHTML=`<header><strong>⚙️ Mode Editor Visual <small style="font-size:11px;opacity:.72">v3.0</small></strong><button id="ae-collapse" aria-label="Sembunyikan panel">−</button></header>
     <div class="ae-body"><p class="ae-hint">Atur posisi langsung dengan slider atau geser elemen menggunakan mouse. Perubahan hanya terlihat pada browser ini sampai CSS diekspor dan diunggah ke GitHub.</p>
     <label for="ae-page">Halaman</label><select id="ae-page"></select>
     <label for="ae-element">Bagian yang diedit</label><select id="ae-element"></select>

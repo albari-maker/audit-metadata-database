@@ -97,6 +97,24 @@
     const raw=el.innerHTML||'';
     const cleaned=raw.replace(/^\s*<div class="context-head">[\s\S]*?<\/div>\s*/,'');
     el.innerHTML=`<div class="audit-overview-shell"><div class="audit-overview-main"><div class="context-head"><h3>${esc(title)}</h3>${badge?`<span class="context-tag">${esc(badge)}</span>`:''}</div>${cleaned}</div><aside class="audit-overview-visual"><div class="feature-banner-bubble"><strong>${esc(title)}</strong><span>${esc(bubble)}</span></div><img alt="Ilustrasi pekerja Pertamina" loading="lazy" src="pekerja-pertamina.png"/></aside></div>`;
+    const current = activeAudit;
+    el.dataset.auditVisual = current;
+    const cfg = window.AUDIT_VISUAL_CONFIG?.[current];
+    const image=el.querySelector('.audit-overview-visual img');
+    const message=el.querySelector('.audit-overview-visual .feature-banner-bubble');
+    if(cfg && typeof cfg==='object'){
+      const safeN=(v,min,max)=>typeof v==='number'&&Number.isFinite(v)?Math.max(min,Math.min(max,v)):null;
+      const setPx=(target,prop,value,min,max)=>{const n=safeN(value,min,max);if(n!==null)target.style.setProperty(prop,n+'px','important');};
+      if(typeof cfg.image==='string'&&/^audit-custom-[a-z0-9_-]+\.(?:png|jpe?g|webp)$/i.test(cfg.image)) image.src=cfg.image;
+      if(typeof cfg.title==='string') message.querySelector('strong').textContent=cfg.title.slice(0,150);
+      if(typeof cfg.text==='string') message.querySelector('span').textContent=cfg.text.slice(0,500);
+      setPx(image,'width',cfg.imageWidth,100,500);
+      if(typeof cfg.imageX==='number'||typeof cfg.imageY==='number')image.style.setProperty('transform',`translate(${safeN(cfg.imageX,-250,250)||0}px,${safeN(cfg.imageY,-250,250)||0}px)`,'important');
+      setPx(message,'width',cfg.bubbleWidth,150,430);
+      if(typeof cfg.bubbleX==='number'||typeof cfg.bubbleY==='number')message.style.setProperty('transform',`translate(${safeN(cfg.bubbleX,-250,250)||0}px,${safeN(cfg.bubbleY,-250,250)||0}px)`,'important');
+      if(typeof cfg.bg==='string'&&/^#[0-9a-fA-F]{6}$/.test(cfg.bg)) el.style.setProperty('background-color',cfg.bg,'important');
+    }else{el.style.removeProperty('background-color');}
+    document.dispatchEvent(new CustomEvent('auditatlas:context-rendered',{detail:{auditId:current}}));
   }
 
   function context(){
