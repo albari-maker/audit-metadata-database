@@ -69,7 +69,7 @@
   }
   function makePanel(){
     const panel=document.createElement('section');panel.id='ae-panel';panel.setAttribute('aria-label','Editor Visual AuditAtlas');
-    panel.innerHTML=`<header><strong>⚙️ Mode Editor Visual <small style="font-size:11px;opacity:.72">v2.8</small></strong><button id="ae-collapse" aria-label="Sembunyikan panel">−</button></header>
+    panel.innerHTML=`<header><strong>⚙️ Mode Editor Visual <small style="font-size:11px;opacity:.72">v2.7</small></strong><button id="ae-collapse" aria-label="Sembunyikan panel">−</button></header>
     <div class="ae-body"><p class="ae-hint">Atur posisi langsung dengan slider atau geser elemen menggunakan mouse. Perubahan hanya terlihat pada browser ini sampai CSS diekspor dan diunggah ke GitHub.</p>
     <label for="ae-page">Halaman</label><select id="ae-page"></select>
     <label for="ae-element">Bagian yang diedit</label><select id="ae-element"></select>

@@ -363,7 +363,12 @@
   function renderGlossary(){
     const term=normalize($('#glossary-search').value);
     const elems=DATA.glossary.filter(x=>normalize(x.term+' '+x.meaning).includes(term));
-    $('#glossary-list').innerHTML=elems.map(x=>`<article class="glossary-item"><strong>${esc(x.term)}</strong><p>${esc(x.meaning)}</p></article>`).join('')||'<p>Tidak ditemukan. Coba istilah lain.</p>';
+    $('#glossary-list').innerHTML=elems.map((x,n)=>`<article class="glossary-item"><div class="glossary-icon" aria-hidden="true">▤</div><div class="glossary-body"><strong>${esc(x.term)}</strong><p>${esc(x.meaning)}</p><div class="glossary-footer"><button type="button" class="glossary-detail" data-glossary="${DATA.glossary.indexOf(x)}">Lihat detail →</button><span class="glossary-category">${/9-Box|karier|talent|kinerja|kompetensi|pengembangan|sdm/i.test(x.term+' '+x.meaning)?'SDM / Manajemen':/Annex|ISO|standar|sistem manajemen/i.test(x.term+' '+x.meaning)?'Standar / ISO':'Istilah audit'}</span></div></div></article>`).join('')||'<p>Tidak ditemukan. Coba istilah lain.</p>';
+    $('#glossary-list').querySelectorAll('[data-glossary]').forEach(b=>b.addEventListener('click',()=>{
+      const term=DATA.glossary[Number(b.dataset.glossary)]; if(!term)return;
+      $('#dialog-content').innerHTML=`<div class="dialog-kicker">GLOSARIUM AUDIT</div><h2 id="dialog-title">${esc(term.term)}</h2><div class="dialog-section"><h3>Penjelasan istilah</h3><p>${esc(term.meaning)}</p></div>`;
+      const dialog=$('#detail-dialog'); if(!dialog.open) dialog.showModal();
+    }));
   }
   function reset(){
     activeAudit='all';shown=18;
@@ -402,7 +407,6 @@
     $('#load-more').addEventListener('click',()=>{shown+=18;renderResults();});
     $('#dialog-close').addEventListener('click',()=>$('#detail-dialog').close());
     $('#detail-dialog').addEventListener('click',e=>{if(e.target===$('#detail-dialog'))$('#detail-dialog').close();});
-    $('#peta-hero-search-form').addEventListener('submit',e=>{e.preventDefault();$('#peta-search').value=$('#peta-hero-search-input').value.trim();renderPeta();document.getElementById('peta-list-anchor').scrollIntoView({behavior:'smooth',block:'start'});});
     $('#hero-search-form').addEventListener('submit',e=>{e.preventDefault();
       activeAudit='all';$('#audit-select').value='all';$('#hc-select').value='all';$('#readiness-select').value='all';
       refreshGroups();$('#group-select').value='all';

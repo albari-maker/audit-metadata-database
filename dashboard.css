@@ -340,21 +340,97 @@ html,body{background:#f3f8fc;color:#102a40}body{font-size:14px}button:focus-visi
 }
 
 
-/* v2.8: maintain the supplied visual reference proportions; no extra UI */
-@media(min-width:1441px){
-  .sidebar{width:clamp(274px,18.5vw,306px)}
-  .main-area{margin-left:clamp(274px,18.5vw,306px)}
-  .topbar{height:80px}
-  .content{padding:30px 40px 58px}
-  #page-beranda .hero,#page-peta .hero-peta{grid-template-columns:minmax(0,58%) minmax(0,42%)}
-  #page-beranda .hero h1,#page-peta .hero-peta h1{font-size:clamp(44px,3.3vw,55px)}
+/* v2.8 - Halaman Glosarium dan Panduan: layout proporsional dari contoh yang disetujui */
+#page-glosarium .reference-banner,
+#page-panduan .reference-banner {
+  display:grid;grid-template-columns:minmax(0,52%) minmax(0,48%);
+  position:relative;overflow:hidden;min-height:390px;width:100%;
+  margin:0 0 22px;border-radius:18px;border:1px solid #deebf5;
+  background:linear-gradient(102deg,#f9fcff 0%,#e9f5fe 55%,#afd9f8 100%);
+  box-shadow:0 6px 20px rgba(26,76,112,.035);
 }
-/* Bubble stays to the left of the character's face on the supplied desktop layouts. */
-@media(min-width:981px){
-  .feature-banner-bubble:not(.peta-bubble){left:-145px!important;top:25px!important;width:255px!important}
-  .feature-banner-worker,.feature-banner-worker.half-body{width:min(84%,325px)!important;right:0!important;bottom:0!important}
+#page-glosarium .reference-copy,
+#page-panduan .reference-copy {
+  position:relative;z-index:2;padding:38px 20px 35px 32px;
 }
-/* Small viewports keep the previous responsive arrangement. */
-@media(max-width:980px){
-  .feature-banner-bubble:not(.peta-bubble){display:none!important}
+.reference-copy .mini-accent{display:block;width:155px;height:7px;margin-bottom:27px;border-radius:5px;
+  background:linear-gradient(90deg,#e51837 0 49%,transparent 49% 54%,#b1bb1c 54% 100%);
 }
+.reference-copy .eyebrow{letter-spacing:2.4px;font-size:11px;font-weight:800;color:#19364d}
+.reference-copy h1{font-size:clamp(35px,3.25vw,53px);line-height:1.05;letter-spacing:-1.8px;
+  font-weight:850;color:#102d46;margin:21px 0 18px}
+.reference-copy h1 em{color:#0871d1;font-style:normal}
+.reference-copy p{color:#5a718a;font-size:15px;line-height:1.6;max-width:530px;margin:0}
+.reference-scene{height:100%;min-height:390px;overflow:hidden;position:relative}
+.reference-scene img{width:100%;height:100%;display:block;object-fit:cover;object-position:top right}
+#page-glosarium .glossary-search{margin:0 0 22px;background:#fff;min-height:57px;border-radius:13px;
+  border:1px solid #e0ebf4;box-shadow:0 5px 14px rgba(31,68,97,.026)}
+#page-glosarium .glossary-search input{background:#fff;font-size:14px}
+#page-glosarium .glossary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+#page-glosarium .glossary-item{display:grid;grid-template-columns:65px minmax(0,1fr);
+  gap:16px;align-content:start;min-height:183px;padding:24px;background:#fff;border-radius:14px;
+  border:1px solid #e3ecf4;box-shadow:0 5px 17px rgba(15,60,98,.03)}
+#page-glosarium .glossary-icon{width:58px;height:58px;display:grid;place-items:center;
+  font-size:25px;border-radius:50%;background:#e4f2ff;color:#096fc4}
+#page-glosarium .glossary-item:nth-child(even) .glossary-icon{background:#f1f6d8;color:#9aab06}
+#page-glosarium .glossary-body{min-width:0}
+#page-glosarium .glossary-body strong{color:#122e46;font-size:17px;font-weight:780}
+#page-glosarium .glossary-body p{margin:8px 0 15px;font-size:13px;line-height:1.66;color:#647f95}
+#page-glosarium .glossary-footer{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+#page-glosarium .glossary-detail{padding:8px 12px;color:#076bca;font-size:12px;font-weight:750;border:0;
+  border-radius:9px;background:#edf6ff;cursor:pointer}
+#page-glosarium .glossary-detail:hover{background:#d9edff}
+#page-glosarium .glossary-category{font-size:11px;color:#096bc0;border-radius:9px;background:#edf6ff;padding:7px 9px}
+#page-glosarium .glossary-item:nth-child(even) .glossary-category{background:#f3f8dc;color:#94a800}
+#page-panduan .guide-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#page-panduan .guide-steps article{display:grid;grid-template-columns:97px minmax(0,1fr);gap:18px;min-height:228px;
+  border:1px solid #e1ebf5;border-radius:16px;background:#fff;padding:24px 25px;box-shadow:0 5px 18px rgba(20,67,104,.03)}
+#page-panduan .guide-steps article>span{grid-row:1;grid-column:1;height:62px;width:62px;border-radius:50%;
+  background:#f3f7df;color:#91a900;display:grid;place-items:center;font-size:23px;font-weight:850}
+#page-panduan .guide-steps article:nth-child(even)>span{background:#e1f0ff;color:#0876d9}
+#page-panduan .guide-steps article>div{grid-row:1;grid-column:2;position:relative;border-left:2px solid #e5edf3;padding-left:19px}
+#page-panduan .guide-steps article>div:before{content:'';position:absolute;left:-2px;top:0;width:3px;height:27px;background:#b1bb1c}
+#page-panduan .guide-steps article:nth-child(even)>div:before{background:#137bce}
+#page-panduan .guide-steps article h3{font-size:16px;line-height:1.35;color:#102e46;margin:0 0 11px;font-weight:790}
+#page-panduan .guide-steps article p{font-size:13px;line-height:1.65;color:#637b91}
+#page-panduan .guide-link{margin-top:17px;padding:9px 13px;border-radius:9px;border:1px solid #a4d2fb;
+  background:#f5faff;color:#076dcc;font-weight:750;font-size:12px;display:inline-flex;gap:10px;align-items:center}
+#page-panduan .guide-link:hover{background:#e8f4ff}
+@media(max-width:1260px){
+  #page-glosarium .reference-banner,#page-panduan .reference-banner{min-height:350px}
+  .reference-scene{min-height:350px}
+  .reference-copy h1{font-size:clamp(31px,3.4vw,45px)}
+  .reference-copy p{font-size:13px}
+}
+@media(max-width:1000px){
+  #page-glosarium .reference-banner,#page-panduan .reference-banner{min-height:300px;grid-template-columns:53% 47%}
+  .reference-scene{min-height:300px}
+  #page-glosarium .reference-copy,#page-panduan .reference-copy{padding:27px 18px 22px 24px}
+  .reference-copy h1{font-size:34px}
+  .reference-copy .mini-accent{margin-bottom:18px}
+  .reference-copy p{font-size:12px}
+  #page-panduan .guide-steps article{grid-template-columns:62px 1fr;gap:8px;padding:18px}
+}
+@media(max-width:700px){
+  #page-glosarium .reference-banner,#page-panduan .reference-banner{display:block;min-height:320px}
+  #page-glosarium .reference-copy,#page-panduan .reference-copy{padding:24px 16px 20px;max-width:78%}
+  .reference-copy h1{font-size:clamp(26px,7vw,33px);letter-spacing:-.8px;margin:14px 0 12px}
+  .reference-copy .eyebrow{font-size:9px;letter-spacing:1.3px}
+  .reference-copy .mini-accent{margin-bottom:13px}
+  .reference-copy p{font-size:11px;max-width:220px}
+  .reference-scene{position:absolute;right:0;bottom:0;width:42%;height:62%;min-height:0;
+    mask-image:linear-gradient(90deg,transparent 0%,black 15%)}
+  .reference-scene img{width:100%;height:100%;object-fit:cover;object-position:right center}
+  #page-glosarium .glossary-grid,#page-panduan .guide-steps{grid-template-columns:1fr}
+  #page-glosarium .glossary-item{grid-template-columns:54px 1fr;padding:17px;min-height:145px}
+  #page-glosarium .glossary-icon{width:49px;height:49px}
+  #page-panduan .guide-steps article{grid-template-columns:67px 1fr;min-height:0}
+}
+
+/* Final polish: aligned reference scene and guide icons */
+#page-glosarium .reference-scene img,#page-panduan .reference-scene img{object-fit:fill;mask-image:linear-gradient(to right,transparent 0%,black 8%)}
+#page-glosarium .glossary-search{width:100%;max-width:none}
+#page-panduan .guide-steps article>span{position:relative}
+#page-panduan .guide-steps article>span::after{content:"▤";position:absolute;top:78px;left:0;width:58px;height:58px;display:grid;place-items:center;border-radius:12px;background:#eef5f4;color:#087f96;font-size:25px;font-weight:400}
+#page-panduan .guide-steps article:nth-child(even)>span::after{content:"⌕";color:#147acb;background:#eaf4ff;font-size:35px}
+@media(max-width:700px){#page-panduan .guide-steps article>span::after{display:none}}
