@@ -1,0 +1,11 @@
+AuditAtlas Dashboard v2.8 - Glosarium dan Panduan sesuai contoh visual
+
+1. Ekstrak file ZIP ini.
+2. Buka https://github.com/albari-maker/audit-metadata-database/upload/main
+3. Unggah seluruh file inti dari paket ini ke ROOT repository. Jangan unggah ZIP mentah.
+4. Klik Commit changes.
+5. Periksa GitHub Actions, lalu buka website dan Ctrl+Shift+R.
+
+Tampilan Glosarium dan Panduan dipadankan dengan contoh gambar yang dikirim. Fitur pencarian, data audit, peta audit, dan Mode Editor Visual ?editor=1 tetap dipertahankan.
+
+Catatan: konten sumber audit tetap harus diverifikasi sebelum digunakan untuk keperluan pemeriksaan resmi.

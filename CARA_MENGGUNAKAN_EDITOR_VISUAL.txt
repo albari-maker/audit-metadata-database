@@ -1,4 +1,4 @@
-AUDITATLAS VISUAL EDITOR v2.8
+AUDITATLAS VISUAL EDITOR v2.7
 
 1. Unggah SELURUH file hasil ekstraksi ZIP ke root repository GitHub Pages yang sama.
 2. Buka: https://albari-maker.github.io/audit-metadata-database/?editor=1#beranda

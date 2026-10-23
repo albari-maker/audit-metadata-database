@@ -434,3 +434,43 @@ html,body{background:#f3f8fc;color:#102a40}body{font-size:14px}button:focus-visi
 #page-panduan .guide-steps article>span::after{content:"▤";position:absolute;top:78px;left:0;width:58px;height:58px;display:grid;place-items:center;border-radius:12px;background:#eef5f4;color:#087f96;font-size:25px;font-weight:400}
 #page-panduan .guide-steps article:nth-child(even)>span::after{content:"⌕";color:#147acb;background:#eaf4ff;font-size:35px}
 @media(max-width:700px){#page-panduan .guide-steps article>span::after{display:none}}
+
+
+/* AuditAtlas v2.9: Latar putih hanya untuk Peta Audit (Umum ke Khusus).
+   Tetap berlaku ketika editor-overrides.css diekspor ulang. */
+#page-peta .hero.hero-peta {
+  background: #FFFFFF !important;
+  background-image: none !important;
+  color: #0C2D45 !important;
+  border: 1px solid #E2EDF4;
+  box-shadow: 0 10px 24px rgba(22,61,90,.04);
+}
+#page-peta .hero.hero-peta::before {
+  display: none !important;
+  background: transparent !important;
+}
+#page-peta .hero.hero-peta .hero-visual {
+  background: #FFFFFF !important;
+  background-image: none !important;
+}
+#page-peta .hero.hero-peta .hero-visual::after {
+  display: none !important;
+}
+#page-peta .hero.hero-peta h1 {
+  color: #0C2D45 !important;
+}
+#page-peta .hero.hero-peta h1 em {
+  color: #0D6DB7 !important;
+}
+#page-peta .hero.hero-peta p,
+#page-peta .hero.hero-peta .hero-overline {
+  color: #526B80 !important;
+}
+#page-peta .hero.hero-peta .hero-speech {
+  background: #FFFFFF !important;
+  color: #18344D !important;
+}
+#page-peta .hero.hero-peta .hero-speech span { color: #18344D !important; }
+#page-peta .hero.hero-peta .hero-speech strong { color: #0B2B43 !important; }
+#page-peta .hero.hero-peta .hero-speech b { color: #0D6DB7 !important; }
+#page-peta .hero.hero-peta .hero-tip { color: #526B80 !important; }
