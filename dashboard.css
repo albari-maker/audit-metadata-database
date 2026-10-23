@@ -172,3 +172,127 @@ html,body{background:#f3f8fc;color:#102a40}body{font-size:14px}button:focus-visi
  #page-beranda .hero-worker{right:-65px}
  #page-peta .peta-banner-worker{right:-80px}
 }
+
+
+/* v2.4 layout repair: prevent illustration cropping and tidy speech bubbles */
+#page-beranda .hero{overflow:hidden}
+#page-beranda .hero-visual{overflow:visible;display:flex;align-items:flex-end;justify-content:flex-end;padding:0 6px 0 0}
+#page-beranda .hero-worker{
+  width:min(96%,470px)!important;
+  max-width:none;
+  right:0!important;
+  bottom:0!important;
+}
+#page-beranda .hero-speech{
+  left:18px!important;
+  top:28px!important;
+  width:min(220px,52%)!important;
+}
+
+.feature-banner{
+  min-height:330px;
+  grid-template-columns:minmax(0,60%) minmax(300px,40%);
+}
+.feature-banner-visual{
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-end;
+  min-height:100%;
+  padding-right:10px;
+}
+.feature-banner-worker,
+.feature-banner-worker.half-body{
+  position:absolute;
+  right:0!important;
+  bottom:0!important;
+  top:auto!important;
+  width:min(92%,380px)!important;
+  height:auto!important;
+  max-height:92%;
+  max-width:none;
+  object-fit:contain;
+  object-position:right bottom;
+  clip-path:none!important;
+}
+.feature-banner-bubble{
+  left:24px;
+  top:22px;
+  width:min(255px,58%);
+  z-index:3;
+}
+
+#page-peta .peta-intro-banner{overflow:hidden}
+#page-peta .peta-banner-worker{
+  width:min(37%,340px)!important;
+  height:auto!important;
+  right:10px!important;
+  bottom:0!important;
+}
+#page-peta .peta-bubble{
+  right:min(30%,320px)!important;
+  top:28px!important;
+  width:220px;
+}
+
+.audit-overview-shell{
+  grid-template-columns:minmax(0,1fr) 310px;
+  align-items:start;
+}
+.audit-overview-visual{
+  border-left:1px solid #d4e5ee;
+  padding:24px 0 24px 18px!important;
+  overflow:visible!important;
+  display:flex;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  min-height:100%;
+}
+.audit-overview-visual .feature-banner-bubble{
+  position:static!important;
+  width:auto!important;
+  max-width:100%;
+  margin-bottom:18px;
+}
+.audit-overview-visual{
+  flex-direction:column;
+}
+.audit-overview-visual img{
+  position:relative!important;
+  top:auto!important;
+  width:100%!important;
+  max-width:250px!important;
+  height:auto!important;
+  object-fit:contain;
+  object-position:center top;
+  margin:0 auto!important;
+  clip-path:none!important;
+}
+
+@media (max-width:1200px){
+  #page-beranda .hero-worker{width:min(98%,400px)!important}
+  .feature-banner{grid-template-columns:minmax(0,58%) minmax(260px,42%);min-height:310px}
+  .feature-banner-worker,.feature-banner-worker.half-body{width:min(95%,320px)!important}
+  #page-peta .peta-banner-worker{width:min(40%,285px)!important}
+  .audit-overview-shell{grid-template-columns:minmax(0,1fr) 250px}
+  .audit-overview-visual img{max-width:210px!important}
+}
+@media (max-width:900px){
+  #page-beranda .hero{grid-template-columns:1fr;min-height:480px}
+  #page-beranda .hero-visual{position:absolute;right:0;bottom:0;width:40%;height:48%;overflow:hidden}
+  #page-beranda .hero-worker{width:210px!important;right:-28px!important;bottom:-6px!important}
+  #page-beranda .hero-speech{display:none}
+  .feature-banner{display:block;min-height:300px}
+  .feature-banner-copy p{max-width:74%}
+  .feature-banner-visual{position:absolute;right:0;bottom:0;width:43%;height:72%;padding-right:0;overflow:hidden}
+  .feature-banner-bubble{display:none}
+  .feature-banner-worker,.feature-banner-worker.half-body{width:220px!important;right:-30px!important;bottom:-2px!important;max-height:none}
+  #page-peta .peta-banner-worker{width:220px!important;right:-30px!important;bottom:-3px!important}
+  #page-peta .peta-bubble{display:none}
+}
+@media (max-width:700px){
+  .feature-banner{min-height:280px}
+  .feature-banner-copy p{max-width:72%}
+  .feature-banner-visual{width:42%;height:70%}
+  .feature-banner-worker,.feature-banner-worker.half-body{width:205px!important;right:-46px!important;bottom:0!important}
+}
