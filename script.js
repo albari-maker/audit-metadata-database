@@ -87,6 +87,13 @@
         : 'Dokumen PDF belum dipublikasikan pada website. Ringkasan dan nomor halaman di bawah sudah dapat digunakan sebagai panduan. Unggah berkas sumber hanya jika memiliki izin distribusi publik.';
     });
   }
+
+  function decorateAuditContext(el,title,badge='',bubble='Pahami ringkasan audit, acuan pelaksanaan, dan poin utama sebelum menelusuri topik yang lebih spesifik.'){
+    const raw=el.innerHTML||'';
+    const cleaned=raw.replace(/^\s*<div class="context-head">[\s\S]*?<\/div>\s*/,'');
+    el.innerHTML=`<div class="audit-overview-shell"><div class="audit-overview-main"><div class="context-head"><h3>${esc(title)}</h3>${badge?`<span class="context-tag">${esc(badge)}</span>`:''}</div>${cleaned}</div><aside class="audit-overview-visual"><div class="feature-banner-bubble"><strong>${esc(title)}</strong><span>${esc(bubble)}</span></div><img alt="Ilustrasi pekerja Pertamina" loading="lazy" src="pekerja-pertamina.png"/></aside></div>`;
+  }
+
   function context(){
     const el=$('#audit-context');const p=profileMap[activeAudit];if(!p){el.classList.add('hidden');return;}
     el.classList.remove('hidden');
@@ -121,6 +128,7 @@
             ${overview.pillars.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
           </ol>
         </div>`;
+      decorateAuditContext(el,'CDM SKK Migas','','Pahami acuan pelaksanaan dan tiga pilar utama evaluasi SDM KKKS sebelum membuka detail topik audit.');
       return;
     }
     // Audit CSMS - keterangan berdasarkan naskah yang diberikan pemilik website (v1.13).
@@ -148,6 +156,7 @@
             ${stages.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
           </ol>
         </div>`;
+      decorateAuditContext(el,'Audit CSMS (Contractor Safety Management System)','','Pelajari enam tahapan evaluasi CSMS dari penilaian risiko sampai evaluasi akhir pekerjaan kontraktor.');
       return;
     }
     // Audit Surveilans - revisi ringkasan dan delapan komponen (v1.12).
@@ -178,6 +187,7 @@
           <p><strong>Evaluasi Audit Surveilans dikelompokkan ke dalam 8 komponen utama berdasarkan ISO/IEC 17021-1:2015 Klausul 9.6.2.2, yaitu:</strong></p>
           <ol class="overview-pillars">${overview.components.map(([name,description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}</ol>
         </div>`;
+      decorateAuditContext(el,'Audit Surveilans (Surveillance Audit)','','Pahami delapan komponen audit surveilans agar pemeriksaan sertifikasi lebih terarah dan konsisten.');
       return;
     }
     // Audit SUPREME - pengantar dari redaksi pengguna (v1.9).
@@ -209,6 +219,7 @@
           <ol class="overview-pillars">${overview.processes.map(([name,description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}</ol>
           <p class="small-warning">Catatan sumber: bagian acuan pelaksanaan dan ringkasan di atas menggunakan redaksi yang diberikan pemilik website. Data ekspektasi bernomor dalam daftar pencarian tetap diindeks dari PDF SUPREME tahun 2018; kesesuaiannya dengan standar dan protokol 2023 belum diverifikasi.</p>
         </div>`;
+      decorateAuditContext(el,'Audit SUPREME','Audit sumber 2018','Gunakan ringkasan ini sebagai panduan awal, lalu verifikasi kembali terhadap standar dan protokol SUPREME yang berlaku.');
       return;
     }
     // Pembaruan keterangan Audit PSAIMS v1.6 (teks supplied by user; acuan tetap perlu dikonfirmasi dengan dokumen resmi).
@@ -255,6 +266,7 @@
             ${overview.pillars.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
           </ol>
         </div>`;
+      decorateAuditContext(el,overview.title || 'Audit PSAIMS (Process Safety and Asset Integrity Management System)','','Pelajari empat pilar PSAIMS untuk memahami hubungan keselamatan proses, integritas aset, dan perbaikan berkelanjutan.');
       return;
     }
     if (p.detailedOverview) {
@@ -275,9 +287,11 @@
           <p>${esc(d.introPillars)}</p>
           <ol class="overview-pillars">${pillars}</ol>
         </div>`;
+      decorateAuditContext(el,p.name,p.confidence,`Pahami ringkasan ${esc(p.name)} dan gunakan sebagai orientasi awal sebelum menelusuri klausul dan contoh eviden.`);
       return;
     }
     el.innerHTML=`<div class="context-head"><h3>${esc(p.name)}</h3><span class="context-tag">${esc(p.confidence)}</span></div><p><strong>Apa ini?</strong> ${esc(p.short)}<br><strong>Tujuan:</strong> ${esc(p.purpose)}</p><div class="context-meta"><span class="tiny-badge">${esc(p.version)}</span><span class="tiny-badge">PIC umum: ${esc(p.audience)}</span></div><p class="small-warning">⚠ ${esc(p.warning)}</p>`;
+    decorateAuditContext(el,p.name,p.confidence,`Pahami ringkasan ${esc(p.name)} dan gunakan sebagai orientasi awal sebelum menelusuri klausul dan contoh eviden.`);
   }
   function applyFilters(){
     if(activePage!=='jelajahi')return;
