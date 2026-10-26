@@ -1,0 +1,20 @@
+AUDITATLAS FINAL v3.7 - WEBSITE LENGKAP + HASIL EDITOR VISUAL
+
+Paket ini adalah website AuditAtlas v3.6 dengan isi rincian SUPREME dan data audit tetap dipertahankan, ditambah konfigurasi gambar hasil Editor Visual Anda.
+
+Penyesuaian dari file hasil editor:
+- Lima foto audit-custom-*.webp adalah gambar yang sama, dengan nama untuk lima jenis audit.
+- Perpindahan vertikal karakter/kotak percakapan untuk CDM, CSMS, SUPREME, Surveilans, PSAIMS disetel ke posisi netral agar kotak tidak menutupi wajah. File audit-visual-config.js tetap dapat diedit menggunakan Mode Editor Visual.
+- Penempatan kotak percakapan pada panel penjelasan audit diperbaiki di dashboard.css agar tidak terganggu oleh aturan CSS banner Jelajahi Klausul.
+
+UPLOAD KE GITHUB:
+1. Klik kanan ZIP ini dan pilih Extract All.
+2. Buka https://github.com/albari-maker/audit-metadata-database/upload/main
+3. Upload semua file hasil ekstraksi ke folder UTAMA repository.
+4. Commit changes.
+5. Periksa GitHub Actions. Setelah deploy sukses, buka https://albari-maker.github.io/audit-metadata-database/ dan tekan Ctrl + Shift + R.
+
+CATATAN:
+- ZIP yang Anda unggah semula hanya PATCH Editor Visual, bukan website lengkap. ZIP ini sudah menggabungkan semuanya.
+- Website akan dapat diakses publik setelah deployment. Jangan unggah data pribadi pekerja, berkas audit rahasia atau gambar tanpa izin.
+- AuditAtlas adalah panduan edukatif; isi dan referensi SUPREME perlu divalidasi terhadap protokol resmi yang berlaku.

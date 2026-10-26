@@ -1,0 +1,71 @@
+AuditAtlas v3.2: Pemetaan final Proses, Sub-Proses, dan Peran HC SUPREME
+Dasar: Tabel final yang diberikan pemilik website (26 Oktober 2026).
+
+8 proses utama / 45 sub-proses:
+
+PROSES 1 Kepemimpinan dan Akuntabilitas | Tidak langsung
+   1.1   | Kepemimpinan                                                           | Tidak langsung
+   1.2   | Keterlibatan                                                           | Tidak langsung
+   1.3   | Visibilitas                                                            | Tidak langsung
+   1.4   | KPI                                                                    | Tidak langsung
+   1.5   | Budaya HSSE dan Keberlanjutan Bisnis                                   | Tidak langsung
+
+PROSES 2 Kebijakan dan Sasaran | Tidak langsung
+   2.1   | Kebijakan HSSE                                                         | Tidak langsung
+   2.2   | Pemenuhan terhadap Peraturan Hukum dan Persyaratan Lainnya             | Tidak langsung
+   2.3   | Sasaran Bisnis dan HSSE                                                | Tidak langsung
+
+PROSES 3 Organisasi, Tanggung Jawab, Sumber Daya, dan Dokumen | Utama
+   3.1   | Organisasi HSSE                                                        | Utama
+   3.2   | Rapat Rutin                                                            | Pendukung
+   3.3   | Tanggung Jawab HSSE                                                    | Pendukung
+   3.4   | Tanggung Jawab Individu                                                | Utama
+   3.5   | Jenis Sumber Daya                                                      | Utama
+   3.6   | Jaminan Kompetensi                                                     | Pendukung
+   3.7   | Pelatihan HSSE                                                         | Utama
+   3.8   | Kontrak dan Pengadaan                                                  | Pendukung
+   3.9   | Dokumen                                                                | Utama
+   3.10  | Komunikasi dengan Pemangku Kepentingan                                 | Pendukung
+
+PROSES 4 Manajemen Risiko | Tidak langsung
+   4.1   | Sistem Manajemen Risiko                                                | Tidak langsung
+   4.2   | Identifikasi Risiko                                                    | Tidak langsung
+   4.3   | Evaluasi Risiko                                                        | Tidak langsung
+   4.4   | Pengendalian Risiko                                                    | Tidak langsung
+   4.5   | Pemantauan Risiko                                                      | Tidak langsung
+   4.6   | Manajemen Sisa Risiko                                                  | Tidak langsung
+   4.7   | Dokumentasi Risiko                                                     | Tidak langsung
+
+PROSES 5 Perencanaan dan Prosedur | Tidak langsung
+   5.1   | Rencana Kerja HSSE                                                     | Tidak langsung
+   5.2   | Prosedur/Instruksi Kerja                                               | Tidak langsung
+   5.3   | Sistem Manajemen Perubahan (MoC)                                       | Pendukung
+   5.4   | Sistem Asset Integrity (AI)                                            | Tidak langsung
+   5.5   | Sistem SIKA                                                            | Tidak langsung
+   5.6   | Perencanaan Penanggulangan Keadaan Darurat                             | Tidak langsung
+   5.7   | Perencanaan Proyek                                                     | Tidak langsung
+
+PROSES 6 Implementasi dan Pengendalian Operasional | Tidak langsung
+   6.1   | Integrasi Aspek HSSE                                                   | Tidak langsung
+   6.2   | Kontraktor dan Pemasok                                                 | Tidak langsung
+   6.3   | Implementasi Manajemen Perubahan (MoC)                                 | Pendukung
+   6.4   | Implementasi Asset Integrity (AI)                                      | Tidak langsung
+   6.5   | Implementasi SIKA                                                      | Tidak langsung
+   6.6   | Pelaksanaan Penanggulangan Keadaan Darurat                             | Tidak langsung
+   6.7   | Pelaksanaan Proyek                                                     | Tidak langsung
+
+PROSES 7 Jaminan: Pemantauan, Pengukuran, dan Audit | Tidak langsung
+   7.1   | Pemantauan HSSE                                                        | Tidak langsung
+   7.2   | Ketidaksesuaian dan Tindakan Perbaikan                                 | Tidak langsung
+   7.3   | Sistem Belajar dan Kejadian (Insiden)                                  | Tidak langsung
+   7.4   | Audit                                                                  | Tidak langsung
+
+PROSES 8 Tinjauan | Tidak langsung
+   8.1   | Tinjauan Manajemen                                                     | Tidak langsung
+   8.2   | Perbaikan Berkelanjutan                                                | Tidak langsung
+
+CATATAN PENTING
+- Penomoran 45 sub-proses dari tabel final pengguna tidak setara langsung dengan 191 nomor ekspektasi dalam PDF SUPREME 2018.
+- Pada website, daftar final dan arsip PDF dapat dipilih secara terpisah saat memilih Audit SUPREME di Jelajahi Klausul.
+- Nama sub-proses dan klasifikasi peran HC perlu diselaraskan dengan pedoman/protokol internal yang berlaku sebelum digunakan untuk audit resmi.
+- Bukti khusus untuk masing-masing sub-proses tidak ditambahkan tanpa dasar dari sumber yang diberikan.

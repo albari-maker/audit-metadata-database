@@ -1,0 +1,26 @@
+AUDITATLAS v3.0 - MODE EDITOR VISUAL PER JENIS AUDIT
+
+1. Ekstrak ZIP utama, kemudian unggah semua file website ke branch main GitHub Pages.
+2. Buka website Anda dengan ?editor=1#jelajahi
+   Contoh: https://albari-maker.github.io/audit-metadata-database/?editor=1#jelajahi
+3. Buka panel "Mode Editor Visual" lalu klik "Editor panel penjelasan audit".
+4. Pilih CDM SKK Migas atau audit lain pada menu Pilih jenis audit.
+5. Ubah ukuran, geser gambar dan kotak, edit teks bubble, dan ubah warna latar.
+6. Jika ingin gambar sendiri, pilih file PNG, JPG atau WebP dari komputer.
+   - Ukuran maksimal 5 MB.
+   - Gambar hanya diproses dalam browser untuk pratinjau.
+   - Gunakan file yang Anda punya izin untuk publikasikan, bukan dokumen rahasia.
+7. Klik "Simpan pratinjau" untuk menyimpan pengaturan di browser yang digunakan.
+8. Klik "Unduh ZIP hasil edit untuk GitHub".
+9. Ekstrak ZIP hasil editor dan unggah berkas audit-visual-config.js dan semua
+   audit-custom-*.webp ke ROOT repository GitHub yang sama, lalu Commit Changes.
+10. Lakukan hard refresh Ctrl + Shift + R agar tampilan baru dimuat.
+
+PENTING:
+- Editor tidak mengedit GitHub secara otomatis dan bukan sistem autentikasi admin.
+- Parameter ?editor=1 bisa dibuka siapa saja, namun perubahan hanya lokal.
+- ZIP hasil editor adalah file yang harus pemilik repository unggah sendiri.
+- Pengaturan audit disimpan per jenis audit. Mengedit CDM tidak mengubah SUPREME.
+- Data audit, isi klausul, indeks, dan glosarium tidak diubah oleh fitur ini.
+- File editor-overrides.css tetap untuk posisi banner halaman, tidak perlu diganti
+  ketika mengekspor konfigurasi panel audit.
