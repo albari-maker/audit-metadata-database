@@ -13,7 +13,7 @@
   const possible = ['Belum dicek','Dalam proses','Siap','Perlu konfirmasi'];
   let statuses = {};
   try { statuses = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch(_e) { statuses = {}; }
-  let activePage='beranda',activeAudit='all',shown=18, filtered=[],toastTimer;
+  let activePage='beranda',activeAudit='all',shown=18, filtered=[],toastTimer,supremeMode='subprocess';
   const getStatus = (item) => possible.includes(statuses[item.id]) ? statuses[item.id] : 'Belum dicek';
   const hStat = (s) => s === 'Utama' ? 'HC utama' : s === 'Pendukung' ? 'HC pendukung' : 'Tidak langsung';
   const saveStatus = (id,value) => {
@@ -25,6 +25,15 @@
   const normalize = (s) => String(s??'').toLocaleLowerCase('id-ID').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   const debounce = (f,ms=150) => {let t;return (...args) => {clearTimeout(t);t=setTimeout(()=>f(...args),ms);};};
   const toast = (str) => {const el=$('#toast');el.textContent=str;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),3000);};
+  const selectableItems = () => (activeAudit==='supreme' && supremeMode==='expectations' && Array.isArray(DATA.supremeExpectations2018)) ? DATA.supremeExpectations2018 : DATA.clauses;
+  function syncSupremeMode(){
+    const control=$('#supreme-index-mode');if(!control)return;
+    control.classList.toggle('hidden',activeAudit!=='supreme');
+    const select=$('#supreme-mode-select');if(select)select.value=supremeMode;
+    const note=$('#supreme-index-note');if(note)note.textContent=supremeMode==='expectations'
+      ? 'Arsip 191 ekspektasi berasal dari PDF SUPREME 2018. Pemetaan peran HC final Anda berlaku untuk sub-proses di daftar utama, bukan sebagai penggantian isi ekspektasi PDF.'
+      : 'Nomor sub-proses bukan nomor ekspektasi PDF 2018. Peran HC pada daftar utama mengikuti tabel final yang Anda berikan.';
+  }
   function updateStats(){
     $('#stat-audits').textContent=DATA.profiles.length;
     $('#stat-framework').textContent=(DATA.framework||[]).length;
@@ -63,13 +72,15 @@
   function openAudit(id){
     if(!profileMap[id])return;
     activeAudit=id;
+    if(id==='supreme')supremeMode='subprocess';
+    syncSupremeMode();
     $('#audit-select').value=id;
     $('#search-input').value='';$('#hc-select').value='all';$('#readiness-select').value='all';
     refreshGroups();navigate('jelajahi');
   }
   function refreshGroups(){
     const c=$('#group-select');let last=c.value;
-    const arr=[...new Set(DATA.clauses.filter(i=>activeAudit==='all'||i.audit===activeAudit).map(i=>i.group))].sort((a,b)=>a.localeCompare(b,'id'));
+    const arr=[...new Set(selectableItems().filter(i=>activeAudit==='all'||i.audit===activeAudit).map(i=>i.group))].sort((a,b)=>a.localeCompare(b,'id'));
     c.innerHTML='<option value="all">Semua kelompok</option>'+arr.map(a=>`<option value="${esc(a)}">${esc(a)}</option>`).join('');
     c.value=arr.includes(last)?last:'all';
   }
@@ -240,7 +251,7 @@
           <p>Pelaksanaan audit dilakukan melalui pemeriksaan dokumen, wawancara, dan observasi lapangan untuk memastikan kesesuaian antara persyaratan sistem manajemen HSSE dengan implementasinya. Hasil audit menjadi dasar penetapan rekomendasi, tindakan korektif, dan peningkatan berkelanjutan (<em>continuous improvement</em>) terhadap kinerja HSSE perusahaan.</p>
           <p><strong>Evaluasi SUPREME dikelompokkan ke dalam 8 proses utama, yaitu:</strong></p>
           <ol class="overview-pillars">${overview.processes.map(([name,description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}</ol>
-          <p class="small-warning">Catatan sumber: bagian acuan pelaksanaan dan ringkasan di atas menggunakan redaksi yang diberikan pemilik website. Data ekspektasi bernomor dalam daftar pencarian tetap diindeks dari PDF SUPREME tahun 2018; kesesuaiannya dengan standar dan protokol 2023 belum diverifikasi.</p>
+          <p class="small-warning">Catatan sumber: bagian acuan pelaksanaan dan ringkasan di atas menggunakan redaksi yang diberikan pemilik website. Daftar utama menggunakan delapan proses dan 45 sub-proses berdasarkan tabel pemetaan HC final. Arsip 191 ekspektasi dari PDF SUPREME 2018 tersedia melalui pilihan Daftar SUPREME di atas. Kedua penomoran berbeda konteks dan tidak boleh disamakan; kesesuaiannya dengan standar dan protokol 2023 belum diverifikasi.</p>
         </div>`;
       decorateAuditContext(el,'Audit SUPREME','Audit sumber 2018','Gunakan ringkasan ini sebagai panduan awal, lalu verifikasi kembali terhadap standar dan protokol SUPREME yang berlaku.');
       return;
@@ -321,7 +332,8 @@
     const search=normalize($('#search-input').value).trim();
     const hc=$('#hc-select').value,group=$('#group-select').value,ready=$('#readiness-select').value;
     const words=search.split(/\s+/).filter(Boolean);
-    filtered=DATA.clauses.filter(i=>{
+    syncSupremeMode();
+    filtered=selectableItems().filter(i=>{
       if(activeAudit!=='all' && i.audit!==activeAudit)return false;
       if(hc!=='all' && i.hc!==hc)return false;
       if(group!=='all' && i.group!==group)return false;
@@ -343,8 +355,8 @@
       });
     }
     context();
-    $('#result-count').textContent=filtered.length+' topik';
-    $('#active-filter-summary').textContent=(activeAudit==='all'?'Semua audit':profileMap[activeAudit].name)+(words.length?' · Kata kunci: '+search:'');
+    $('#result-count').textContent=filtered.length+(activeAudit==='supreme'? (supremeMode==='expectations'?' ekspektasi PDF 2018':' proses / sub-proses'):' topik');
+    $('#active-filter-summary').textContent=(activeAudit==='all'?'Semua audit':profileMap[activeAudit].name)+(activeAudit==='supreme'?(supremeMode==='expectations'?' · Referensi PDF 2018':' · Pemetaan HC final'):'')+(words.length?' · Kata kunci: '+search:'');
     $('#empty-state').classList.toggle('hidden',filtered.length>0);
     renderResults();
   }
@@ -358,15 +370,20 @@
     document.querySelectorAll('.result-card').forEach(x=>x.addEventListener('click',()=>openItem(x.dataset.item)));
   }
   function openItem(id){
-    const i=DATA.clauses.find(x=>x.id===id);if(!i)return;
+    const i=DATA.clauses.find(x=>x.id===id) || (DATA.supremeExpectations2018||[]).find(x=>x.id===id);if(!i)return;
     const p=profileMap[i.audit];
     const list=i.evidence.map(x=>`<li>${esc(x)}</li>`).join('');
     const supreme2018=i.sourceType==='supreme-2018';
+    const supremeHcFinal=i.sourceType==='supreme-hc-final';
     const isExpectation=supreme2018 && /^\d+\.\d+$/.test(i.code);
-    const evidenceSection=isExpectation
+    const evidenceSection=supremeHcFinal
+      ? `<h3>03 / Referensi dokumen pendukung</h3><p>Contoh eviden spesifik untuk sub-proses ini tidak diberikan dalam tabel final HC. Cocokkan kebutuhan bukti dengan prosedur perusahaan dan protokol audit yang berlaku.</p>`
+      : isExpectation
       ? `<h3>03 / Penelusuran bukti</h3><p>Butir ini merupakan ringkasan singkat dari PDF SUPREME 2018, bukan checklist auditor. Jenis eviden spesifik harus dikonfirmasi melalui protokol audit terbaru dan fungsi pemilik proses.</p>`
       : `<h3>03 / Contoh dokumen yang bisa ditelusuri</h3><p>Contoh awal, bukan daftar wajib. Sesuaikan dengan protokol, ruang lingkup, dan izin distribusi.</p><ul>${list}</ul>`;
-    const sourceSection=supreme2018
+    const sourceSection=supremeHcFinal
+      ? `<h3>05 / Sumber klasifikasi</h3><p><strong>Pemetaan final Proses dan Sub-Proses SUPREME berdasarkan Peran HC</strong> yang diberikan pemilik website, 26 Oktober 2026.</p><p>Kode ini merupakan nomor <strong>sub-proses dalam tabel HC</strong>, bukan nomor ekspektasi dalam PDF SUPREME 2018.</p><p class="small-warning">Nama sub-proses dan klasifikasi HC perlu dicocokkan dengan pedoman/protokol internal yang berlaku untuk keperluan audit resmi.</p>`
+      : supreme2018
       ? `<h3>05 / Rujukan dokumen sumber</h3><p><strong>SUPREME 2018</strong> · ${esc(i.referenceText||'Proses yang relevan dalam PDF SUPREME 2018.')}.</p><p>Rujukan ini dipetakan dari PDF <em>supreme.pdf</em> yang diunggah. PDF tidak dipublikasikan otomatis melalui website. Nomor butir dan halamannya dapat digunakan untuk menelusuri dokumen yang sah secara internal.</p><p class="small-warning">Belum diverifikasi kesesuaiannya dengan Pertamina Standard 2023 maupun SUPREME Internal Audit Protocol (SIAP) yang berlaku.</p>`
       : p.id==='cdm'
         ? `<h3>05 / Dasar informasi</h3><p><strong>PTK-018/SKKMA0000/2018/S0 Revisi II.</strong> Untuk dasar pengaturan evaluasi SDM, lihat BAB III.10 pada halaman PDF 68–71. Penjelasan subtopik dalam database tetap merupakan pemetaan tematik, bukan pengganti buku referensi penilaian kinerja KKKS.</p><p data-cdm-source-status role="status">Memeriksa ketersediaan PDF sumber...</p><p><a data-cdm-source-link hidden class="dialog-source" href="${cdmReferencePdf}#page=68" target="_blank" rel="noopener noreferrer">Lihat dokumen PTK, BAB III.10 ↗</a></p>`
@@ -389,7 +406,7 @@
     }));
   }
   function reset(){
-    activeAudit='all';shown=18;
+    activeAudit='all';supremeMode='subprocess';shown=18;
     $('#search-input').value='';$('#audit-select').value='all';$('#hc-select').value='all';$('#readiness-select').value='all';refreshGroups();$('#group-select').value='all';applyFilters();
   }
   const csvSafe = v => { let t=String(v??'');if(/^[\s]*[=+\-@]/.test(t))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'; };
@@ -415,7 +432,8 @@
     buildNavigation();updateStats();refreshGroups();renderGlossary();
     $('#peta-audit-select').innerHTML='<option value="all">Semua jenis audit</option>'+DATA.profiles.filter(p=>(DATA.framework||[]).some(f=>f.audit===p.id)).map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
     $('#peta-audit-select').addEventListener('change',renderPeta);$('#peta-search').addEventListener('input',debounce(renderPeta));$('#peta-export').addEventListener('click',exportPetaCsv);renderPeta();
-    $('#audit-select').addEventListener('change',e=>{activeAudit=e.target.value;shown=18;refreshGroups();applyFilters();});
+    $('#audit-select').addEventListener('change',e=>{activeAudit=e.target.value;supremeMode='subprocess';shown=18;refreshGroups();applyFilters();});
+    $('#supreme-mode-select').addEventListener('change',e=>{supremeMode=e.target.value==='expectations'?'expectations':'subprocess';shown=18;refreshGroups();$('#group-select').value='all';applyFilters();});
     $('#hc-select').addEventListener('change',()=>{shown=18;applyFilters();});
     $('#group-select').addEventListener('change',()=>{shown=18;applyFilters();});
     $('#readiness-select').addEventListener('change',()=>{shown=18;applyFilters();});
@@ -426,7 +444,7 @@
     $('#dialog-close').addEventListener('click',()=>$('#detail-dialog').close());
     $('#detail-dialog').addEventListener('click',e=>{if(e.target===$('#detail-dialog'))$('#detail-dialog').close();});
     $('#hero-search-form').addEventListener('submit',e=>{e.preventDefault();
-      activeAudit='all';$('#audit-select').value='all';$('#hc-select').value='all';$('#readiness-select').value='all';
+      activeAudit='all';supremeMode='subprocess';$('#audit-select').value='all';$('#hc-select').value='all';$('#readiness-select').value='all';
       refreshGroups();$('#group-select').value='all';
       $('#search-input').value=$('#hero-search-input').value.trim();shown=18;
       navigate('jelajahi');$('#search-input').focus();
