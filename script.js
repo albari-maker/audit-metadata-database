@@ -394,8 +394,7 @@
   // Data berasal dari audit-data.js. Semua teks di-escape sebelum ditambahkan ke HTML.
   function renderAuditorDetail(item){
     if(!Array.isArray(item.auditorDetail) || !item.auditorDetail.length) return '';
-    return `<div class="dialog-section auditor-detail-intro"><h3>Rincian Kepemimpinan</h3><p>Ekspektasi, pertanyaan auditor, dan contoh bukti berikut mengikuti materi yang diberikan pemilik website. Validasi dengan protokol audit yang berlaku sebelum digunakan sebagai daftar pemeriksaan resmi.</p></div>` +
-      item.auditorDetail.map(part => `<section class="dialog-section auditor-detail-item">
+    return item.auditorDetail.map(part => `<section class="dialog-section auditor-detail-item">
         <h3>${esc(part.code)} ${esc(part.title)}</h3>
         <h4>Ekspektasi</h4><p>${esc(part.expectation)}</p>
         <h4>Pertanyaan auditor</h4><ol>${(part.questions||[]).map(q=>`<li>${esc(q)}</li>`).join('')}</ol>
@@ -424,9 +423,19 @@
     const root = i.code.match(/^(?:[4-9]|10)(?=\.)/);
     const path=root?`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`:`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`;
     const display=conciseSupremeTitle(i);
-    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(display.title)}</h2><p class="dialog-subtitle">${path}</p><div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div>${Array.isArray(i.auditorDetail) && i.auditorDetail.length ? renderAuditorDetail(i) : `<div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div>`}<div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div><div class="dialog-section">${sourceSection}</div><div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`;
+    // SUPREME: sembunyikan hanya elemen tambahan pada jendela detail.
+    // Klasifikasi HC dan data sumber tetap tersimpan di metadata, filter, dan daftar kartu.
+    const showExtraPanels = p.id !== 'supreme';
+    const detailBadges = showExtraPanels
+      ? `<div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div>`
+      : '';
+    const detailSource = showExtraPanels ? `<div class="dialog-section">${sourceSection}</div>` : '';
+    const detailChecklist = showExtraPanels
+      ? `<div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`
+      : '';
+    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(display.title)}</h2><p class="dialog-subtitle">${path}</p>${detailBadges}${Array.isArray(i.auditorDetail) && i.auditorDetail.length ? renderAuditorDetail(i) : `<div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div>`}<div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div>${detailSource}${detailChecklist}`;
     if(p.id==='cdm') updateCdmReferenceAvailability();
-    $('#detail-status').addEventListener('change',(e)=>{saveStatus(i.id,e.target.value);toast('Status lokal diperbarui: '+e.target.value);});
+    if ($('#detail-status')) $('#detail-status').addEventListener('change',(e)=>{saveStatus(i.id,e.target.value);toast('Status lokal diperbarui: '+e.target.value);});
     const dialog=$('#detail-dialog');if(!dialog.open)dialog.showModal();
   }
   function renderGlossary(){
