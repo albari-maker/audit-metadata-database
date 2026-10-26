@@ -360,11 +360,32 @@
     $('#empty-state').classList.toggle('hidden',filtered.length>0);
     renderResults();
   }
+  // Nomor SUPREME sudah tampil pada kotak kode di sisi kiri kartu.
+  // Jangan ulangi awalan "Ekspektasi 1.1" pada judul kartu atau dialog.
+  function conciseSupremeTitle(item){
+    const original=String(item.title||'').trim();
+    if(item.audit!=='supreme')return {title:original,hideDescription:false};
+    const prefix=/^Ekspektasi\s+\d+(?:\.\d+)?\s*[·:–-]\s*/i;
+    if(prefix.test(original)){
+      const title=original.replace(prefix,'').trim();
+      return {title:title || 'Ketentuan SUPREME',hideDescription:false};
+    }
+    // Arsip PDF 2018 menggunakan judul generik seperti:
+    // "Ekspektasi 1.1 (dokumen SUPREME 2018)".
+    // Pakai teks ringkasan aslinya agar judul tetap bermakna tanpa nomor ganda.
+    if(/^Ekspektasi\s+\d+(?:\.\d+)?\s*\([^)]*\)\s*$/i.test(original)){
+      const summary=String(item.description||'').trim();
+      const shortened=summary.length>115?summary.slice(0,112).trimEnd()+'…':summary;
+      return {title:shortened || 'Ringkasan dokumen SUPREME 2018',hideDescription:Boolean(summary)};
+    }
+    return {title:original,hideDescription:false};
+  }
   function renderResults(){
     const visible=filtered.slice(0,shown);
     $('#result-list').innerHTML=visible.map(i=>{
       const p=profileMap[i.audit];const status=getStatus(i);
-      return `<button class="result-card" data-item="${esc(i.id)}"><span class="result-code">${esc(i.code)}</span><div class="result-body"><div class="result-badges"><span>${esc(p.name)}</span><span>${esc(i.group)}</span><span class="status">${esc(hStat(i.hc))}</span></div><h3>${esc(i.title)}</h3><p>${esc(i.description)}</p></div><div class="result-end"><span>${esc(status)}</span><b>↗</b></div></button>`;
+      const display=conciseSupremeTitle(i);
+      return `<button class="result-card" data-item="${esc(i.id)}"><span class="result-code">${esc(i.code)}</span><div class="result-body"><div class="result-badges"><span>${esc(p.name)}</span><span>${esc(i.group)}</span><span class="status">${esc(hStat(i.hc))}</span></div><h3>${esc(display.title)}</h3>${display.hideDescription?'':`<p>${esc(i.description)}</p>`}</div><div class="result-end"><span>${esc(status)}</span><b>↗</b></div></button>`;
     }).join('');
     $('#load-more').classList.toggle('hidden',filtered.length<=shown);
     document.querySelectorAll('.result-card').forEach(x=>x.addEventListener('click',()=>openItem(x.dataset.item)));
@@ -390,7 +411,8 @@
         : `<h3>05 / Dasar informasi</h3><p><a class="dialog-source" href="${esc(i.source)}" target="_blank" rel="noopener noreferrer">Lihat sumber umum terkait (bukan verifikasi klausul) ↗</a></p>${(p.id==='surveilans'||p.id==='csms')?'':`<p class="small-warning">${esc(p.warning)}</p>`}`;
     const root = i.code.match(/^(?:[4-9]|10)(?=\.)/);
     const path=root?`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`:`${esc(p.name)} → ${esc(i.group)} → ${esc(i.code)}`;
-    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(i.title)}</h2><p class="dialog-subtitle">${path}</p><div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div><div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div><div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div><div class="dialog-section">${sourceSection}</div><div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`;
+    const display=conciseSupremeTitle(i);
+    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(display.title)}</h2><p class="dialog-subtitle">${path}</p><div class="dialog-badges"><span>${esc(p.version)}</span><span>${esc(hStat(i.hc))}</span><span>${esc(i.status)}</span></div><div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div><div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div><div class="dialog-section">${sourceSection}</div><div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`;
     if(p.id==='cdm') updateCdmReferenceAvailability();
     $('#detail-status').addEventListener('change',(e)=>{saveStatus(i.id,e.target.value);toast('Status lokal diperbarui: '+e.target.value);});
     const dialog=$('#detail-dialog');if(!dialog.open)dialog.showModal();
