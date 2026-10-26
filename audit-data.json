@@ -1,7 +1,7 @@
 {
   "title": "Audit Metadata Database",
   "subtitle": "Panduan publik audit dari kelompok besar hingga topik dan contoh bukti",
-  "version": "3.2.0",
+  "version": "3.4.0",
   "date": "2026-10-21",
   "notice": "SUPREME: 8 proses dan 45 sub-proses dalam tabel pemetaan HC final pengguna. Indeks terpisah 191 ekspektasi berasal dari PDF SUPREME 2018. Nomor yang sama pada kedua indeks tidak berarti deskripsi identik; peran HC pada arsip 2018 adalah metadata lama dan bukan pemetaan final sub-proses.",
   "references": [
@@ -5768,13 +5768,75 @@
         "1.1",
         "Kepemimpinan dan Akuntabilitas",
         "Kepemimpinan",
-        "HC: Tidak langsung"
+        "HC: Tidak langsung",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "Visi dan Misi",
+        "Sistem Manajemen HSSE",
+        "Uraian Jabatan",
+        "Pertanyaan auditor",
+        "Evidence"
       ],
       "source": "",
       "status": "Pemetaan HC final yang diberikan pengguna; bukan daftar pemeriksaan SIAP",
       "origin": "Tabel final Proses dan Sub-Proses SUPREME dengan Peran HC, diberikan pengguna pada 26 Oktober 2026.",
       "referenceText": "Proses 1, Sub-proses 1.1; pemetaan HC final pengguna.",
-      "sourceType": "supreme-hc-final"
+      "sourceType": "supreme-hc-final",
+      "auditorDetail": [
+        {
+          "code": "1.1.1",
+          "title": "Penetapan Visi, Misi, dan Tata Nilai Organisasi",
+          "expectation": "Pemimpin menetapkan visi, misi, dan tata nilai organisasi yang selaras dengan arah perusahaan dan mendukung penerapan HSSE.",
+          "questions": [
+            "Apakah organisasi telah memiliki visi dan misi tertulis yang sesuai dengan arah perusahaan dan mempertimbangkan aspek HSSE?",
+            "Apakah tata nilai dan perilaku utama organisasi telah ditetapkan secara resmi?",
+            "Bagaimana organisasi mengomunikasikan visi, misi, dan tata nilai kepada seluruh pekerja?"
+          ],
+          "evidence": [
+            "Dokumen resmi visi, misi, dan tata nilai perusahaan.",
+            "Kebijakan, surat keputusan, atau dokumen pengesahan yang berlaku.",
+            "Materi sosialisasi, presentasi town hall, dan notulen rapat.",
+            "Dokumentasi publikasi melalui website, intranet, poster, atau media internal.",
+            "Daftar hadir sosialisasi dan hasil wawancara pekerja."
+          ]
+        },
+        {
+          "code": "1.1.2",
+          "title": "Penetapan dan Dokumentasi Sistem Manajemen HSSE",
+          "expectation": "Pemimpin menetapkan, mendokumentasikan, dan memastikan sistem manajemen HSSE ditinjau secara berkala.",
+          "questions": [
+            "Apakah organisasi telah menetapkan sistem manajemen HSSE yang terintegrasi?",
+            "Apakah sistem manajemen HSSE telah terdokumentasi dalam pedoman dan prosedur resmi?",
+            "Apakah dokumen sistem manajemen HSSE ditinjau dan diperbarui secara berkala?"
+          ],
+          "evidence": [
+            "Pedoman sistem manajemen HSSE atau dokumen implementasi SUPREME.",
+            "Kebijakan HSSE yang telah disahkan.",
+            "Tata Kerja Organisasi (TKO), Tata Kerja Individu (TKI), serta prosedur terkait.",
+            "Daftar induk dokumen dan riwayat revisi.",
+            "Laporan hasil evaluasi atau tinjauan sistem manajemen HSSE."
+          ]
+        },
+        {
+          "code": "1.1.3",
+          "title": "Integrasi Kepemimpinan SUPREME dalam Uraian Jabatan",
+          "expectation": "Pemimpin memastikan aspek keterlibatan, visibilitas, indikator kinerja, dan budaya HSSE tercantum dalam uraian jabatan yang terdokumentasi.",
+          "questions": [
+            "Apakah uraian jabatan pimpinan telah mencantumkan keempat aspek kepemimpinan SUPREME?",
+            "Apakah uraian jabatan telah disahkan oleh pejabat yang berwenang?",
+            "Apakah tanggung jawab HSSE telah dikomunikasikan kepada pemegang jabatan?",
+            "Apakah uraian jabatan ditinjau dan diperbarui ketika terjadi perubahan organisasi?"
+          ],
+          "evidence": [
+            "Dokumen Job Description (JD) atau uraian jabatan pimpinan.",
+            "Struktur organisasi dan matriks tanggung jawab HSSE.",
+            "Dokumen pengesahan uraian jabatan.",
+            "Rekaman sosialisasi tugas dan tanggung jawab.",
+            "Riwayat revisi dan evaluasi uraian jabatan."
+          ]
+        }
+      ]
     },
     {
       "id": "supreme-sub-1-2",
