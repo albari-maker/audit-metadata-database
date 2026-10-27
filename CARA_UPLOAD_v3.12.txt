@@ -1,0 +1,44 @@
+AUDITATLAS 3.12 - PENCARIAN TERPADU LINTAS SELURUH AUDIT
+
+YANG BERUBAH
+- Pencarian di semua kategori audit, klausul, sub-proses, pertanyaan auditor, dan evidence.
+- Menampilkan juga hasil peta audit dan glosarium.
+- Dropdown saran dan autocomplete pada kolom Ringkasan, Peta Audit, dan Jelajahi Klausul.
+- Fuzzy search: kesalahan pengetikan ringan seperti "suprime" dan "ISO 4501" tetap menemukan hasil.
+- Ranking berdasarkan kecocokan judul, kode, audit, ringkasan, dan metadata/evidence.
+- Menyorot kata pencarian pada hasil dan saran.
+- Spinner lokal ketika pencarian sedang diproses.
+- Filter HC, jenis audit, kelompok dan status tetap tersedia.
+- Ketik di kolom Jelajahi Klausul untuk mencari semua audit secara default.
+- Jika ingin mempersempit, pilih Jenis Audit di dropdown. Klik "Tampilkan seluruh audit" untuk menghapus pembatasan audit.
+- Buka hasil peta untuk melihat kelompok peta audit; hasil glosarium membuka arti istilah.
+
+CATATAN
+Pencarian ini bekerja pada database yang sudah tersimpan dalam website AuditAtlas, BUKAN mesin pencari internet dan tidak terhubung dengan Google Search.
+Data audit dan penjelasan sebelumnya tidak diubah oleh pembaruan ini.
+
+CARA UPLOAD ZIP LENGKAP
+1. Ekstrak seluruh ZIP di komputer.
+2. Buka https://github.com/albari-maker/audit-metadata-database
+3. Pastikan branch utama yang digunakan GitHub Pages adalah main.
+4. Unggah SELURUH file dari hasil ekstraksi ke root repository (bukan file ZIP).
+5. Ganti file bernama sama dan klik Commit changes.
+6. Setelah GitHub Pages selesai diterbitkan, buka https://albari-maker.github.io/audit-metadata-database/
+7. Tekan Ctrl + Shift + R untuk refresh cache.
+
+CARA UPLOAD PATCH 3 FILE
+Jika website sudah menggunakan v3.11, Anda boleh hanya mengganti:
+- index.html
+- script.js
+- dashboard.css
+
+CONTOH UJI
+- Cari "iso 9001" => hasil jenis audit ISO 9001 dan klausulnya.
+- Cari "suprime" => rekomendasi Audit SUPREME.
+- Cari "hc pendukung" => hasil dengan Peran HC Pendukung lintas audit.
+- Cari "kompetensi" => topik audit terkait di beberapa jenis audit.
+- Cari "9-Box" => istilah dari glosarium.
+- Cari "perencanaan tenaga kerja" => bisa membuka peta audit.
+- Cari di Ringkasan atau Peta Audit, klik saran atau "Lihat semua hasil".
+
+DILARANG mengunggah dokumen internal, data karyawan, informasi medis, atau bukti audit rahasia ke repository publik.

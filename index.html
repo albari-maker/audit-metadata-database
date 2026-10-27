@@ -11,7 +11,7 @@
 <link href="style.css?v=final-v33-20261026" rel="stylesheet"/>
 <script defer="" src="audit-data.js?v=final-v37-20261026"></script>
 <script defer src="audit-visual-config.js?v=final-v37-20261026"></script>
-<script defer="" src="script.js?v=smart-hc-v311-20261027"></script>
+<script defer="" src="script.js?v=3.12-global"></script>
 <style>
     #audit-context .overview-section + .overview-section {margin-top:20px;border-top:1px solid #dbe7e3;padding-top:20px}
     #audit-context .overview-section h4 {margin:0 0 10px;font-size:15px;font-weight:800;color:#123c3a}
@@ -20,7 +20,7 @@
     #audit-context .overview-pillars li {padding-left:5px;margin-bottom:11px;font-size:14px;line-height:1.8}
     #audit-context .overview-pillars li::marker {color:#168d7b;font-weight:800}
   </style>
-<link href="dashboard.css?v=smart-hc-v311-20261027" rel="stylesheet"/><link rel="stylesheet" href="editor-overrides.css?v=final-v33-20261026"/>
+<link href="dashboard.css?v=3.12-global" rel="stylesheet"/><link rel="stylesheet" href="editor-overrides.css?v=final-v33-20261026"/>
 <script defer src="visual-editor.js?v=final-v33-20261026"></script>
 <script defer src="audit-visual-editor.js?v=final-v33-20261026"></script>
 </head>
@@ -28,7 +28,7 @@
 <div class="app-shell">
 <aside class="sidebar" id="sidebar">
 <a aria-label="Pertamina Audit Knowledge Base, halaman Ringkasan" class="brand" data-page="beranda" href="#beranda"><img alt="PERTAMINA | AUDIT KNOWLEDGE BASE" loading="eager" src="logo-reference.png"/></a>
-<div class="workspace-label"><span class="live-dot"></span><span>Public Edition</span><span class="version">v3.11</span></div>
+<div class="workspace-label"><span class="live-dot"></span><span>Public Edition</span><span class="version">v3.12</span></div>
 <nav aria-label="Navigasi utama" class="primary-nav">
 <span class="nav-heading">WORKSPACE</span>
 <button class="nav-link active" data-page="beranda"><span aria-hidden="true" class="nav-icon">⌂</span><span class="nav-label">Ringkasan</span><span aria-hidden="true" class="nav-chevron">›</span></button>
@@ -83,7 +83,7 @@
 <section class="page hidden" id="page-jelajahi">
 <div class="feature-banner feature-banner-half">
 <div class="feature-banner-copy"><span class="mini-accent"></span><span class="eyebrow eyebrow-dark">EXPLORE THE LIBRARY</span><h1>Jelajahi klausul <em>&amp; elemen audit.</em></h1><p>Telusuri dari kelompok audit, klausul utama, subklausul, hingga contoh bukti yang sebaiknya dipahami.</p></div><div class="feature-banner-visual"><div class="feature-banner-bubble"><strong>Siap eksplorasi?</strong><span>Pilih jenis audit, gunakan filter, lalu buka detail topik untuk melihat penjelasan dan contoh eviden yang relevan.</span></div><img alt="Ilustrasi pekerja Pertamina untuk halaman jelajahi klausul" class="feature-banner-worker half-body" loading="lazy" src="pekerja-pertamina.png"/></div></div>
-<div class="filter-panel"><div class="smart-search-shell" id="smart-search-shell"><label class="search-input smart-search-input"><span class="search-icon" id="smart-search-icon" aria-hidden="true">⌕</span><span class="search-spinner" id="smart-search-spinner" aria-hidden="true"></span><input aria-label="Cari topik audit dan peran HC" autocomplete="off" aria-autocomplete="list" aria-expanded="false" aria-controls="search-suggestions" role="combobox" id="search-input" placeholder="Cari audit, klausul atau HC utama / pendukung..." type="search"/><kbd>/</kbd></label><div class="search-suggestions hidden" id="search-suggestions" role="listbox" aria-label="Saran pencarian audit"></div><span class="sr-only" role="status" aria-live="polite" id="search-live-status"></span></div><div class="filters"><label>Jenis audit <select id="audit-select"><option value="all">Semua jenis audit</option></select></label><label>Peran HC <select id="hc-select"><option value="all">Semua keterlibatan</option><option value="Utama">HC utama</option><option value="Pendukung">HC pendukung</option><option value="Tidak langsung">Tidak langsung</option></select></label><label>Kelompok / klausul <select id="group-select"><option value="all">Semua kelompok</option></select></label><label>Status pencatatan <select id="readiness-select"><option value="all">Semua status</option><option>Belum dicek</option><option>Dalam proses</option><option>Siap</option><option>Perlu konfirmasi</option></select></label></div><div class="supreme-index-mode hidden" id="supreme-index-mode" aria-label="Jenis daftar SUPREME">
+<div class="filter-panel"><div class="smart-search-shell" id="smart-search-shell"><label class="search-input smart-search-input"><span class="search-icon" id="smart-search-icon" aria-hidden="true">⌕</span><span class="search-spinner" id="smart-search-spinner" aria-hidden="true"></span><input aria-label="Cari di seluruh audit, klausul, peta, evidence dan glosarium" autocomplete="off" aria-autocomplete="list" aria-expanded="false" aria-controls="search-suggestions" role="combobox" id="search-input" placeholder="Cari semua audit, klausul, dokumen, evidence, HC..." type="search"/><kbd>/</kbd></label><div class="search-suggestions hidden" id="search-suggestions" role="listbox" aria-label="Saran pencarian audit"></div><span class="sr-only" role="status" aria-live="polite" id="search-live-status"></span><div class="search-scope-note"><span>⌕ Pencarian semua audit, peta, dan glosarium</span><button type="button" id="search-all-btn">Tampilkan seluruh audit →</button></div></div><div class="filters"><label>Jenis audit <select id="audit-select"><option value="all">Semua jenis audit</option></select></label><label>Peran HC <select id="hc-select"><option value="all">Semua keterlibatan</option><option value="Utama">HC utama</option><option value="Pendukung">HC pendukung</option><option value="Tidak langsung">Tidak langsung</option></select></label><label>Kelompok / klausul <select id="group-select"><option value="all">Semua kelompok</option></select></label><label>Status pencatatan <select id="readiness-select"><option value="all">Semua status</option><option>Belum dicek</option><option>Dalam proses</option><option>Siap</option><option>Perlu konfirmasi</option></select></label></div><div class="supreme-index-mode hidden" id="supreme-index-mode" aria-label="Jenis daftar SUPREME">
 <label for="supreme-mode-select"><strong>Daftar SUPREME</strong> <span>Pilih sub-proses final atau referensi PDF 2018</span></label>
 <select id="supreme-mode-select">
 <option value="subprocess">Pemetaan final: 8 proses dan 45 sub-proses HC</option>
@@ -93,7 +93,7 @@
 </div>
 <div class="filter-footer"><div id="active-filter-summary">Menampilkan seluruh kategori</div><button class="text-button" id="reset-filters">↺ Reset filter</button></div></div>
 <div class="audit-context hidden" id="audit-context"></div>
-<div class="result-header"><div><strong id="result-count">0 topik</strong><span> · Pilih topik untuk membuka penjelasan dan bukti</span></div><span class="result-hint">Dari umum → khusus</span></div><div class="result-list" id="result-list"></div><div class="empty-state hidden" id="empty-state"><div>⌕</div><h3>Tidak ada hasil untuk filter ini</h3><p>Coba kata kunci lain atau pilih semua kategori.</p><button class="btn btn-outline" id="empty-reset">Hapus filter</button></div><button class="btn btn-more hidden" id="load-more">Tampilkan lebih banyak ↓</button>
+<div class="result-header"><div><strong id="result-count">0 topik</strong><span id="result-header-search-note"> · Pilih topik untuk membuka penjelasan dan bukti</span></div><span class="result-hint" id="result-hint">Dari umum → khusus</span></div><div class="result-list" id="result-list"></div><div class="empty-state hidden" id="empty-state"><div>⌕</div><h3>Tidak ada hasil untuk filter ini</h3><p>Coba kata kunci lain atau pilih semua kategori.</p><button class="btn btn-outline" id="empty-reset">Hapus filter</button></div><button class="btn btn-more hidden" id="load-more">Tampilkan lebih banyak ↓</button>
 </section>
 <section class="page hidden" id="page-peta">
 <div class="hero hero-peta">

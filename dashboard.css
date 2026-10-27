@@ -569,3 +569,30 @@ html,body{background:#f3f8fc;color:#102a40}body{font-size:14px}button:focus-visi
 .suggestion-empty{padding:17px 13px;color:#6f8492;font-size:12px}
 @media(max-width:700px){.search-suggestions{max-height:50vh}.search-suggestion{gap:8px;padding:9px}.search-suggestion strong{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.search-spinner{animation-duration:1.5s}}
+
+
+/* v3.12: database-wide search, suggestions, ranked results */
+.search-scope-note{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:8px 4px 10px;color:#547184;font-size:11px}
+.search-scope-note button{border:0;background:none;color:#0D6DB7;font-weight:750;cursor:pointer;font:inherit;text-decoration:underline;text-underline-offset:3px}
+.search-scope-note button:hover{color:#094d83}
+.search-suggestion mark,.result-card mark{background:#e3f3a1;color:#17344d;padding:0 2px;border-radius:3px}
+.global-result-type{font-size:11px;font-weight:900;letter-spacing:.08em;align-self:flex-start;white-space:normal;text-align:center;min-width:79px}
+.global-result-card .result-end span{font-size:11px}
+.all-search-results{border-top:1px solid #e5eef3;border-radius:0;margin-top:5px}
+@media(max-width:700px){.search-scope-note{align-items:flex-start;flex-direction:column;gap:5px}.global-result-type{min-width:64px;font-size:9px}}
+
+.hero-search{position:relative;z-index:7}
+.hero-quick-suggestions{position:absolute;top:calc(100% + 6px);left:28px;right:0;max-height:230px;overflow-y:auto;background:#fff;border:1px solid #ccdfec;box-shadow:0 13px 28px rgba(15,51,77,.16);border-radius:12px;padding:6px;z-index:60}
+.hero-quick-suggestions.hidden{display:none}
+.hero-quick-hit,.hero-quick-all{background:transparent;border:0;display:block;text-align:left;width:100%;min-width:0!important;height:auto!important;min-height:42px!important;box-shadow:none!important;color:#14354e!important;font-size:12px!important;padding:7px 11px;border-radius:7px;cursor:pointer}
+.hero-quick-hit:hover,.hero-quick-all:hover,.hero-quick-hit.is-highlighted,.hero-quick-all.is-highlighted{background:#edf6ff!important}
+.hero-quick-hit strong,.hero-quick-hit small{display:block;line-height:1.4}
+.hero-quick-hit small{color:#5d778a;font-size:10px;margin-top:3px}
+.hero-quick-hit mark{background:#e3f3a1;color:#153245;border-radius:2px}
+.hero-quick-all{border-top:1px solid #e4eef6!important;color:#0D6DB7!important;font-weight:700!important}
+.hero-search.is-searching .hero-search-symbol{animation:smart-search-spin .55s linear infinite}
+@media(max-width:700px){.hero-quick-suggestions{left:0;max-height:175px}.hero-quick-hit{font-size:11px!important}}
+/* Keep hero autocomplete above statistics and adjacent cards, without clipping results. */
+#page-beranda .hero,#page-peta .hero{position:relative;z-index:auto;overflow:hidden!important}
+#page-beranda .hero.search-expanded,#page-peta .hero.search-expanded{z-index:9;overflow:visible!important}
+#page-beranda .hero-search,#page-peta .hero-search{z-index:24}
