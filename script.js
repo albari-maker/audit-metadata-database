@@ -48,7 +48,18 @@
     $('#stat-progress').textContent=DATA.clauses.filter(x=>getStatus(x)==='Siap').length;
   }
   function buildNavigation(){
-    $('#sidebar-audits').innerHTML=DATA.profiles.map(p=>`<button class="sidebar-audit-button" data-audit="${esc(p.id)}"><i class="side-audit-dot" style="background:${esc(p.color)}"></i><span>${esc(p.name)}</span></button>`).join('');
+    // Kelompok navigasi ISO SMT: ketiga audit ISO tetap memiliki ID dan database sendiri.
+    const smtIds=['iso45001','iso14001','iso9001'];
+    const smtProfiles=smtIds.map(id=>profileMap[id]).filter(Boolean);
+    const sidebarItem=(p,nested=false)=>`<button type="button" class="sidebar-audit-button${nested?' sidebar-audit-child':''}" data-audit="${esc(p.id)}"><i class="side-audit-dot" style="background:${esc(p.color)}"></i><span>${esc(p.name)}</span></button>`;
+    const smtGroup=smtProfiles.length ? `<details class="sidebar-audit-group" id="sidebar-iso-smt" open><summary class="sidebar-group-toggle" aria-label="Buka atau tutup menu Audit ISO SMT"><i class="side-audit-dot" style="background:#B1BB1C"></i><span>Audit ISO SMT</span><span aria-hidden="true" class="sidebar-group-arrow">⌄</span></summary><div class="sidebar-audit-children">${smtProfiles.map(p=>sidebarItem(p,true)).join('')}</div></details>` : '';
+    let smtInserted=false;
+    $('#sidebar-audits').innerHTML=DATA.profiles.map(p=>{
+      if(smtIds.includes(p.id))return '';
+      const item=sidebarItem(p);
+      if(p.id==='cdm' && smtGroup){smtInserted=true;return item+smtGroup;}
+      return item;
+    }).join('')+(smtInserted?'':smtGroup);
     const auditColors=['#0D6DB7','#6344e8','#0cb483','#ff9819','#39b8ef','#e51837','#147ade','#98a915','#747d92','#5d82a6','#0d888a'];
     $('#audit-grid').innerHTML=DATA.profiles.map((p,i)=>`<button class="audit-card" data-audit="${esc(p.id)}" aria-label="Jelajahi ${esc(p.name)}"><span class="audit-icon" style="background:${auditColors[i%auditColors.length]}">▤</span><span class="audit-card-copy"><strong>${esc(p.name)}</strong><small>${countMap[p.id]} topik</small></span><span class="audit-arrow" aria-hidden="true">›</span></button>`).join('');
     if($('#audit-grid-peta')) $('#audit-grid-peta').innerHTML=DATA.profiles.map((p,i)=>`<button class="audit-card" data-audit="${esc(p.id)}" aria-label="Jelajahi ${esc(p.name)}"><span class="audit-icon" style="background:${auditColors[i%auditColors.length]}">▤</span><span class="audit-card-copy"><strong>${esc(p.name)}</strong><small>${countMap[p.id]} topik</small></span><span class="audit-arrow" aria-hidden="true">›</span></button>`).join('');
@@ -72,6 +83,16 @@
   function openAudit(id){
     if(!profileMap[id])return;
     activeAudit=id;
+    document.querySelectorAll('.sidebar-audit-button').forEach(button=>{
+      const selected=button.dataset.audit===id;
+      button.classList.toggle('is-selected',selected);
+      if(selected)button.setAttribute('aria-current','true');
+      else button.removeAttribute('aria-current');
+    });
+    if(['iso45001','iso14001','iso9001'].includes(id)){
+      const isoSmtGroup=$('#sidebar-iso-smt');
+      if(isoSmtGroup)isoSmtGroup.open=true;
+    }
     if(id==='supreme')supremeMode='subprocess';
     syncSupremeMode();
     $('#audit-select').value=id;

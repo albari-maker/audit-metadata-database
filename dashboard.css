@@ -527,3 +527,21 @@ html,body{background:#f3f8fc;color:#102a40}body{font-size:14px}button:focus-visi
     margin: 0 auto 12px !important;
   }
 }
+
+
+/* v3.8: Submenu Audit ISO SMT pada sidebar */
+.sidebar-audit-group{margin:3px 2px 5px 5px;border-radius:9px;background:rgba(255,255,255,.045);overflow:hidden}
+.sidebar-group-toggle{list-style:none;cursor:pointer;display:flex;align-items:center;gap:13px;min-height:37px;padding:6px 10px 6px 14px;color:#f5f9ff;font-size:12.3px;font-weight:700;line-height:1.35;border-radius:8px}
+.sidebar-group-toggle::-webkit-details-marker{display:none}
+.sidebar-group-toggle::marker{content:''}
+.sidebar-group-toggle:hover{background:#15435f}
+.sidebar-group-toggle:focus-visible{outline:3px solid #B1BB1C;outline-offset:-3px}
+.sidebar-group-toggle .side-audit-dot{flex-shrink:0}
+.sidebar-group-toggle>span:nth-child(2){flex:1}
+.sidebar-group-arrow{color:#b7d4e8;transition:transform .18s ease;font-size:18px;line-height:1}
+.sidebar-audit-group[open] .sidebar-group-arrow{transform:rotate(180deg)}
+.sidebar-audit-children{margin:0 10px 7px 21px;padding:2px 0 2px 9px;border-left:1px solid rgba(168,208,230,.38);display:flex;flex-direction:column;gap:1px}
+.sidebar-audit-button.sidebar-audit-child{width:100%;min-height:33px;padding:7px 5px 7px 11px;color:#d1e5f1;font-size:12px;text-align:left;display:flex;align-items:center;gap:12px}
+.sidebar-audit-button.sidebar-audit-child .side-audit-dot{width:11px;height:11px;flex-shrink:0}
+.sidebar-audit-button.is-selected{background:rgba(13,109,183,.33);color:#fff;font-weight:650;border-radius:7px}
+@media(prefers-reduced-motion:reduce){.sidebar-group-arrow{transition:none}}
