@@ -1,0 +1,28 @@
+AUDITATLAS v3.11 - PENCARIAN SMART & FILTER PERAN HC
+
+FITUR BARU
+1. Ketik HC pendukung, HC utama, atau HC tidak langsung pada kolom Jelajahi klausul. Filter Peran HC akan dipilih otomatis.
+2. Ketik HC saja untuk melihat saran tiga jenis keterlibatan HC. Klik salah satunya untuk menerapkan filter.
+3. Daftar pratinjau topik tampil selama mengetik. Pilih topik untuk membuka detailnya.
+4. Kesalahan ejaan ringan seperti HC pendukng atau suprime tetap dapat dicari.
+5. Ikon spinner muncul sebentar saat pencarian lokal diproses, lalu berubah menjadi ikon kaca pembesar kembali.
+6. Tombol panah atas/bawah memilih saran, Enter membuka pilihan, Escape menutup daftar.
+
+PENCARIAN & BATASAN
+- Proses pencarian dan saran berjalan dari data yang telah dimuat di browser, tanpa server tambahan.
+- Peran HC tidak diubah di database dan hanya menjadi filter halaman.
+- Untuk Audit SUPREME, pilihan HC utama menampilkan 6 entri termasuk induk Proses 3, 5 di antaranya adalah sub-proses.
+- HC pendukung = 7 sub-proses SUPREME.
+- Tidak langsung = 40 entri termasuk induk proses.
+- Nilai dapat berbeda bila Anda memilih audit, kelompok, atau status lainnya.
+
+CARA UPLOAD KE GITHUB PAGES
+1. Unduh ZIP lengkap, ekstrak seluruh isinya.
+2. Buka https://github.com/albari-maker/audit-metadata-database/upload/main
+3. Unggah SEMUA file hasil ekstraksi ke ROOT repository (bukan ZIP-nya).
+4. Klik Commit changes.
+5. Setelah GitHub Pages berhasil diterbitkan, buka website dan tekan Ctrl + Shift + R.
+
+Jika v3.10 sudah terpasang, cukup ganti index.html, script.js, dan dashboard.css dari ZIP PATCH.
+
+CATATAN: Editor Visual, database audit, isi ISO, pemetaan SUPREME dan gambar tidak diubah.

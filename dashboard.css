@@ -545,3 +545,27 @@ html,body{background:#f3f8fc;color:#102a40}body{font-size:14px}button:focus-visi
 .sidebar-audit-button.sidebar-audit-child .side-audit-dot{width:11px;height:11px;flex-shrink:0}
 .sidebar-audit-button.is-selected{background:rgba(13,109,183,.33);color:#fff;font-weight:650;border-radius:7px}
 @media(prefers-reduced-motion:reduce){.sidebar-group-arrow{transition:none}}
+
+/* v3.11: pencarian real-time, saran HC, fuzzy search, dan loading lokal */
+#page-jelajahi .filter-panel{overflow:visible;position:relative;z-index:9}
+.smart-search-shell{position:relative;z-index:14;min-width:0;margin-bottom:0}
+.smart-search-shell .smart-search-input{margin:0;min-width:0}
+.smart-search-shell .smart-search-input input{min-width:0;flex:1}
+.smart-search-shell .search-icon{display:inline-flex;min-width:20px;justify-content:center}
+.search-spinner{display:none;flex:0 0 18px;height:18px;width:18px;border-radius:50%;border:2px solid #c4dce9;border-top-color:#0D6DB7;animation:smart-search-spin .65s linear infinite}
+.smart-search-shell.is-searching .search-icon{display:none}
+.smart-search-shell.is-searching .search-spinner{display:inline-block}
+@keyframes smart-search-spin{to{transform:rotate(360deg)}}
+.search-suggestions{position:absolute;top:calc(100% + 5px);left:0;right:0;background:white;border:1px solid #d7e7f0;border-radius:12px;z-index:35;max-height:380px;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 16px 35px rgba(16,52,84,.17);padding:8px}
+.search-suggestions.hidden{display:none!important}
+.suggestion-heading{padding:9px 11px 5px;color:#587688;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+.search-suggestion{display:flex;align-items:center;gap:11px;border:0;width:100%;background:#fff;border-radius:8px;text-align:left;padding:10px 11px;color:#0d2b41;cursor:pointer}
+.search-suggestion:hover,.search-suggestion.is-highlighted{background:#ecf6ff}
+.suggestion-icon{display:grid;place-items:center;color:#0D6DB7;background:#e6f2fc;border-radius:8px;flex:0 0 34px;height:34px;font-size:18px}
+.search-suggestion>span:nth-child(2){flex:1;min-width:0}
+.search-suggestion strong{display:block;font-weight:750;font-size:12px;line-height:1.45;white-space:normal;overflow-wrap:anywhere}
+.search-suggestion small{display:block;color:#76909f;font-size:10px;margin-top:3px}
+.search-suggestion em{font-style:normal;color:#0D6DB7;font-size:11px;white-space:nowrap}
+.suggestion-empty{padding:17px 13px;color:#6f8492;font-size:12px}
+@media(max-width:700px){.search-suggestions{max-height:50vh}.search-suggestion{gap:8px;padding:9px}.search-suggestion strong{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.search-spinner{animation-duration:1.5s}}

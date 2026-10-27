@@ -23,6 +23,165 @@
     updateStats();applyFilters();
   };
   const normalize = (s) => String(s??'').toLocaleLowerCase('id-ID').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  // Pencarian lokal: peran HC diperlakukan sebagai filter, bukan sekadar kata bebas.
+  const roleOptions=[{value:'Utama',label:'HC utama',aliases:['utama','utma']},
+    {value:'Pendukung',label:'HC pendukung',aliases:['pendukung','pendukng','pedukung','pendukug']},
+    {value:'Tidak langsung',label:'HC tidak langsung',aliases:['tidak langsung','tidak lansung','tak langsung','non langsung']}];
+  const searchCache=new WeakMap();
+  let autoHcRole=null, suggestionCursor=-1, searchTimer=null;
+  function distance(a,b,limit=2){
+    if(a===b)return 0;
+    if(Math.abs(a.length-b.length)>limit)return limit+1;
+    const prev=Array.from({length:b.length+1},(_,i)=>i);
+    for(let i=1;i<=a.length;i++){
+      const curr=[i];let min=i;
+      for(let j=1;j<=b.length;j++){
+        curr[j]=Math.min(curr[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));
+        min=Math.min(min,curr[j]);
+      }
+      if(min>limit)return limit+1;
+      for(let j=0;j<curr.length;j++)prev[j]=curr[j];
+    }
+    return prev[b.length];
+  }
+  function indexFor(item){
+    if(searchCache.has(item))return searchCache.get(item);
+    const p=profileMap[item.audit]||{name:'',label:''};
+    const fields=[p.name,p.label,item.code,item.title,item.description,item.group,item.pic,item.hc,item.referenceText||'',
+      ...(item.evidence||[]),...(item.metadata||[]),...(item.auditorDetail||[]).flatMap(d=>[d.code,d.title,d.expectation,...(d.questions||[]),...(d.evidence||[])])];
+    const hay=normalize(fields.join(' '));
+    // Searchable short vocabulary accelerates fuzzy matching without fetching network resources.
+    const tokens=[...new Set(normalize([p.name,p.label,item.code,item.title,item.group,item.hc,...(item.metadata||[]),
+      ...(item.auditorDetail||[]).flatMap(d=>[d.code,d.title])].join(' ')).match(/[a-z0-9]+(?:\.[0-9]+)*/g)||[])];
+    const result={hay,tokens};searchCache.set(item,result);return result;
+  }
+  function findRoleQuery(text){
+    const raw=normalize(text).replace(/[_-]+/g,' ').trim();
+    const words=raw.split(/\s+/).filter(Boolean);
+    let matched=null,consumed=[];
+    for(let i=0;i<words.length;i++){
+      const w=words[i], prev=words[i-1], next=words[i+1];
+      const context=(prev==='hc'||prev==='peran'||prev==='human'||prev==='keterlibatan'||prev==='non'||w==='tidak'||w==='tak'||w==='non'||w==='hc');
+      if(['tidak','tak','non'].includes(w) && next && distance(next,'langsung',2)<=2){matched='Tidak langsung';consumed=[i,i+1];break;}
+      const main=roleOptions.find(r=>r.value!=='Tidak langsung'&&r.aliases.some(x=>distance(w,x,2)<= (x.length>=6?2:1)));
+      if(main && (context || words.length===1)){matched=main.value;consumed=[i];break;}
+      if(main && (prev==='hc'||prev==='peran')){matched=main.value;consumed=[i];break;}
+    }
+    if(matched){
+      for(const i of [...consumed]){
+        if(['hc','peran'].includes(words[i-1]))consumed.push(i-1);
+      }
+    }
+    const rest=words.filter((_,i)=>!consumed.includes(i)&&!(matched && ['hc','peran'].includes(words[i])));
+    // HC alone is a request to browse HC roles. Show role suggestions instead of matching arbitrary text.
+    const onlyHC=words.length===1 && words[0]==='hc';
+    return {role:matched,words:onlyHC?[]:rest,normalized:raw,onlyHC};
+  }
+  function termMatches(item,term){
+    const {hay,tokens}=indexFor(item);
+    if(hay.includes(term))return true;
+    if(term.length<4)return false;
+    const dist=term.length>=8?2:1;
+    return tokens.some(t=>Math.abs(t.length-term.length)<=dist && distance(term,t,dist)<=dist);
+  }
+  function itemMatches(item,query,selectedRole,group,ready){
+    if(activeAudit!=='all'&&item.audit!==activeAudit)return false;
+    if(selectedRole!=='all'&&item.hc!==selectedRole)return false;
+    if(query.role && item.hc!==query.role)return false;
+    if(group!=='all'&&item.group!==group)return false;
+    if(ready!=='all'&&getStatus(item)!==ready)return false;
+    if(query.words.length===1 && /^\d+(?:\.\d+)+$/.test(query.words[0])){
+      const wanted=query.words[0];
+      return item.code===wanted || (item.auditorDetail||[]).some(d=>d.code===wanted);
+    }
+    return query.words.every(w=>termMatches(item,w));
+  }
+  function syncRoleFilter(query){
+    const c=$('#hc-select');
+    if(query.role){
+      c.value=query.role;autoHcRole=query.role;
+    }else if(autoHcRole!==null){
+      if(c.value===autoHcRole)c.value='all';
+      autoHcRole=null;
+    }
+  }
+  function setSearchBusy(isBusy){
+    const shell=$('#smart-search-shell');if(!shell)return;
+    shell.classList.toggle('is-searching',isBusy);
+    $('#search-input').setAttribute('aria-busy',String(isBusy));
+  }
+  function closeSuggestions(){
+    const panel=$('#search-suggestions'); if(!panel)return;
+    panel.classList.add('hidden');panel.innerHTML='';
+    $('#search-input').setAttribute('aria-expanded','false');
+    suggestionCursor=-1;
+  }
+  function showSuggestions(){
+    const input=$('#search-input'),q=findRoleQuery(input.value);
+    const panel=$('#search-suggestions');
+    if(!q.normalized){closeSuggestions();return;}
+    const roleRelevant=q.normalized.includes('hc') || q.normalized.includes('peran') || q.role || q.normalized.includes('langsung');
+    const base=selectableItems().filter(i=>activeAudit==='all'||i.audit===activeAudit);
+    const filter=$('#hc-select').value, group=$('#group-select').value,ready=$('#readiness-select').value;
+    const roleHTML=roleRelevant ? roleOptions.map(r=>{
+      const n=base.filter(i=>i.hc===r.value && (group==='all'||i.group===group) && (ready==='all'||getStatus(i)===ready)).length;
+      return `<button type="button" class="search-suggestion" role="option" data-role="${esc(r.value)}"><span class="suggestion-icon">◎</span><span><strong>${esc(r.label)}</strong><small>Filter Peran HC</small></span><em>${n} topik</em></button>`;
+    }).join('') : '';
+    const relevant=base.filter(i=>itemMatches(i,q,filter,group,ready));
+    const sorted=[...relevant].sort((a,b)=>{
+      const a0=normalize(a.code)===q.normalized?1:0,b0=normalize(b.code)===q.normalized?1:0;
+      return b0-a0 || (a.audit==='supreme'?-1:0) - (b.audit==='supreme'?-1:0);
+    }).slice(0,5);
+    const preview=sorted.map(i=>`<button type="button" class="search-suggestion" role="option" data-item="${esc(i.id)}"><span class="suggestion-icon">↗</span><span><strong>${esc(i.code)} · ${esc(conciseSupremeTitle(i).title)}</strong><small>${esc(profileMap[i.audit]?.name||i.audit)} · ${esc(hStat(i.hc))}</small></span></button>`).join('');
+    const html=(roleHTML?`<div class="suggestion-heading">Filter berdasarkan keterlibatan HC</div>${roleHTML}`:'')+
+      (preview?`<div class="suggestion-heading">Pratinjau hasil (${relevant.length})</div>${preview}`:'')+
+      (!preview && !roleHTML?`<div class="suggestion-empty">Tidak ada hasil. Coba kata lain atau periksa ejaan.</div>`:'');
+    panel.innerHTML=html;panel.classList.remove('hidden');input.setAttribute('aria-expanded','true');
+    suggestionCursor=-1;
+    $('#search-live-status').textContent=`${relevant.length} hasil ditemukan${roleHTML?', tersedia pilihan filter HC':''}`;
+  }
+  function processSmartSearch(){
+    clearTimeout(searchTimer);
+    const q=findRoleQuery($('#search-input').value);syncRoleFilter(q);
+    shown=18;applyFilters();showSuggestions();setSearchBusy(false);
+  }
+  function scheduleSmartSearch(){
+    setSearchBusy(true);clearTimeout(searchTimer);
+    searchTimer=setTimeout(processSmartSearch,140);
+  }
+  function chooseRole(role){
+    const c=$('#hc-select');c.value=role;
+    autoHcRole=null;
+    const q=findRoleQuery($('#search-input').value);
+    $('#search-input').value=q.words.join(' ');
+    shown=18;applyFilters();closeSuggestions();setSearchBusy(false);
+    $('#search-input').focus();
+  }
+  function initSmartSearch(){
+    const input=$('#search-input'),shell=$('#smart-search-shell');
+    input.addEventListener('input',scheduleSmartSearch);
+    input.addEventListener('focus',()=>{if(input.value.trim())showSuggestions();});
+    $('#search-suggestions').addEventListener('click',e=>{
+      const b=e.target.closest('button.search-suggestion');if(!b)return;
+      if(b.dataset.role)chooseRole(b.dataset.role);
+      else if(b.dataset.item){openItem(b.dataset.item);closeSuggestions();}
+    });
+    input.addEventListener('keydown',e=>{
+      const panel=$('#search-suggestions');
+      if(e.key==='Escape'){closeSuggestions();return;}
+      if(panel.classList.contains('hidden'))return;
+      const opts=[...panel.querySelectorAll('button.search-suggestion')];
+      if(['ArrowDown','ArrowUp'].includes(e.key) && opts.length){
+        e.preventDefault();suggestionCursor=(suggestionCursor+(e.key==='ArrowDown'?1:-1)+opts.length)%opts.length;
+        opts.forEach((o,i)=>o.classList.toggle('is-highlighted',i===suggestionCursor));
+        opts[suggestionCursor].scrollIntoView({block:'nearest'});
+      }else if(e.key==='Enter' && suggestionCursor>=0){
+        e.preventDefault();opts[suggestionCursor].click();
+      }
+    });
+    document.addEventListener('pointerdown',e=>{if(!shell.contains(e.target))closeSuggestions();});
+  }
+
   const debounce = (f,ms=150) => {let t;return (...args) => {clearTimeout(t);t=setTimeout(()=>f(...args),ms);};};
   const toast = (str) => {const el=$('#toast');el.textContent=str;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),3000);};
   const selectableItems = () => (activeAudit==='supreme' && supremeMode==='expectations' && Array.isArray(DATA.supremeExpectations2018)) ? DATA.supremeExpectations2018 : DATA.clauses;
@@ -96,7 +255,7 @@
     if(id==='supreme')supremeMode='subprocess';
     syncSupremeMode();
     $('#audit-select').value=id;
-    $('#search-input').value='';$('#hc-select').value='all';$('#readiness-select').value='all';
+    $('#search-input').value='';$('#hc-select').value='all';autoHcRole=null;closeSuggestions();$('#readiness-select').value='all';
     refreshGroups();navigate('jelajahi');
   }
   function refreshGroups(){
@@ -434,17 +593,11 @@
   function applyFilters(){
     if(activePage!=='jelajahi')return;
     const search=normalize($('#search-input').value).trim();
+    const query=findRoleQuery(search);
     const hc=$('#hc-select').value,group=$('#group-select').value,ready=$('#readiness-select').value;
-    const words=search.split(/\s+/).filter(Boolean);
+    const words=query.words;
     syncSupremeMode();
-    filtered=selectableItems().filter(i=>{
-      if(activeAudit!=='all' && i.audit!==activeAudit)return false;
-      if(hc!=='all' && i.hc!==hc)return false;
-      if(group!=='all' && i.group!==group)return false;
-      if(ready!=='all' && getStatus(i)!==ready)return false;
-      if(words.length){const hay=normalize([profileMap[i.audit].name, profileMap[i.audit].label,i.code,i.title,i.description,i.group,i.pic,i.hc,i.referenceText||'',...i.evidence,...i.metadata,...(i.auditorDetail||[]).flatMap(d=>[d.code,d.title,d.expectation,...(d.questions||[]),...(d.evidence||[])])].join(' '));if(!words.every(w=>hay.includes(w)))return false;}
-      return true;
-    });
+    filtered=selectableItems().filter(i=>itemMatches(i,query,hc,group,ready));
     // SUPREME: tampilkan Proses 1, lalu ekspektasi 1.1..1.30, dst.
     // Jika mencari kode eksak (misalnya 2.1), dahulukan hasil tersebut.
     if(activeAudit==='supreme'){
@@ -460,7 +613,7 @@
     }
     context();
     $('#result-count').textContent=filtered.length+(activeAudit==='supreme'? (supremeMode==='expectations'?' ekspektasi PDF 2018':' proses / sub-proses'):' topik');
-    $('#active-filter-summary').textContent=(activeAudit==='all'?'Semua audit':profileMap[activeAudit].name)+(activeAudit==='supreme'?(supremeMode==='expectations'?' · Referensi PDF 2018':' · Pemetaan HC final'):'')+(words.length?' · Kata kunci: '+search:'');
+    $('#active-filter-summary').textContent=(activeAudit==='all'?'Semua audit':profileMap[activeAudit].name)+(activeAudit==='supreme'?(supremeMode==='expectations'?' · Referensi PDF 2018':' · Pemetaan HC final'):'')+(query.role?' · Peran HC: '+query.role:'')+(words.length?' · Kata kunci: '+words.join(' '):'');
     $('#empty-state').classList.toggle('hidden',filtered.length>0);
     renderResults();
   }
@@ -554,7 +707,7 @@
   }
   function reset(){
     activeAudit='all';supremeMode='subprocess';shown=18;
-    $('#search-input').value='';$('#audit-select').value='all';$('#hc-select').value='all';$('#readiness-select').value='all';refreshGroups();$('#group-select').value='all';applyFilters();
+    $('#search-input').value='';$('#audit-select').value='all';$('#hc-select').value='all';autoHcRole=null;closeSuggestions();$('#readiness-select').value='all';refreshGroups();$('#group-select').value='all';applyFilters();
   }
   const csvSafe = v => { let t=String(v??'');if(/^[\s]*[=+\-@]/.test(t))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'; };
   function renderPeta(){
@@ -579,12 +732,12 @@
     buildNavigation();updateStats();refreshGroups();renderGlossary();
     $('#peta-audit-select').innerHTML='<option value="all">Semua jenis audit</option>'+DATA.profiles.filter(p=>(DATA.framework||[]).some(f=>f.audit===p.id)).map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
     $('#peta-audit-select').addEventListener('change',renderPeta);$('#peta-search').addEventListener('input',debounce(renderPeta));$('#peta-export').addEventListener('click',exportPetaCsv);renderPeta();
-    $('#audit-select').addEventListener('change',e=>{activeAudit=e.target.value;supremeMode='subprocess';shown=18;refreshGroups();applyFilters();});
+    $('#audit-select').addEventListener('change',e=>{activeAudit=e.target.value;supremeMode='subprocess';shown=18;refreshGroups();applyFilters();showSuggestions();});
     $('#supreme-mode-select').addEventListener('change',e=>{supremeMode=e.target.value==='expectations'?'expectations':'subprocess';shown=18;refreshGroups();$('#group-select').value='all';applyFilters();});
-    $('#hc-select').addEventListener('change',()=>{shown=18;applyFilters();});
-    $('#group-select').addEventListener('change',()=>{shown=18;applyFilters();});
-    $('#readiness-select').addEventListener('change',()=>{shown=18;applyFilters();});
-    $('#search-input').addEventListener('input',debounce(()=>{shown=18;applyFilters();}));
+    $('#hc-select').addEventListener('change',()=>{const query=findRoleQuery($('#search-input').value);if(query.role && $('#hc-select').value!==query.role)$('#search-input').value=query.words.join(' ');autoHcRole=null;shown=18;applyFilters();showSuggestions();});
+    $('#group-select').addEventListener('change',()=>{shown=18;applyFilters();showSuggestions();});
+    $('#readiness-select').addEventListener('change',()=>{shown=18;applyFilters();showSuggestions();});
+    initSmartSearch();
     $('#glossary-search').addEventListener('input',debounce(renderGlossary));
     $('#reset-filters').addEventListener('click',reset);$('#empty-reset').addEventListener('click',reset);
     $('#load-more').addEventListener('click',()=>{shown+=18;renderResults();});
@@ -593,7 +746,7 @@
     $('#hero-search-form').addEventListener('submit',e=>{e.preventDefault();
       activeAudit='all';supremeMode='subprocess';$('#audit-select').value='all';$('#hc-select').value='all';$('#readiness-select').value='all';
       refreshGroups();$('#group-select').value='all';
-      $('#search-input').value=$('#hero-search-input').value.trim();shown=18;
+      $('#search-input').value=$('#hero-search-input').value.trim();autoHcRole=null;syncRoleFilter(findRoleQuery($('#search-input').value));shown=18;
       navigate('jelajahi');$('#search-input').focus();
     });
     $('#open-search').addEventListener('click',()=>{navigate('jelajahi');$('#search-input').focus();});
