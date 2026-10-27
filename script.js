@@ -152,6 +152,31 @@
   function context(){
     const el=$('#audit-context');const p=profileMap[activeAudit];if(!p){el.classList.add('hidden');return;}
     el.classList.remove('hidden');
+    // ISO 14001: ringkasan tujuh klausul utama sesuai naskah terbaru pemilik website (v3.9).
+    // Tidak mengubah rincian klausul dan database audit.
+    if (p.id === 'iso14001') {
+      const mainClauses = [
+        ['Context of the Organization (Konteks Organisasi)', 'Menjelaskan bagaimana perusahaan memahami kondisi internal dan eksternal, kebutuhan pihak berkepentingan, serta faktor lingkungan yang dapat memengaruhi kegiatan operasional dan penerapan sistem manajemen lingkungan.'],
+        ['Leadership (Kepemimpinan)', 'Menjelaskan tanggung jawab dan komitmen pimpinan dalam menetapkan kebijakan lingkungan, mengarahkan organisasi, menyediakan dukungan, serta memastikan pengelolaan lingkungan menjadi bagian dari kegiatan perusahaan.'],
+        ['Planning (Perencanaan)', 'Menjelaskan bagaimana perusahaan mengidentifikasi aspek dan dampak lingkungan, menentukan kewajiban kepatuhan, menilai risiko dan peluang, serta menetapkan sasaran dan program pengelolaan lingkungan.'],
+        ['Support (Dukungan)', 'Menjelaskan penyediaan sumber daya, kompetensi pekerja, peningkatan kesadaran lingkungan, komunikasi, serta pengelolaan informasi terdokumentasi yang mendukung penerapan sistem manajemen lingkungan.'],
+        ['Operation (Operasional)', 'Menjelaskan pelaksanaan dan pengendalian kegiatan operasional untuk mengurangi dampak lingkungan, mencegah pencemaran, mengelola penggunaan sumber daya, serta memastikan kesiapan perusahaan dalam menghadapi keadaan darurat lingkungan.'],
+        ['Performance Evaluation (Evaluasi Kinerja)', 'Menjelaskan bagaimana perusahaan memantau, mengukur, menganalisis, dan mengevaluasi kinerja lingkungan melalui indikator pengelolaan lingkungan, evaluasi kepatuhan, audit internal, serta tinjauan manajemen.'],
+        ['Improvement (Peningkatan)', 'Menjelaskan bagaimana perusahaan menangani ketidaksesuaian, melaksanakan tindakan korektif, serta meningkatkan efektivitas sistem manajemen dan kinerja lingkungan secara berkelanjutan.']
+      ];
+      el.innerHTML = `
+        <div class="context-head"><h3>Audit ISO 14001: Sistem Manajemen Lingkungan</h3></div>
+        <div class="overview-section">
+          <h4>Klausul Utama (Main Clauses)</h4>
+          <p>Sistem Manajemen Lingkungan ISO 14001 disusun berdasarkan tujuh klausul utama yang menjadi dasar penerapan dan evaluasi pengelolaan lingkungan perusahaan. Ketujuh klausul tersebut mengatur bagaimana organisasi memahami kondisi lingkungan, menetapkan kebijakan, mengidentifikasi aspek dan dampak lingkungan, mengendalikan kegiatan operasional, mengevaluasi kinerja, serta melaksanakan peningkatan pengelolaan lingkungan secara berkelanjutan.</p>
+          <p><strong>Evaluasi ISO 14001 dikelompokkan ke dalam 7 klausul utama, yaitu:</strong></p>
+          <ol class="overview-pillars">
+            ${mainClauses.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
+          </ol>
+        </div>`;
+      decorateAuditContext(el,'Audit ISO 14001: Sistem Manajemen Lingkungan','','Pahami tujuh klausul utama ISO 14001 sebelum menelusuri klausul spesifik dan contoh dokumen pendukung.');
+      return;
+    }
     // Keterangan CDM SKK Migas - sesuai permintaan, tanpa panel dokumen tambahan (v1.11).
     // Teks ini dipakai sebagai ringkasan publik, bukan pengganti naskah PTK resmi.
     if (p.id === 'cdm') {

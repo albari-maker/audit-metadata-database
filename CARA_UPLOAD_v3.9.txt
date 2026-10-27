@@ -1,0 +1,14 @@
+AUDITATLAS v3.9: PEMBARUAN PANEL RINGKASAN ISO 14001
+
+Panel ISO 14001 telah diganti dengan teks yang diberikan pengguna, terdiri dari Klausul Utama (Main Clauses) dan tujuh penjelasan. Teks awal Apa ini?, Tujuan, label metadata, dan peringatan kuning tidak lagi tampil di panel ISO 14001. Isi audit lain, sub-menu Audit ISO SMT, dan Mode Editor Visual dipertahankan.
+
+CARA UPLOAD ZIP LENGKAP
+1. Unduh dan ekstrak ZIP.
+2. Buka https://github.com/albari-maker/audit-metadata-database/upload/main
+3. Unggah semua file hasil ekstraksi ke root repository. Jangan unggah ZIP tanpa ekstraksi.
+4. Klik Commit changes, lalu periksa GitHub Actions.
+5. Setelah deployment selesai, buka website dan tekan Ctrl+Shift+R.
+
+Jika website v3.8 sudah aktif, gunakan PATCH yang hanya berisi index.html dan script.js.
+
+Catatan: Ringkasan mengikuti naskah pengguna, belum diverifikasi terhadap dokumen ISO resmi. Kode klausul di database sebelumnya tidak ditinjau dalam pembaruan ini.
