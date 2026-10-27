@@ -177,6 +177,64 @@
       decorateAuditContext(el,'Audit ISO 14001: Sistem Manajemen Lingkungan','','Pahami tujuh klausul utama ISO 14001 sebelum menelusuri klausul spesifik dan contoh dokumen pendukung.');
       return;
     }
+    // ISO 9001, ISO 45001, ISO 50001: Ringkasan klausul utama dari materi pengguna (v3.10).
+    // Hanya mengganti panel pengantar, bukan daftar klausul, filter, atau database audit.
+    if (['iso9001', 'iso45001', 'iso50001'].includes(p.id)) {
+      const summaries = {
+        iso45001: {
+          title: 'Audit ISO 45001: Sistem Manajemen Keselamatan dan Kesehatan Kerja (SMK3)',
+          intro: 'Sistem Manajemen Keselamatan dan Kesehatan Kerja ISO 45001 disusun berdasarkan tujuh klausul utama yang menjadi dasar penerapan dan evaluasi sistem manajemen K3 perusahaan. Ketujuh klausul tersebut mengatur bagaimana organisasi menetapkan kebijakan keselamatan, mengidentifikasi bahaya, mengendalikan risiko pekerjaan, melibatkan pekerja, memastikan pelaksanaan kegiatan secara aman, mengevaluasi kinerja K3, serta meningkatkan perlindungan keselamatan dan kesehatan kerja secara berkelanjutan.',
+          clauses: [
+            ['Context of the Organization (Konteks Organisasi)', 'Menjelaskan bagaimana perusahaan memahami kondisi internal dan eksternal, kebutuhan pekerja dan pihak berkepentingan, serta faktor yang dapat memengaruhi keselamatan dan kesehatan kerja dalam kegiatan operasional.'],
+            ['Leadership and Worker Participation (Kepemimpinan dan Partisipasi Pekerja)', 'Menjelaskan tanggung jawab dan komitmen pimpinan dalam menetapkan kebijakan K3, membangun budaya keselamatan, serta memastikan keterlibatan dan partisipasi pekerja dalam penerapan sistem manajemen keselamatan dan kesehatan kerja.'],
+            ['Planning (Perencanaan)', 'Menjelaskan bagaimana perusahaan mengidentifikasi bahaya, menilai risiko dan peluang K3, menentukan persyaratan hukum, serta menetapkan sasaran dan program pengendalian risiko untuk mencegah kecelakaan dan penyakit akibat kerja.'],
+            ['Support (Dukungan)', 'Menjelaskan penyediaan sumber daya, peningkatan kompetensi dan kesadaran pekerja, pelaksanaan komunikasi keselamatan, serta pengelolaan informasi terdokumentasi yang mendukung penerapan sistem manajemen K3.'],
+            ['Operation (Operasional)', 'Menjelaskan pelaksanaan dan pengendalian kegiatan operasional untuk menghilangkan bahaya, mengurangi risiko K3, mengelola perubahan, memastikan keselamatan kontraktor, serta meningkatkan kesiapan dalam menghadapi keadaan darurat.'],
+            ['Performance Evaluation (Evaluasi Kinerja)', 'Menjelaskan bagaimana perusahaan memantau, mengukur, menganalisis, dan mengevaluasi kinerja keselamatan dan kesehatan kerja melalui indikator K3, evaluasi kepatuhan, audit internal, serta tinjauan manajemen.'],
+            ['Improvement (Peningkatan)', 'Menjelaskan bagaimana perusahaan menangani insiden dan ketidaksesuaian, melaksanakan tindakan korektif, mengevaluasi efektivitas perbaikan, serta meningkatkan sistem manajemen dan kinerja K3 secara berkelanjutan.']
+          ]
+        },
+        iso50001: {
+          title: 'Audit ISO 50001: Sistem Manajemen Energi',
+          intro: 'Sistem Manajemen Energi ISO 50001 disusun berdasarkan tujuh klausul utama yang menjadi dasar penerapan dan evaluasi pengelolaan energi perusahaan. Ketujuh klausul tersebut mengatur bagaimana organisasi menetapkan kebijakan energi, mengidentifikasi penggunaan dan konsumsi energi, merencanakan peningkatan efisiensi, mengendalikan kegiatan operasional, mengukur kinerja energi, serta melaksanakan peningkatan kinerja energi secara berkelanjutan.',
+          clauses: [
+            ['Context of the Organization (Konteks Organisasi)', 'Menjelaskan bagaimana perusahaan memahami kondisi internal dan eksternal, kebutuhan pihak berkepentingan, serta faktor yang dapat memengaruhi penggunaan, konsumsi, dan pengelolaan energi dalam kegiatan operasional.'],
+            ['Leadership (Kepemimpinan)', 'Menjelaskan tanggung jawab dan komitmen pimpinan dalam menetapkan kebijakan energi, menyediakan sumber daya, membentuk tim manajemen energi, serta memastikan peningkatan kinerja energi menjadi bagian dari tujuan perusahaan.'],
+            ['Planning (Perencanaan)', 'Menjelaskan bagaimana perusahaan melakukan tinjauan energi, mengidentifikasi penggunaan energi signifikan, menetapkan indikator dan garis dasar kinerja energi, serta menyusun sasaran dan rencana aksi untuk meningkatkan efisiensi dan kinerja energi.'],
+            ['Support (Dukungan)', 'Menjelaskan penyediaan sumber daya, peningkatan kompetensi dan kesadaran pekerja terhadap pengelolaan energi, komunikasi internal dan eksternal, serta pengelolaan informasi terdokumentasi yang mendukung penerapan sistem manajemen energi.'],
+            ['Operation (Operasional)', 'Menjelaskan pelaksanaan dan pengendalian kegiatan operasional untuk mengoptimalkan penggunaan dan konsumsi energi, menerapkan prosedur efisiensi energi, serta mempertimbangkan kinerja energi dalam perancangan fasilitas dan pengadaan barang maupun jasa.'],
+            ['Performance Evaluation (Evaluasi Kinerja)', 'Menjelaskan bagaimana perusahaan memantau, mengukur, menganalisis, dan mengevaluasi kinerja energi melalui indikator penggunaan dan konsumsi energi, pengukuran pencapaian target, audit internal, serta tinjauan manajemen.'],
+            ['Improvement (Peningkatan)', 'Menjelaskan bagaimana perusahaan menangani ketidaksesuaian, melaksanakan tindakan korektif, mengevaluasi efektivitas perbaikan, serta meningkatkan sistem manajemen dan kinerja energi secara berkelanjutan.']
+          ]
+        },
+        iso9001: {
+          title: 'Audit ISO 9001: Sistem Manajemen Mutu',
+          intro: 'Sistem Manajemen Mutu ISO 9001 disusun berdasarkan tujuh klausul utama yang menjadi dasar penerapan dan evaluasi pengelolaan mutu perusahaan. Ketujuh klausul tersebut mengatur bagaimana organisasi memahami kondisi internal dan eksternal, menetapkan kebijakan dan sasaran mutu, mengelola sumber daya, mengendalikan proses operasional, memastikan kualitas produk dan layanan, mengevaluasi kinerja, serta melaksanakan peningkatan sistem manajemen mutu secara berkelanjutan.',
+          clauses: [
+            ['Context of the Organization (Konteks Organisasi)', 'Menjelaskan bagaimana perusahaan memahami kondisi internal dan eksternal, kebutuhan dan harapan pihak berkepentingan, serta faktor yang dapat memengaruhi pencapaian sasaran mutu dan efektivitas penerapan sistem manajemen mutu.'],
+            ['Leadership (Kepemimpinan)', 'Menjelaskan tanggung jawab dan komitmen pimpinan dalam menetapkan kebijakan mutu, mengarahkan organisasi, membangun budaya mutu, memastikan pemenuhan kebutuhan pelanggan, serta mendukung efektivitas penerapan sistem manajemen mutu perusahaan.'],
+            ['Planning (Perencanaan)', 'Menjelaskan bagaimana perusahaan mengidentifikasi risiko dan peluang, menetapkan sasaran mutu, merencanakan tindakan untuk mencapai target yang ditetapkan, serta mengelola perubahan yang dapat memengaruhi efektivitas sistem manajemen mutu.'],
+            ['Support (Dukungan)', 'Menjelaskan penyediaan sumber daya manusia, infrastruktur, lingkungan kerja, kompetensi dan kesadaran pekerja, komunikasi, pengelolaan pengetahuan organisasi, serta informasi terdokumentasi yang mendukung penerapan sistem manajemen mutu.'],
+            ['Operation (Operasional)', 'Menjelaskan pelaksanaan dan pengendalian proses operasional untuk memastikan produk dan layanan memenuhi persyaratan yang telah ditetapkan, mulai dari perencanaan kegiatan, pengelolaan penyedia eksternal, pelaksanaan pekerjaan, hingga pengendalian hasil yang tidak sesuai dengan persyaratan mutu.'],
+            ['Performance Evaluation (Evaluasi Kinerja)', 'Menjelaskan bagaimana perusahaan memantau, mengukur, menganalisis, dan mengevaluasi efektivitas sistem manajemen mutu melalui indikator kinerja, penilaian kepuasan pelanggan, pelaksanaan audit internal, serta tinjauan manajemen terhadap pencapaian sasaran mutu.'],
+            ['Improvement (Peningkatan)', 'Menjelaskan bagaimana perusahaan mengidentifikasi dan menangani ketidaksesuaian, menganalisis penyebab permasalahan, melaksanakan tindakan korektif, mengevaluasi efektivitas perbaikan, serta meningkatkan kualitas proses, produk, layanan, dan sistem manajemen mutu secara berkelanjutan.']
+          ]
+        }
+      };
+      const summary=summaries[p.id];
+      el.innerHTML = `
+        <div class="context-head"><h3>${esc(summary.title)}</h3></div>
+        <div class="overview-section">
+          <h4>Klausul Utama (Main Clauses)</h4>
+          <p>${esc(summary.intro)}</p>
+          <p><strong>Evaluasi ${esc(p.name)} dikelompokkan ke dalam 7 klausul utama, yaitu:</strong></p>
+          <ol class="overview-pillars">
+            ${summary.clauses.map(([name, description]) => `<li><strong>${esc(name)}:</strong> ${esc(description)}</li>`).join('')}
+          </ol>
+        </div>`;
+      decorateAuditContext(el,summary.title,'',`Pahami tujuh klausul utama ${p.name} sebelum menelusuri klausul spesifik dan contoh dokumen pendukung.`);
+      return;
+    }
     // Keterangan CDM SKK Migas - sesuai permintaan, tanpa panel dokumen tambahan (v1.11).
     // Teks ini dipakai sebagai ringkasan publik, bukan pengganti naskah PTK resmi.
     if (p.id === 'cdm') {

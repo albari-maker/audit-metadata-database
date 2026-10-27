@@ -1,0 +1,16 @@
+AUDITATLAS v3.10: PEMBARUAN PANEL RINGKASAN ISO 9001, ISO 45001 DAN ISO 50001
+
+Penjelasan di bagian pengantar tiga jenis audit kini menggunakan judul lengkap, Klausul Utama (Main Clauses), paragraf pengantar, dan tujuh klausul beserta penjelasannya sesuai naskah pengguna. Teks "Apa ini?", "Tujuan", dan peringatan umum tidak ditampilkan lagi pada panel tiga audit ini.
+
+Panel ISO 14001 dari v3.9 tetap tersedia. Menu Audit ISO SMT, data klausul, pemetaan HC SUPREME, referensi audit lain, serta Editor Visual dipertahankan.
+
+CARA UPLOAD ZIP LENGKAP
+1. Unduh dan ekstrak ZIP.
+2. Buka https://github.com/albari-maker/audit-metadata-database/upload/main
+3. Unggah SELURUH file hasil ekstraksi ke root repository GitHub, bukan ZIP-nya.
+4. Klik Commit changes dan periksa GitHub Actions.
+5. Setelah deployment berhasil, buka website dan tekan Ctrl+Shift+R.
+
+Untuk website yang sudah menggunakan v3.9, boleh unggah paket PATCH dengan mengganti hanya index.html dan script.js.
+
+Catatan: Ringkasan klausul ISO mengikuti materi yang diberikan pengguna dan bukan kutipan lengkap standar ISO resmi. Isi klausul detail dalam database tidak diverifikasi atau diganti pada pembaruan ini.
