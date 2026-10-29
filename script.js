@@ -812,6 +812,9 @@
       const shortened=summary.length>115?summary.slice(0,112).trimEnd()+'…':summary;
       return {title:shortened || 'Ringkasan dokumen SUPREME 2018',hideDescription:Boolean(summary)};
     }
+    if(item.sourceType==='supreme-hc-final' && /^\d+(?:\.\d+)+$/.test(String(item.code||'')) && !original.startsWith(String(item.code||''))){
+      return {title:`${String(item.code).trim()} ${original}`.trim(),hideDescription:false};
+    }
     return {title:original,hideDescription:false};
   }
   function renderResults(){
@@ -874,7 +877,10 @@
     const detailChecklist = showExtraPanels
       ? `<div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`
       : '';
-    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(display.title)}</h2><p class="dialog-subtitle">${path}</p>${detailBadges}${Array.isArray(i.auditorDetail) && i.auditorDetail.length ? renderAuditorDetail(i) : `<div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div>`}<div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div>${detailSource}${detailChecklist}`;
+    const hcSupportInfo = i.id==='supreme-sub-1-1'
+      ? `<div class="dialog-section"><h3>Keterangan informasi</h3><p>Bagian yang merupakan <strong>HC Pendukung</strong> berada pada <strong>1.1.3 Integrasi Kepemimpinan SUPREME dalam Uraian Jabatan (HC Pendukung)</strong>.</p></div>`
+      : '';
+    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(display.title)}</h2><p class="dialog-subtitle">${path}</p>${detailBadges}${Array.isArray(i.auditorDetail) && i.auditorDetail.length ? renderAuditorDetail(i) : `<div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div>`}${hcSupportInfo}<div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div>${detailSource}${detailChecklist}`;
     if(p.id==='cdm') updateCdmReferenceAvailability();
     if ($('#detail-status')) $('#detail-status').addEventListener('change',(e)=>{saveStatus(i.id,e.target.value);toast('Status lokal diperbarui: '+e.target.value);});
     const dialog=$('#detail-dialog');if(!dialog.open)dialog.showModal();
