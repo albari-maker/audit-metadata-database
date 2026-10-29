@@ -596,3 +596,11 @@ html,body{background:#f3f8fc;color:#102a40}body{font-size:14px}button:focus-visi
 #page-beranda .hero,#page-peta .hero{position:relative;z-index:auto;overflow:hidden!important}
 #page-beranda .hero.search-expanded,#page-peta .hero.search-expanded{z-index:9;overflow:visible!important}
 #page-beranda .hero-search,#page-peta .hero-search{z-index:24}
+
+/* v3.14: Peran HC dapat ditandai pada elemen auditor, terpisah dari proses induk */
+.auditor-detail-heading{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.dialog-scroll .auditor-detail-heading h3{color:#0b2b42;font-size:18px;line-height:1.5;margin:0}
+.auditor-element-hc{display:inline-flex;align-items:center;background:#e7f6f2;border:1px solid #cce9e1;border-radius:5px;color:#078f7b;padding:5px 9px;font-size:12px;font-weight:650;white-space:nowrap}
+.auditor-element-focused{background:#f2fbf8;border-left:3px solid #0eab91;padding-left:14px!important;padding-right:10px!important;border-radius:7px;scroll-margin-top:14px}
+.result-card-element .result-code{min-width:65px;background:#dff2ee}
+@media(max-width:630px){.dialog-scroll .auditor-detail-heading h3{font-size:16px}}

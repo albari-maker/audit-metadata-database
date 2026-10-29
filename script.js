@@ -29,7 +29,18 @@
     {value:'Tidak langsung',label:'HC tidak langsung',aliases:['tidak langsung','tidak lansung','tak langsung','non langsung']}];
   const searchCache=new WeakMap();
   let autoHcRole=null, suggestionCursor=-1, searchTimer=null, explicitAuditFilter=false;
-  const searchKinds={audit:'Jenis audit',clause:'Klausul / sub-proses',peta:'Peta audit',glossary:'Glosarium'};
+  const searchKinds={audit:'Jenis audit',clause:'Klausul / sub-proses',element:'Elemen audit / rincian',peta:'Peta audit',glossary:'Glosarium'};
+  // Elemen dengan klasifikasi HC tersendiri menjadi hasil pencarian mandiri.
+  // Misalnya: 1.1 induk Tidak langsung, tetapi 1.1.3 adalah HC Pendukung.
+  const detailRoleItems=DATA.clauses.flatMap(parent=>(parent.auditorDetail||[])
+    .filter(part=>['Utama','Pendukung','Tidak langsung'].includes(part.hc))
+    .map(part=>({id:`element:${parent.id}:${part.code}`,parentId:parent.id,
+      audit:parent.audit,group:parent.group,code:part.code,
+      title:part.title,description:part.expectation||'',
+      question:(part.questions||[]).join(' '),evidence:part.evidence||[],
+      metadata:[...(parent.metadata||[]),part.code,'HC: '+part.hc],
+      hc:part.hc,pic:parent.pic,sourceType:'detail-hc-role',
+      referenceText:parent.referenceText||''})));
   const auditSynonyms={iso9001:['mutu','quality','smm','iso 9001','iso9001'],iso14001:['lingkungan','environment','sml','iso 14001','iso14001'],iso45001:['keselamatan kerja','kesehatan kerja','smk3','ohs','iso 45001','iso45001'],iso50001:['energi','energy','enms','iso 50001','iso50001'],supreme:['suprime','suprme','hsse pertamina'],cdm:['pengelolaan sdm','karier'],surveilans:['surveillance'],csms:['kontraktor keselamatan']};
   function distance(a,b,limit=2){
     if(a===b)return 0;
@@ -174,6 +185,17 @@
       const rank=scoreSearch(item,'clause',query);
       if(rank>=0)hits.push({kind:'clause',obj:item,id:item.id,rank});
     }
+    // Elemen audit yang memiliki peran HC berbeda dari sub-proses induknya.
+    // Jangan tampilkan pada mode arsip SUPREME 2018, karena merupakan klasifikasi tersendiri.
+    if(!(activeAudit==='supreme' && supremeMode==='expectations') &&
+       (query.words.length || query.role || selectedRole!=='all')){
+      for(const item of detailRoleItems){
+        if(scopeAudit!=='all' && item.audit!==scopeAudit)continue;
+        if(!itemMatches(item,query,selectedRole,group,ready,scopeAudit))continue;
+        const rank=scoreSearch(item,'clause',query);
+        if(rank>=0)hits.push({kind:'element',obj:item,id:item.id,rank:rank+3});
+      }
+    }
     // With non-default HC/other filters, restrict results to relevant clauses to avoid misleading matches.
     if(selectedRole==='all'&&!query.role&&group==='all'&&ready==='all'){
       for(const a of DATA.profiles){
@@ -197,6 +219,9 @@
       openAudit(id.startsWith('audit-')?id.slice(6):id);
     } else if(kind==='clause'){
       openItem(id);
+    } else if(kind==='element'){
+      const detail=detailRoleItems.find(x=>x.id===id);
+      if(detail)openItem(detail.parentId,detail.code);
     } else if(kind==='peta'){
       const found=(DATA.framework||[]).find(f=>f.id===id);
       if(!found)return;
@@ -262,13 +287,14 @@
     const base=selectableItems().filter(i=>activeAudit==='all'||i.audit===activeAudit);
     const filter=$('#hc-select').value, group=$('#group-select').value,ready=$('#readiness-select').value;
     const roleHTML=roleRelevant?roleOptions.map(r=>{
-      const n=base.filter(i=>i.hc===r.value&&(group==='all'||i.group===group)&&(ready==='all'||getStatus(i)===ready)).length;
+      const n=base.filter(i=>i.hc===r.value&&(group==='all'||i.group===group)&&(ready==='all'||getStatus(i)===ready)).length+
+        (activeAudit==='supreme'&&supremeMode==='expectations'?0:detailRoleItems.filter(i=>i.hc===r.value&&(activeAudit==='all'||i.audit===activeAudit)&&(group==='all'||i.group===group)&&(ready==='all'||getStatus({id:i.parentId})===ready)).length);
       return `<button type="button" class="search-suggestion" role="option" data-role="${esc(r.value)}"><span class="suggestion-icon">◎</span><span><strong>${esc(r.label)}</strong><small>Filter Peran HC, di seluruh audit yang cocok</small></span><em>${n} topik</em></button>`;
     }).join(''):'';
     const hits=searchUnified(q,filter,group,ready);
     const preview=hits.slice(0,7).map(hit=>{
       const a=makeAggregate(hit.obj,hit.kind);
-      const label=hit.kind==='clause'?`${a.code} · ${a.title}`:a.title;
+      const label=['clause','element'].includes(hit.kind)?`${a.code} · ${a.title}`:a.title;
       const source=hit.kind==='glossary'?'Istilah audit':(profileMap[a.audit]?.name||'Semua audit');
       return `<button type="button" class="search-suggestion" role="option" data-hit-kind="${esc(hit.kind)}" data-hit-id="${esc(hit.id)}"><span class="suggestion-icon">${hit.kind==='audit'?'▤':hit.kind==='glossary'?'▣':'↗'}</span><span><strong>${highlightTerms(label,q.words)}</strong><small>${esc(searchKinds[hit.kind])} · ${esc(source)}</small></span></button>`;
     }).join('');
@@ -291,7 +317,7 @@
       const q=findRoleQuery(raw);const hits=searchUnified(q,'all','all','all','all').slice(0,4);
       panel.innerHTML=hits.map(h=>{
         const a=makeAggregate(h.obj,h.kind);
-        return `<button type="button" class="hero-quick-hit" data-kind="${esc(h.kind)}" data-id="${esc(h.id)}"><strong>${highlightTerms(h.kind==='clause'?a.code+' · '+a.title:a.title,q.words)}</strong><small>${esc(searchKinds[h.kind])}${a.audit?' · '+esc(profileMap[a.audit]?.name||a.audit):''}</small></button>`;
+        return `<button type="button" class="hero-quick-hit" data-kind="${esc(h.kind)}" data-id="${esc(h.id)}"><strong>${highlightTerms(['clause','element'].includes(h.kind)?a.code+' · '+a.title:a.title,q.words)}</strong><small>${esc(searchKinds[h.kind])}${a.audit?' · '+esc(profileMap[a.audit]?.name||a.audit):''}</small></button>`;
       }).join('')+`<button type="button" class="hero-quick-all">Lihat semua hasil untuk “${esc(raw)}” →</button>`;
       panel.classList.remove('hidden');form.closest('.hero')?.classList.add('search-expanded');selected=-1;
     };
@@ -360,6 +386,8 @@
       }
     });
     document.addEventListener('pointerdown',e=>{if(!shell.contains(e.target))closeSuggestions();});
+    // Ketika pengguna menggulir halaman menuju kartu hasil, tutup daftar saran.
+    window.addEventListener('scroll',()=>{if(!$('#search-suggestions').classList.contains('hidden'))closeSuggestions();},{passive:true});
   }
 
   const debounce = (f,ms=150) => {let t;return (...args) => {clearTimeout(t);t=setTimeout(()=>f(...args),ms);};};
@@ -421,7 +449,7 @@
   }
   function openAudit(id){
     if(!profileMap[id])return;
-    activeAudit=id;explicitAuditFilter=false;
+    activeAudit=id;explicitAuditFilter=true;
     document.querySelectorAll('.sidebar-audit-button').forEach(button=>{
       const selected=button.dataset.audit===id;
       button.classList.toggle('is-selected',selected);
@@ -780,8 +808,13 @@
       filtered=searchUnified(query,hc,group,ready);
     } else {
       filtered=selectableItems().filter(i=>itemMatches(i,query,hc,group,ready)).map(i=>({kind:'clause',obj:i,id:i.id,rank:0}));
+      if(hc!=='all' && !(activeAudit==='supreme'&&supremeMode==='expectations')){
+        filtered.push(...detailRoleItems.filter(i=>i.hc===hc && (activeAudit==='all'||i.audit===activeAudit) &&
+          (group==='all'||i.group===group) && (ready==='all'||getStatus({id:i.parentId})===ready))
+          .map(i=>({kind:'element',obj:i,id:i.id,rank:0})));
+      }
       if(activeAudit==='supreme'){
-        const order=hit=>{const m=String(hit.obj.code).match(/^([1-8])(?:\.(\d+))?$/);return m?Number(m[1])*1000+(m[2]===undefined?0:Number(m[2])):99999;};
+        const order=hit=>{const m=String(hit.obj.code).match(/^([1-8])(?:\.(\d+))?(?:\.(\d+))?$/);return m?Number(m[1])*1000+(m[2]===undefined?0:Number(m[2])*10)+(m[3]===undefined?0:Number(m[3])/10):99999;};
         filtered.sort((a,b)=>order(a)-order(b));
       }
     }
@@ -822,6 +855,11 @@
     const searching=$('#search-input').value.trim().length>0;
     $('#result-list').innerHTML=filtered.slice(0,shown).map(hit=>{
       const i=hit.obj,kind=hit.kind;
+      if(kind==='element'){
+        const p=profileMap[i.audit];const status=getStatus({id:i.parentId});
+        const rawSummary=searching?snippetForHit(hit,words):i.description;
+        return `<button class="result-card result-card-element" data-kind="element" data-item="${esc(i.id)}" aria-label="Buka elemen ${esc(i.code)} ${esc(i.title)}"><span class="result-code">${esc(i.code)}</span><div class="result-body"><div class="result-badges"><span>${esc(p.name)}</span><span>Elemen dalam ${esc(i.parentId.split('-').slice(-2).join('.'))}</span><span class="status">${esc(hStat(i.hc))}</span></div><h3>${highlightTerms(i.title,words)}</h3><p>${highlightTerms(rawSummary,words)}</p></div><div class="result-end"><span>${esc(status)}</span><b>↗</b></div></button>`;
+      }
       if(kind==='clause'){
         const p=profileMap[i.audit];const status=getStatus(i);const display=conciseSupremeTitle(i);
         const rawSummary=searching?snippetForHit(hit,words):i.description;
@@ -838,14 +876,14 @@
   // Data berasal dari audit-data.js. Semua teks di-escape sebelum ditambahkan ke HTML.
   function renderAuditorDetail(item){
     if(!Array.isArray(item.auditorDetail) || !item.auditorDetail.length) return '';
-    return item.auditorDetail.map(part => `<section class="dialog-section auditor-detail-item">
-        <h3>${esc(part.code)} ${esc(part.title)}</h3>
+    return item.auditorDetail.map(part => `<section class="dialog-section auditor-detail-item" data-element-code="${esc(part.code)}">
+        <div class="auditor-detail-heading"><h3>${esc(part.code)} ${esc(part.title)}</h3>${part.hc?`<span class="auditor-element-hc">${esc(hStat(part.hc))}</span>`:''}</div>
         <h4>Ekspektasi</h4><p>${esc(part.expectation)}</p>
         <h4>Pertanyaan auditor</h4><ol>${(part.questions||[]).map(q=>`<li>${esc(q)}</li>`).join('')}</ol>
         <h4>Bukti (Evidence)</h4><ul>${(part.evidence||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
       </section>`).join('');
   }
-  function openItem(id){
+  function openItem(id,focusElementCode=null){
     const i=DATA.clauses.find(x=>x.id===id) || (DATA.supremeExpectations2018||[]).find(x=>x.id===id);if(!i)return;
     const p=profileMap[i.audit];
     const list=i.evidence.map(x=>`<li>${esc(x)}</li>`).join('');
@@ -878,12 +916,18 @@
       ? `<div class="dialog-status"><strong>Checklist pribadi</strong><p>Tidak dikirim ke server. Status disimpan hanya dalam browser pada perangkat ini dan tidak menjadi bukti audit formal.</p><label><span class="sr-only">Status kesiapan</span><select id="detail-status">${possible.map(s=>`<option ${getStatus(i)===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label></div>`
       : '';
     const hcSupportInfo = i.id==='supreme-sub-1-1'
-      ? `<div class="dialog-section"><h3>Keterangan informasi</h3><p>Bagian yang merupakan <strong>HC Pendukung</strong> berada pada <strong>1.1.3 Integrasi Kepemimpinan SUPREME dalam Uraian Jabatan (HC Pendukung)</strong>.</p></div>`
+      ? `<div class="dialog-section"><h3>Keterangan informasi</h3><p>Elemen <strong>1.1.3 Integrasi Kepemimpinan SUPREME</strong> memiliki klasifikasi <strong>HC Pendukung</strong>, sedangkan sub-proses induk 1.1 tetap <strong>Tidak langsung</strong>.</p></div>`
       : '';
     $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(display.title)}</h2><p class="dialog-subtitle">${path}</p>${detailBadges}${Array.isArray(i.auditorDetail) && i.auditorDetail.length ? renderAuditorDetail(i) : `<div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div>`}${hcSupportInfo}<div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div>${detailSource}${detailChecklist}`;
     if(p.id==='cdm') updateCdmReferenceAvailability();
     if ($('#detail-status')) $('#detail-status').addEventListener('change',(e)=>{saveStatus(i.id,e.target.value);toast('Status lokal diperbarui: '+e.target.value);});
     const dialog=$('#detail-dialog');if(!dialog.open)dialog.showModal();
+    if(focusElementCode){
+      requestAnimationFrame(()=>{
+        const detail=[...dialog.querySelectorAll('.auditor-detail-item')].find(x=>x.dataset.elementCode===focusElementCode);
+        if(detail){detail.scrollIntoView({behavior:'smooth',block:'start'});detail.classList.add('auditor-element-focused');}
+      });
+    }
   }
   function renderGlossary(){
     const term=normalize($('#glossary-search').value);
