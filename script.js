@@ -862,8 +862,13 @@
       }
       if(kind==='clause'){
         const p=profileMap[i.audit];const status=getStatus(i);const display=conciseSupremeTitle(i);
+        // Kode sudah berada di kotak kiri. Pada kartu SUPREME, tampilkan hanya nama
+        // sub-proses; judul lengkap bernomor pada dialog detail tetap dipertahankan.
+        const prefix=`${String(i.code).trim()} `;
+        const cardTitle=i.audit==='supreme' && display.title.startsWith(prefix)
+          ? display.title.slice(prefix.length).trim() : display.title;
         const rawSummary=searching?snippetForHit(hit,words):i.description;
-        return `<button class="result-card" data-kind="clause" data-item="${esc(i.id)}"><span class="result-code">${esc(i.code)}</span><div class="result-body"><div class="result-badges"><span>${esc(p.name)}</span><span>${esc(i.group)}</span><span class="status">${esc(hStat(i.hc))}</span></div><h3>${highlightTerms(display.title,words)}</h3>${display.hideDescription&&!searching?'':`<p>${highlightTerms(rawSummary,words)}</p>`}</div><div class="result-end"><span>${esc(status)}</span><b>↗</b></div></button>`;
+        return `<button class="result-card" data-kind="clause" data-item="${esc(i.id)}"><span class="result-code">${esc(i.code)}</span><div class="result-body"><div class="result-badges"><span>${esc(p.name)}</span><span>${esc(i.group)}</span><span class="status">${esc(hStat(i.hc))}</span></div><h3>${highlightTerms(cardTitle,words)}</h3>${display.hideDescription&&!searching?'':`<p>${highlightTerms(rawSummary,words)}</p>`}</div><div class="result-end"><span>${esc(status)}</span><b>↗</b></div></button>`;
       }
       const a=makeAggregate(i,kind);
       const source=kind==='audit'?'Buka seluruh klausul':kind==='peta'?'Buka peta kelompok besar':'Buka penjelasan istilah';
