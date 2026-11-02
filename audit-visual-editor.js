@@ -175,14 +175,14 @@
   $('aev-export').onclick=()=>{
     save();
     const cfg=configForPreview();
-    const js=`/* AuditAtlas - konfigurasi tampilan audit per jenis. */\nwindow.AUDIT_VISUAL_CONFIG = ${JSON.stringify(cfg,null,2)};\n`;
+    const js=`/* Audit - konfigurasi tampilan audit per jenis. */\nwindow.AUDIT_VISUAL_CONFIG = ${JSON.stringify(cfg,null,2)};\n`;
     const items=[{name:'audit-visual-config.js',bytes:enc.encode(js)}];
     for(const [id,img] of Object.entries(photos)){
       const m=img.dataURL?.match(/^data:image\/webp;base64,([A-Za-z0-9+/=]+)$/);
       if(m&&/^[a-z0-9_-]+$/.test(id)){const binary=atob(m[1]);items.push({name:`audit-custom-${id}.webp`,bytes:Uint8Array.from(binary,c=>c.charCodeAt(0))});}
     }
     items.push({name:'PETUNJUK_UPLOAD_EDITOR.txt',bytes:enc.encode('Ekstrak ZIP ini. Upload audit-visual-config.js beserta semua gambar audit-custom-*.webp ke folder UTAMA repository GitHub Pages. File ini tidak berisi source website lain. Semua pengaturan hanya berlaku untuk panel ringkasan audit. File gambar lama di GitHub tidak perlu dihapus jika masih dipakai. Jangan mengunggah gambar rahasia atau tanpa izin.\n')});
-    const url=URL.createObjectURL(buildZip(items)),a=document.createElement('a');a.href=url;a.download='AuditAtlas_Hasil_Editor_Panel_Audit.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2500);
+    const url=URL.createObjectURL(buildZip(items)),a=document.createElement('a');a.href=url;a.download='Audit_Hasil_Editor_Panel_Audit.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2500);
     $('aev-status').textContent='ZIP berhasil disiapkan. Extract All lalu unggah isi ZIP ke GitHub.';
   };
   $('aev-panel').addEventListener('toggle',()=>{

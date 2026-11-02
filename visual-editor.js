@@ -1,4 +1,4 @@
-/* AuditAtlas Visual Editor v3.0 - editor lokal, bukan panel admin server. */
+/* Audit Visual Editor v3.0 - editor lokal, bukan panel admin server. */
 (() => {
   'use strict';
   const search = new URLSearchParams(location.search);
@@ -33,7 +33,7 @@
   };
   function generateCSS(){
     const entries=editables.filter(i=>changes[i.id]);
-    return `/* AuditAtlas - layout custom hasil Mode Editor Visual.\n   Berlaku untuk desktop, agar layout HP tetap responsif. */\n@media (min-width: 901px) {\n`+
+    return `/* Audit - layout custom hasil Mode Editor Visual.\n   Berlaku untuk desktop, agar layout HP tetap responsif. */\n@media (min-width: 901px) {\n`+
        entries.map(item=>`  ${ruleFor(item,changes[item.id])}`).join('\n')+ '\n}\n';
   }
   function updatePreview(){
@@ -67,7 +67,7 @@
     `;document.head.appendChild(uiStyle);
   }
   function makePanel(){
-    const panel=document.createElement('section');panel.id='ae-panel';panel.setAttribute('aria-label','Editor Visual AuditAtlas');
+    const panel=document.createElement('section');panel.id='ae-panel';panel.setAttribute('aria-label','Editor Visual Audit');
     panel.innerHTML=`<header><strong>⚙️ Mode Editor Visual <small style="font-size:11px;opacity:.72">v3.0</small></strong><button id="ae-collapse" aria-label="Sembunyikan panel">−</button></header>
     <div class="ae-body"><p class="ae-hint">Atur posisi langsung dengan slider atau geser elemen menggunakan mouse. Perubahan hanya terlihat pada browser ini sampai CSS diekspor dan diunggah ke GitHub.</p>
     <label for="ae-page">Halaman</label><select id="ae-page"></select>
