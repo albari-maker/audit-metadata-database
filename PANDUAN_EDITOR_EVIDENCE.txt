@@ -1,0 +1,20 @@
+EDITOR EVIDENCE - AUDIT v3.19
+
+LANGKAH PERTAMA (SATU KALI):
+1. Ekstrak ZIP final, lalu upload seluruh file ke GitHub Pages.
+2. Buka website dengan menambahkan ?editor=1#jelajahi di bagian akhir URL.
+   Contoh: https://albari-maker.github.io/audit-metadata-database/?editor=1#jelajahi
+3. Pilih audit, cari subproses, klik salah satu kartu, lalu scroll ke Bukti (Evidence).
+4. Di sebelah masing-masing evidence tersedia tombol "Edit link".
+5. Ubah judul dan tempelkan URL folder HTTPS (contoh Google Drive / SharePoint).
+6. Klik "Simpan pratinjau", lalu lihat bukti menjadi link yang bisa diklik.
+7. Klik "Unduh File Link Evidence". Hasilnya audit-evidence-links.js.
+8. Upload file tersebut ke ROOT repository GitHub dan klik Commit changes.
+9. Setelah deployment, website publik menampilkan tautan; editor tidak diperlukan untuk pengunjung.
+
+PENTING:
+- Hasil "Simpan pratinjau" hanya tersimpan pada browser editor. Belum dipublikasikan.
+- Setiap edit berikutnya cukup upload ulang audit-evidence-links.js (jangan hapus file saat update website lengkap).
+- Folder yang bersifat pribadi tetap memerlukan izin akses masing-masing.
+- Repository GitHub dan GitHub Pages Anda bersifat publik. Jangan unggah dokumen, data pribadi, atau tautan internal yang dilarang untuk dibagikan. Gunakan folder yang telah diberi izin akses sesuai kebijakan organisasi.
+- Fitur ini bukan login/admin server; pemilik mengunggah perubahan ke GitHub secara manual.

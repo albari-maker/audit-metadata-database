@@ -27,7 +27,7 @@
   const roleOptions=[{value:'Utama',label:'HC utama',aliases:['utama','utma']},
     {value:'Pendukung',label:'HC pendukung',aliases:['pendukung','pendukng','pedukung','pendukug']},
     {value:'Tidak langsung',label:'HC tidak langsung',aliases:['tidak langsung','tidak lansung','tak langsung','non langsung']}];
-  const searchCache=new WeakMap();
+  let searchCache=new WeakMap();
   let autoHcRole=null, suggestionCursor=-1, searchTimer=null, explicitAuditFilter=false;
   const searchKinds={audit:'Jenis audit',clause:'Klausul / sub-proses',element:'Elemen audit / rincian',peta:'Peta audit',glossary:'Glosarium'};
   // Elemen dengan klasifikasi HC tersendiri menjadi hasil pencarian mandiri.
@@ -60,8 +60,11 @@
   function indexFor(item){
     if(searchCache.has(item))return searchCache.get(item);
     const p=profileMap[item.audit]||{name:'',label:''};
+    const evidenceWords=item.sourceType==='detail-hc-role'
+      ? window.AuditEvidence.renderSearchText(item.parentId,item.code,item.evidence||[])
+      : window.AuditEvidence.renderSearchText(item.id,'general',item.evidence||[]);
     const fields=[p.name,p.label,...(auditSynonyms[item.audit]||[]),item.code,item.title,item.description,item.group,item.pic,item.hc,item.referenceText||'',
-      ...(item.evidence||[]),...(item.metadata||[]),...(item.auditorDetail||[]).flatMap(d=>[d.code,d.title,d.expectation,...(d.questions||[]),...(d.evidence||[])])];
+      ...evidenceWords,...(item.metadata||[]),...(item.auditorDetail||[]).flatMap(d=>[d.code,d.title,d.expectation,...(d.questions||[]),...window.AuditEvidence.renderSearchText(item.id,d.code,d.evidence||[])])];
     const hay=normalize(fields.join(' '));
     // Searchable short vocabulary accelerates fuzzy matching without fetching network resources.
     const tokens=[...new Set(normalize([p.name,p.label,...(auditSynonyms[item.audit]||[]),item.code,item.title,item.group,item.hc,...(item.metadata||[]),
@@ -885,13 +888,13 @@
         <div class="auditor-detail-heading"><h3>${esc(part.code)} ${esc(part.title)}</h3>${part.hc?`<span class="auditor-element-hc">${esc(hStat(part.hc))}</span>`:''}</div>
         <h4>Ekspektasi</h4><p>${esc(part.expectation)}</p>
         <h4>Pertanyaan auditor</h4><ol>${(part.questions||[]).map(q=>`<li>${esc(q)}</li>`).join('')}</ol>
-        <h4>Bukti (Evidence)</h4><ul>${(part.evidence||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+        <h4>Bukti (Evidence)</h4>${window.AuditEvidence.renderList(item.id,part.code,part.evidence||[])}
       </section>`).join('');
   }
   function openItem(id,focusElementCode=null){
     const i=DATA.clauses.find(x=>x.id===id) || (DATA.supremeExpectations2018||[]).find(x=>x.id===id);if(!i)return;
     const p=profileMap[i.audit];
-    const list=i.evidence.map(x=>`<li>${esc(x)}</li>`).join('');
+    const list=window.AuditEvidence.renderList(i.id,'general',i.evidence||[]);
     const supreme2018=i.sourceType==='supreme-2018';
     const supremeHcFinal=i.sourceType==='supreme-hc-final';
     const isExpectation=supreme2018 && /^\d+\.\d+$/.test(i.code);
@@ -899,7 +902,7 @@
       ? `<h3>03 / Referensi dokumen pendukung</h3><p>Contoh eviden spesifik untuk sub-proses ini tidak diberikan dalam tabel final HC. Cocokkan kebutuhan bukti dengan prosedur perusahaan dan protokol audit yang berlaku.</p>`
       : isExpectation
       ? `<h3>03 / Penelusuran bukti</h3><p>Butir ini merupakan ringkasan singkat dari PDF SUPREME 2018, bukan checklist auditor. Jenis eviden spesifik harus dikonfirmasi melalui protokol audit terbaru dan fungsi pemilik proses.</p>`
-      : `<h3>03 / Contoh dokumen yang bisa ditelusuri</h3><p>Contoh awal, bukan daftar wajib. Sesuaikan dengan protokol, ruang lingkup, dan izin distribusi.</p><ul>${list}</ul>`;
+      : `<h3>03 / Contoh dokumen yang bisa ditelusuri</h3><p>Contoh awal, bukan daftar wajib. Sesuaikan dengan protokol, ruang lingkup, dan izin distribusi.</p>${list}`;
     const sourceSection=supremeHcFinal
       ? `<h3>05 / Sumber klasifikasi</h3><p><strong>Pemetaan final Proses dan Sub-Proses SUPREME berdasarkan Peran HC</strong> yang diberikan pemilik website, 26 Oktober 2026.</p><p>Kode ini merupakan nomor <strong>sub-proses dalam tabel HC</strong>, bukan nomor ekspektasi dalam PDF SUPREME 2018.</p><p class="small-warning">Nama sub-proses dan klasifikasi HC perlu dicocokkan dengan pedoman/protokol internal yang berlaku untuk keperluan audit resmi.</p>`
       : supreme2018
@@ -923,7 +926,7 @@
     const hcSupportInfo = i.id==='supreme-sub-1-1'
       ? `<div class="dialog-section"><h3>Keterangan informasi</h3><p>Elemen <strong>1.1.3 Integrasi Kepemimpinan SUPREME</strong> memiliki klasifikasi <strong>HC Pendukung</strong>, sedangkan sub-proses induk 1.1 tetap <strong>Tidak langsung</strong>.</p></div>`
       : '';
-    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(display.title)}</h2><p class="dialog-subtitle">${path}</p>${hcSupportInfo}${detailBadges}${Array.isArray(i.auditorDetail) && i.auditorDetail.length ? renderAuditorDetail(i) : `<div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div>`}<div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div>${detailSource}${detailChecklist}`;
+    $('#dialog-content').innerHTML=`<div class="dialog-kicker">KLAUSUL / ELEMEN AUDIT</div><h2 id="dialog-title">${esc(display.title)}</h2><p class="dialog-subtitle">${path}</p>${window.AuditEvidence.exportAction()}${hcSupportInfo}${detailBadges}${Array.isArray(i.auditorDetail) && i.auditorDetail.length ? renderAuditorDetail(i) : `<div class="dialog-section"><h3>01 / Penjelasan sederhana</h3><p>${esc(i.description)}</p></div><div class="dialog-section"><h3>02 / Pertanyaan panduan pemeriksaan</h3><p>${esc(i.question)}</p></div><div class="dialog-section">${evidenceSection}</div>`}<div class="dialog-section"><h3>04 / Pemilik proses dan metadata</h3><p><strong>PIC umum:</strong> ${esc(i.pic)}<br><strong>Keterlibatan HC:</strong> ${esc(i.hc)}<br><strong>Sumber pemetaan:</strong> ${esc(i.origin)}${i.referenceText?'<br><strong>Referensi yang tercantum dalam tabel:</strong> '+esc(i.referenceText):''}</p><div class="dialog-badges">${i.metadata.slice(0,8).map(t=>`<span>#${esc(t)}</span>`).join('')}</div></div>${detailSource}${detailChecklist}`;
     if(p.id==='cdm') updateCdmReferenceAvailability();
     if ($('#detail-status')) $('#detail-status').addEventListener('change',(e)=>{saveStatus(i.id,e.target.value);toast('Status lokal diperbarui: '+e.target.value);});
     const dialog=$('#detail-dialog');if(!dialog.open)dialog.showModal();
@@ -977,6 +980,7 @@
     $('#group-select').addEventListener('change',()=>{shown=18;applyFilters();showSuggestions();});
     $('#readiness-select').addEventListener('change',()=>{shown=18;applyFilters();showSuggestions();});
     initSmartSearch();
+    window.addEventListener('audit-evidence-changed',()=>{searchCache=new WeakMap();applyFilters();});
     bindHeroAutocomplete('hero-search-form','hero-search-input');
     bindHeroAutocomplete('peta-hero-search-form','peta-hero-search-input');
     $('#search-all-btn')?.addEventListener('click',()=>{resetSearchScope();$('#hc-select').value='all';autoHcRole=null;$('#readiness-select').value='all';shown=18;applyFilters();showSuggestions();$('#search-input').focus();});
