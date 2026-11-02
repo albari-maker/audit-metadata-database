@@ -1,20 +1,19 @@
-/* AuditAtlas – pengaturan gambar hasil Editor Visual, posisi dirapikan agar tidak menutupi wajah karakter. */
+/* Audit - konfigurasi tampilan audit per jenis. */
 window.AUDIT_VISUAL_CONFIG = {
   "cdm": {
     "image": "audit-custom-cdm.webp",
-    "imageY": 0,
-    "bubbleY": 0
+    "imageY": 95
   },
   "csms": {
     "image": "audit-custom-csms.webp",
     "imageWidth": 260,
     "imageY": 0,
-    "bubbleY": 0
+    "bubbleY": 240
   },
   "supreme": {
     "image": "audit-custom-supreme.webp",
-    "bubbleY": 0,
-    "imageY": 0
+    "bubbleY": 250,
+    "imageY": -220
   },
   "iso9001": {
     "imageY": 45,
@@ -32,8 +31,8 @@ window.AUDIT_VISUAL_CONFIG = {
   },
   "surveilans": {
     "image": "audit-custom-surveilans.webp",
-    "bubbleY": 0,
-    "imageY": 0
+    "bubbleY": 250,
+    "imageY": -150
   },
   "ptk": {
     "imageY": 45,
@@ -44,8 +43,8 @@ window.AUDIT_VISUAL_CONFIG = {
   },
   "psaims": {
     "image": "audit-custom-psaims.webp",
-    "bubbleY": 0,
-    "imageY": 0
+    "bubbleY": 10,
+    "imageY": -90
   },
   "iso50001": {
     "bubbleY": -40,
