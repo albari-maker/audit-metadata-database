@@ -1,0 +1,17 @@
+AUDIT v3.21 - HAPUS DUA KOTAK INFORMASI
+
+Perubahan:
+1. Hapus kotak "Basis panduan publik" pada sidebar.
+2. Hapus banner "Panduan edukatif, bukan protokol audit resmi" pada halaman Ringkasan.
+
+Data audit, pencarian, editor visual, link evidence, dan halaman lainnya tetap dipertahankan.
+
+UPLOAD WEBSITE LENGKAP:
+1. Ekstrak Audit_FINAL_v3.21_Tanpa_Dua_Kotak_Informasi_Siap_Upload.zip.
+2. Buka https://github.com/albari-maker/audit-metadata-database/upload/main
+3. Unggah semua file hasil ekstraksi ke folder utama repository.
+4. Klik Commit changes.
+5. Setelah GitHub Pages selesai deploy, buka situs dan tekan Ctrl + Shift + R.
+
+UPLOAD PATCH:
+Jika website versi 3.20 sudah terpasang, cukup unggah index.html dari Audit_PATCH_v3.21_Hapus_Dua_Kotak_1_File.zip.

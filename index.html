@@ -12,6 +12,7 @@
 <script defer="" src="audit-data.js?v=3.20-remove-safety-survey"></script>
 <script defer src="audit-visual-config.js?v=3.20-remove-safety-survey"></script>
 <script defer src="audit-evidence-links.js?v=3.19"></script>
+<script defer src="audit-paragraphs.js?v=3.22"></script>
 <script defer src="audit-evidence-editor.js?v=3.19"></script>
 <script defer src="script.js?v=3.19-evidence"></script>
 <style>
@@ -25,12 +26,14 @@
 <link href="dashboard.css?v=3.15-hc-note" rel="stylesheet"/><link rel="stylesheet" href="editor-overrides.css?v=final-v33-20261026"/>
 <script defer src="visual-editor.js?v=3.18"></script>
 <script defer src="audit-visual-editor.js?v=3.18"></script>
+<link rel="stylesheet" href="audit-paragraph-editor.css?v=3.22"/>
+<script defer src="audit-paragraph-editor.js?v=3.22"></script>
 </head>
 <body>
 <div class="app-shell">
 <aside class="sidebar" id="sidebar">
 <a aria-label="Pertamina Audit Knowledge Base, halaman Ringkasan" class="brand" data-page="beranda" href="#beranda"><img alt="PERTAMINA | AUDIT KNOWLEDGE BASE" loading="eager" src="logo-reference.png"/></a>
-<div class="workspace-label"><span class="live-dot"></span><span>Public Edition</span><span class="version">v3.20</span></div>
+<div class="workspace-label"><span class="live-dot"></span><span>Public Edition</span><span class="version">v3.22</span></div>
 <nav aria-label="Navigasi utama" class="primary-nav">
 <span class="nav-heading">WORKSPACE</span>
 <button class="nav-link active" data-page="beranda"><span aria-hidden="true" class="nav-icon">⌂</span><span class="nav-label">Ringkasan</span><span aria-hidden="true" class="nav-chevron">›</span></button>
@@ -41,7 +44,7 @@
 <span class="nav-heading margin-top">AKSES CEPAT</span>
 <div class="sidebar-audits" id="sidebar-audits"></div>
 </nav>
-<div class="sidebar-bottom"><div class="sidebar-note"><span class="note-icon">ⓘ</span><p><strong>Basis panduan publik</strong><br/>Contoh dokumen, bukan berkas audit asli. Verifikasi selalu dengan standar atau protokol yang berlaku.</p></div><p class="copyright">Disusun untuk membantu pembelajar audit • 2026</p></div>
+<div class="sidebar-bottom"><p class="copyright">Disusun untuk membantu pembelajar audit • 2026</p></div>
 </aside>
 <div class="overlay-mobile" id="mobile-overlay"></div>
 <div class="main-area">
@@ -79,7 +82,7 @@
 <div class="section-title-row categories-heading"><div><span class="eyebrow eyebrow-dark">TELUSURI DATABASE</span><h2>Jelajahi berdasarkan jenis audit</h2></div><button class="link-button" data-page="jelajahi">Lihat semua <span>→</span></button></div>
 <div class="audit-grid" id="audit-grid"></div>
 </div>
-<div class="disclaimer-banner"><span>ⓘ</span><p><strong>Panduan edukatif, bukan protokol audit resmi.</strong> Contoh eviden adalah referensi penyiapan, bukan dokumen perusahaan. Persyaratan dan edisi standar harus diverifikasi dengan sumber resmi yang berlaku.</p></div>
+
 <div class="bottom-help"><div class="bottom-help-symbol">?</div><div><strong>Baru pertama kali mempersiapkan audit?</strong><p>Pilih jenis audit, pelajari klausul atau proses, lalu temukan contoh dokumen yang relevan.</p></div><button class="btn btn-dark" data-page="panduan">Panduan penggunaan →</button></div>
 </section>
 <section class="page hidden" id="page-jelajahi">

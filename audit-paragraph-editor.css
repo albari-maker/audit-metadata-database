@@ -1,0 +1,35 @@
+/* Audit v3.22: perataan paragraf ringkasan audit. Berlaku tanpa Mode Editor. */
+#audit-context .audit-overview-main .overview-section p,
+#audit-context .audit-overview-main .overview-section .overview-pillars > li {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+/* Panel hanya ditambahkan oleh JavaScript ketika URL memiliki ?editor=1. */
+.audit-paragraph-tools {display:flex;align-items:center;flex-wrap:wrap;gap:8px;background:#fff;border:1px solid #cbdfe9;border-radius:11px;padding:10px 12px;margin:12px 0 18px;box-shadow:0 4px 15px #153a4710;font:13px system-ui,sans-serif;color:#193f53;}
+.audit-paragraph-tools strong{font-size:13px;margin-right:auto;}
+.audit-paragraph-tools button,.audit-paragraph-dialog button{font:600 13px system-ui,sans-serif;border:1px solid #b8d4e2;border-radius:8px;background:#f7fbff;color:#12608c;padding:9px 12px;cursor:pointer;}
+.audit-paragraph-tools button:hover,.audit-paragraph-dialog button:hover{background:#e4f3fc;}
+.audit-paragraph-tools .ap-primary,.audit-paragraph-dialog .ap-primary{background:#0d6eb3;color:white;border-color:#0d6eb3;}
+.audit-paragraph-tools .ap-primary:hover,.audit-paragraph-dialog .ap-primary:hover{background:#075789;}
+.audit-paragraph-tools small{flex-basis:100%;color:#67838e;font-size:11px;line-height:1.5;}
+.audit-paragraph-editing .overview-section p,.audit-paragraph-editing .overview-pillars>li{cursor:pointer;outline:1px dashed #9ccddb;outline-offset:4px;border-radius:3px;}
+.audit-paragraph-editing .overview-section p:hover,.audit-paragraph-editing .overview-pillars>li:hover{outline:2px solid #168fc5;background:#e2f4fb80;}
+.audit-paragraph-active{outline:2px solid #0b80bf!important;background:#e6f7ff!important;}
+.audit-paragraph-dialog{width:min(650px,calc(100vw - 26px));max-height:90vh;overflow:auto;padding:0;border:1px solid #c3dbe9;border-radius:16px;box-shadow:0 30px 80px #092a405e;color:#153749;background:white;}
+.audit-paragraph-dialog::backdrop{background:#071c29a0;}
+.audit-paragraph-dialog .ap-header{background:#0e3042;color:white;padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.audit-paragraph-dialog .ap-header strong{font-size:17px;}
+.audit-paragraph-dialog .ap-header button{background:transparent;color:white;border-color:#688497;min-width:36px;}
+.audit-paragraph-dialog .ap-body{padding:20px;}
+.audit-paragraph-dialog .ap-location{font-size:12px;color:#668594;margin:0 0 18px;}
+.audit-paragraph-dialog label{display:block;font-size:13px;font-weight:750;color:#173e53;margin-bottom:8px;}
+.audit-paragraph-dialog textarea{box-sizing:border-box;width:100%;border:1px solid #b6d2df;border-radius:10px;padding:12px 14px;font:14px/1.8 system-ui,sans-serif;min-height:135px;resize:vertical;background:white;color:#183e54;}
+.audit-paragraph-dialog textarea:focus{outline:2px solid #7ed7e9;}
+.audit-paragraph-dialog .ap-align-choices{display:flex;gap:7px;flex-wrap:wrap;margin:11px 0 18px;}
+.audit-paragraph-dialog .ap-align-choices button[aria-pressed="true"]{background:#dff5f1;border-color:#078e79;color:#076955;}
+.audit-paragraph-dialog .ap-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:17px 0 9px;}
+.audit-paragraph-dialog .ap-help,.audit-paragraph-dialog .ap-status{font-size:12px;line-height:1.65;color:#617e8c;margin:12px 0 0;}
+.audit-paragraph-dialog .ap-status{color:#0b705c;}
+@media(max-width:700px){.audit-paragraph-tools{align-items:stretch}.audit-paragraph-tools strong{width:100%;flex-basis:100%}.audit-paragraph-dialog .ap-body{padding:15px;}}

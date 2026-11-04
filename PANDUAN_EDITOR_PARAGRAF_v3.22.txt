@@ -1,0 +1,27 @@
+AUDIT v3.22 - EDITOR PARAGRAF DAN RATA KANAN-KIRI
+====================================================
+
+FITUR
+- Teks pada Acuan Pelaksanaan, Summary, dan daftar proses/klausul utama ditampilkan dengan rata kanan-kiri secara default.
+- Pada Mode Editor, paragraf dapat diubah teksnya dan diatur rata kiri, tengah, kanan, atau kanan-kiri.
+- Pengaturan berlaku terpisah untuk tiap audit dan tiap paragraf.
+- Perubahan pratinjau disimpan lokal di browser. Pengunjung lain tidak dapat mengedit hanya dengan membuka situs.
+
+CARA PAKAI
+1. Pasang paket lengkap v3.22 ke folder utama repository GitHub.
+2. Buka: https://albari-maker.github.io/audit-metadata-database/?editor=1#jelajahi
+3. Pilih Jenis Audit: Audit SUPREME (atau audit lain).
+4. Di bagian Acuan Pelaksanaan / Summary, klik "Pilih paragraf untuk diedit".
+5. Klik paragraf yang ingin diubah.
+6. Edit tulisan atau pilih tombol "Kanan-kiri" agar tepi kiri dan kanan sejajar.
+7. Klik "Simpan pratinjau". Untuk meratakan seluruh paragraf audit itu, gunakan "Rata kanan-kiri semua".
+8. Klik "Unduh File Paragraf". Browser akan mengunduh audit-paragraphs.js.
+9. Unggah audit-paragraphs.js ke folder utama repository GitHub, lalu Commit changes.
+10. Setelah GitHub Pages memperbarui website, refresh paksa (Ctrl+Shift+R).
+
+CATATAN
+- Perubahan yang hanya disimpan di browser tidak otomatis mengubah situs publik.
+- Jangan mengunggah isi dokumen atau informasi rahasia perusahaan ke repository publik.
+- Mengedit isi teks lewat kotak editor mengubah paragraf tersebut menjadi teks biasa; jika hanya mengubah perataan, teks tebal/miring bawaan dipertahankan.
+- Jika ingin kembali ke teks awal, buka paragraf dan gunakan "Kembalikan paragraf", lalu ekspor file lagi.
+- File konfigurasi mendukung lebih dari satu audit dan tidak perlu mengunggah ulang seluruh website setelah pemasangan awal.
