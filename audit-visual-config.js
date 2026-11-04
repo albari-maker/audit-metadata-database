@@ -1,19 +1,20 @@
-/* Audit - konfigurasi tampilan audit per jenis. */
+/* Konfigurasi visual Audit. */
 window.AUDIT_VISUAL_CONFIG = {
   "cdm": {
     "image": "audit-custom-cdm.webp",
-    "imageY": 95
+    "imageY": 0,
+    "bubbleY": 0
   },
   "csms": {
     "image": "audit-custom-csms.webp",
     "imageWidth": 260,
     "imageY": 0,
-    "bubbleY": 240
+    "bubbleY": 0
   },
   "supreme": {
     "image": "audit-custom-supreme.webp",
-    "bubbleY": 250,
-    "imageY": -220
+    "bubbleY": 0,
+    "imageY": 0
   },
   "iso9001": {
     "imageY": 45,
@@ -31,8 +32,8 @@ window.AUDIT_VISUAL_CONFIG = {
   },
   "surveilans": {
     "image": "audit-custom-surveilans.webp",
-    "bubbleY": 250,
-    "imageY": -150
+    "bubbleY": 0,
+    "imageY": 0
   },
   "ptk": {
     "imageY": 45,
@@ -43,8 +44,8 @@ window.AUDIT_VISUAL_CONFIG = {
   },
   "psaims": {
     "image": "audit-custom-psaims.webp",
-    "bubbleY": 10,
-    "imageY": -90
+    "bubbleY": 0,
+    "imageY": 0
   },
   "iso50001": {
     "bubbleY": -40,
@@ -52,13 +53,5 @@ window.AUDIT_VISUAL_CONFIG = {
     "imageWidth": 250,
     "imageX": -45,
     "bubbleWidth": 185
-  },
-  "lens": {
-    "imageY": 45,
-    "imageWidth": 250,
-    "imageX": -40,
-    "bubbleY": -40,
-    "bubbleX": 5,
-    "bubbleWidth": 175
   }
 };

@@ -1,7 +1,7 @@
 {
   "title": "Audit Metadata Database",
   "subtitle": "Panduan publik audit dari kelompok besar hingga topik dan contoh bukti",
-  "version": "3.6.0",
+  "version": "3.20.0",
   "date": "2026-10-21",
   "notice": "SUPREME: 8 proses dan 45 sub-proses dalam tabel pemetaan HC final pengguna. Indeks terpisah 191 ekspektasi berasal dari PDF SUPREME 2018. Nomor yang sama pada kedua indeks tidak berarti deskripsi identik; peran HC pada arsip 2018 adalah metadata lama dan bukan pemetaan final sub-proses.",
   "references": [
@@ -49,11 +49,6 @@
       "title": "Audit SUPREME",
       "url": "https://www.pertamina.com/Media/File/Energia-51-17-Desember-2018.pdf",
       "note": "Struktur 8 proses dan 191 ekspektasi berdasarkan PDF SUPREME yang diunggah (2018). Cek protokol / standar 2023 yang berlaku untuk penilaian aktual."
-    },
-    {
-      "title": "Survei Budaya Keselamatan",
-      "url": "https://www.migas.esdm.go.id/post/Tingkatkan-Pengawasan-Budaya-Keselamatan-Migas-Ditjen-Migas-Gelar-Bimtek-Auditor-SMK3-Migas",
-      "note": "Nama/metode LENS harus dikonfirmasi"
     },
     {
       "title": "Audit CSMS",
@@ -255,25 +250,6 @@
         "Cocokkan persyaratan versi 2018 dengan standar dan protokol audit yang sedang berlaku sebelum memakai sebagai checklist resmi."
       ],
       "warning": "Pemetaan proses dan nomor ekspektasi merujuk pada dokumen SUPREME yang diunggah (2018). Dokumen ini bukan bukti bahwa isi tersebut identik dengan Pertamina Standard PS-S-023-440-2023 atau protokol audit SIAP yang berlaku."
-    },
-    {
-      "id": "lens",
-      "name": "Survei Budaya Keselamatan",
-      "label": "LENS (tambahan)",
-      "short": "Orientasi awal mengenai pengukuran persepsi dan keterlibatan dalam budaya keselamatan.",
-      "purpose": "Membantu menyiapkan materi budaya keselamatan dan bukti sosialisasi secara umum.",
-      "audience": "HSE, HC, Manajemen",
-      "version": "Nama/metode LENS harus dikonfirmasi",
-      "confidence": "Perlu validasi",
-      "icon": "messages",
-      "color": "#64748B",
-      "source": "https://www.migas.esdm.go.id/post/Tingkatkan-Pengawasan-Budaya-Keselamatan-Migas-Ditjen-Migas-Gelar-Bimtek-Auditor-SMK3-Migas",
-      "steps": [
-        "Pastikan instrumen dan definisi survei yang dipakai.",
-        "Jelaskan anonimitas serta tujuan kepada responden.",
-        "Analisis hasil secara agregat, bukan data pribadi."
-      ],
-      "warning": "LENS dalam berkas awal belum tervalidasi sebagai nama skema audit/standar publik."
     },
     {
       "id": "csms",
@@ -2637,115 +2613,6 @@
       "source": "https://www.iso.org/standard/63787.html",
       "status": "Perlu cek penomoran edisi berlaku",
       "origin": "Pemetaan awal ISO SMT, diklasifikasikan ulang"
-    },
-    {
-      "id": "lens-79",
-      "audit": "lens",
-      "code": "1",
-      "title": "Persepsi risiko",
-      "group": "Elemen / proses pemeriksaan",
-      "description": "Pemahaman pekerja tentang bahaya & risiko kerja",
-      "question": "Apa bukti yang dapat menunjukkan bahwa persepsi risiko sudah dijalankan dan ditinjau secara konsisten?",
-      "evidence": [
-        "Metode identifikasi risiko / aspek",
-        "Daftar pengendalian versi contoh",
-        "Alur persetujuan perubahan"
-      ],
-      "pic": "HSE",
-      "hc": "Pendukung",
-      "metadata": [
-        "lens",
-        "tambahan",
-        "persepsi",
-        "risiko",
-        "hse",
-        "pendukung"
-      ],
-      "source": "https://www.migas.esdm.go.id/post/Tingkatkan-Pengawasan-Budaya-Keselamatan-Migas-Ditjen-Migas-Gelar-Bimtek-Auditor-SMK3-Migas",
-      "status": "Perlu validasi",
-      "origin": "Pemetaan awal"
-    },
-    {
-      "id": "lens-80",
-      "audit": "lens",
-      "code": "2",
-      "title": "Keterlibatan manajemen",
-      "group": "Elemen / proses pemeriksaan",
-      "description": "Kehadiran & teladan pimpinan dalam keselamatan",
-      "question": "Apa bukti yang dapat menunjukkan bahwa keterlibatan manajemen sudah dijalankan dan ditinjau secara konsisten?",
-      "evidence": [
-        "Kebijakan atau prosedur yang relevan",
-        "Catatan pelaksanaan yang sudah dianonimkan",
-        "Ringkasan hasil evaluasi dan tindak lanjut"
-      ],
-      "pic": "Manajemen / HSE",
-      "hc": "Pendukung",
-      "metadata": [
-        "lens",
-        "tambahan",
-        "keterlibatan",
-        "manajemen",
-        "hse",
-        "pendukung"
-      ],
-      "source": "https://www.migas.esdm.go.id/post/Tingkatkan-Pengawasan-Budaya-Keselamatan-Migas-Ditjen-Migas-Gelar-Bimtek-Auditor-SMK3-Migas",
-      "status": "Perlu validasi",
-      "origin": "Pemetaan awal"
-    },
-    {
-      "id": "lens-81",
-      "audit": "lens",
-      "code": "3",
-      "title": "Respon terhadap ketidaksesuaian",
-      "group": "Elemen / proses pemeriksaan",
-      "description": "Cara organisasi menangani pelanggaran & pelaporan",
-      "question": "Apa bukti yang dapat menunjukkan bahwa respon terhadap ketidaksesuaian sudah dijalankan dan ditinjau secara konsisten?",
-      "evidence": [
-        "Kebijakan yang disetujui",
-        "Struktur tanggung jawab tingkat fungsi",
-        "Notulen sosialisasi (tanpa identitas pribadi)"
-      ],
-      "pic": "HSE",
-      "hc": "Pendukung",
-      "metadata": [
-        "lens",
-        "tambahan",
-        "respon",
-        "terhadap",
-        "ketidaksesuaian",
-        "hse",
-        "pendukung"
-      ],
-      "source": "https://www.migas.esdm.go.id/post/Tingkatkan-Pengawasan-Budaya-Keselamatan-Migas-Ditjen-Migas-Gelar-Bimtek-Auditor-SMK3-Migas",
-      "status": "Perlu validasi",
-      "origin": "Pemetaan awal"
-    },
-    {
-      "id": "lens-82",
-      "audit": "lens",
-      "code": "4",
-      "title": "Keterlibatan pekerja",
-      "group": "Elemen / proses pemeriksaan",
-      "description": "Partisipasi pekerja dalam program keselamatan",
-      "question": "Apa bukti yang dapat menunjukkan bahwa keterlibatan pekerja sudah dijalankan dan ditinjau secara konsisten?",
-      "evidence": [
-        "Kebijakan atau prosedur yang relevan",
-        "Catatan pelaksanaan yang sudah dianonimkan",
-        "Ringkasan hasil evaluasi dan tindak lanjut"
-      ],
-      "pic": "HSE / HC",
-      "hc": "Utama",
-      "metadata": [
-        "lens",
-        "tambahan",
-        "keterlibatan",
-        "pekerja",
-        "hse",
-        "utama"
-      ],
-      "source": "https://www.migas.esdm.go.id/post/Tingkatkan-Pengawasan-Budaya-Keselamatan-Migas-Ditjen-Migas-Gelar-Bimtek-Auditor-SMK3-Migas",
-      "status": "Perlu validasi",
-      "origin": "Pemetaan awal"
     },
     {
       "id": "ptk-83",
